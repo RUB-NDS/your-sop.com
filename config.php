@@ -2,9 +2,9 @@
 session_start();
 
 $PROTOCOL="http://";
-$SERVER_A="a.com";
-$SERVER_B="b.com";
-$PATH="/sop-policy/";
+$SERVER_A="your-sop.com";
+$SERVER_B="other-sop.com";
+$PATH="/";
 
 $URL_A="$PROTOCOL$SERVER_A$PATH";
 $URL_B="$PROTOCOL$SERVER_B$PATH";
