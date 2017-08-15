@@ -2,8 +2,8 @@
 session_start();
 
 $PROTOCOL="http://";
-$SERVER_A="your-sop.com";
-$SERVER_B="other-sop.com";
+$SERVER_A="a.com";
+$SERVER_B="b.com";
 $PATH="/";
 
 $URL_A="$PROTOCOL$SERVER_A$PATH";
