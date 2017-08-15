@@ -4,10 +4,10 @@ if (!isset($executions)) { die(); }
 
 <script>
 
-function cleanEEs() {
-	document.getElementById("loadbar").innerHTML="Finished Loading";
-}
-<?php
+	function cleanEEs() {
+		document.getElementById("loadbar").innerHTML="Finished Loading";
+	}
+	<?php
 // --- Implementation Marker: Way of Calling ----
 // We might use this place to use a get parameter to choose from a way of calling a function.
 // Since if we do this in PHP we can use setTimeout() of JS to secure the content is loaded properly.
@@ -24,23 +24,54 @@ function cleanEEs() {
 // 		- Should the function run in an infinite loop
 //		- Should it be called and again use sth mutex like ? 
 // 		- Promises to build Mutex ? 
-foreach($executions as $group => $tests) {
-	echo "function ".$group."() {\n";
-	foreach ($tests as $test) {
-		echo "	".$test."();\n";
-	}
-	if ($group == "ed_html_ee_iframe") {
-		
-		echo "\n        redoSpecialTests();\n";
-	}
-	echo "window.".$group." = function () {};\n";
-	echo "}\n";
-}
-?>
-	
-<?php
 
-echo "function redoSpecialTests() {\n";
+	foreach($executions as $group => $tests) {
+		echo "function ".$group."() {\n";
+		foreach ($tests as $test) {
+			echo "	".$test."();\n";
+		}
+		if ($group == "ed_html_ee_iframe") {
+
+			echo "\n        redoSpecialTests();\n";
+		}
+		echo "window.".$group." = function () {};\n";
+	return 	echo "}\n";
+	}
+	?>
+	
+	function sleep(timeout) {
+		return new Promise(resolve => setTimeout(resolve, timeout));
+	}
+
+	function call(func) {
+		document.callQueue.push(func); // do NOT push strings. Push the function !
+	}
+
+	// This solution only works for javascript so far. The protocol could be set with a PHP variable.
+	// Maybe modify existing code such that every test case sets free = true in its last line by default
+	async function depleteQueue() { // async: allows await to be used
+		var finished = false;
+		var func;
+		while (!finished) {
+			func = document.callQueue.shift(); // Pop the first element of the queue (FIFO)
+			if (funcName) {
+				var code = func.toString(); // get source code
+				while (!free)
+				{
+					await sleep(100);
+				}
+				window.location = "javascript:" + code + func + "();"; // todo: Modify source such that last line sets free = true
+			}
+			else
+			{
+				finished = true;
+			}
+		}
+	}
+
+	<?php
+
+	echo "function redoSpecialTests() {\n";
 	$tests = $executions["ed_html_ee_iframe"];
 	
 	function allow_top_navigation_w($val) {
@@ -60,15 +91,15 @@ echo "function redoSpecialTests() {\n";
 		echo "	setTimeout(".$test.", ".(500+$i*1500).");\n";		
 		$i++;
 	}
-echo "}";
+	echo "}";
 
-?>
+	?>
 	
-function allTestGroups() {
-<?php
-	foreach($executions as $group => $tests) {
-		echo "	".$group."();\n";
+	function allTestGroups() {
+		<?php
+		foreach($executions as $group => $tests) {
+			echo "	".$group."();\n";
+		}
+		?>
 	}
-?>
-}
 </script>
