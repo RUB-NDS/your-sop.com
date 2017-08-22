@@ -40,16 +40,23 @@ if (!isset($executions)) { die(); }
 		echo "}\n";
 	}
 	?>
+
+	function test(image) {
+		if(!document.imags) {
+			document.imags = Array();
+		}
+		document.imags.push(["foo", image]);
+	}
 	
 	function sleep(timeout) {
 		return new Promise(resolve => setTimeout(resolve, timeout));
 	}
 
-	function call(func) {
+	function call(func, args = []) {
 		if(!document.callQueue) {
 			document.callQueue = Array();
 		}
-		document.callQueue.push(func); /* do NOT push strings. Push the function ! */
+		document.callQueue.push([func, args]); 
 	}
 
 	/* This solution only works for javascript so far. The protocol could be set with a PHP variable. */
@@ -65,17 +72,23 @@ if (!isset($executions)) { die(); }
 		if(!document.free) {
 			document.free = true;
 		}
-		while (document.callQueue.length > 0) {
-			func = document.callQueue.shift(); /* Pop the first element of the queue (FIFO) */
-			if (func) {
-				var code = func.toString(); /* get source code */
+		var i = 0;
+		while (i < document.callQueue.length) {
+			if (document.callQueue[i][0]) { /* function name */
+ 				var code = document.callQueue[i][0].toString(); /* get source code */
 				while (document.free == false)
 				{
 					await sleep(10);
 				}
 				document.free = false;
 				/* The following line should be set according to the execution that is preferred via PHP */
-				window.location = "javascript:" + code + func.name + "();"; /* todo: Modify source such that last line sets free = true */
+				window.location = "javascript:" + code + document.callQueue[i][0].name + ".apply(null, document.callQueue[" + i + "][1]);"; /* todo: Modify source such that last line sets free = true */
+				while (document.free == false) /* wait to clean the queue */
+				{
+					await sleep(10);
+				}
+				document.callQueue[i] = undefined; /* clean current queue entry. This still bloats a bit but seems to be the best solution so far */
+				i++;
 			}
 			
 		}

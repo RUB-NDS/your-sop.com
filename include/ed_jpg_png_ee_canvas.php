@@ -48,7 +48,22 @@ foreach(array("ED A", "ED B") as $to) {
 					$id = str_replace(array(" ", "-","(",")"), "_", $id);
 					echo $id;
 					?>" style="cursor:help">no</td>
-					<script>	
+					<script>
+function <?php echo $id . "_onload"?>(img, id) {
+	try {
+		var c = document.createElement("canvas");
+		c.width=img.width; c.height=img.height;
+		var ctx = c.getContext("2d");
+		ctx.drawImage(img, 0, 0); /* Put img on canvas at pos 0x0 */
+		var pixel = ctx.getImageData(2,3,1,1); /* Read color of 1x1 pixel at position 2/3 */
+		var data = pixel.data;
+		set(id, (data[0]==255)?'yes(pixel)':'no');
+	} catch (ex) {			
+		set(id, 'no*', ex.message); /* SOP violation? */
+	}
+	document.free = true;
+}
+
 function <?php echo $id; ?>() {
 	var id = getFunctionName();
 	set(id, 'no*', "img.onload not executed"); /* fallback if img.onload is not executed */
@@ -58,19 +73,10 @@ function <?php echo $id; ?>() {
 		echo "img.crossOrigin = '".$crossOrigin."';\n";
 	}
 	?>
-img.onload = function() {
-	try {
-		var c = document.createElement("canvas");
-		c.width=img.width; c.height=img.width;
-		var ctx = c.getContext("2d");
-		ctx.drawImage(img, 0, 0); /* Put img on canvas at pos 0x0 */
-		var pixel = ctx.getImageData(2,3,1,1); /* Read color of 1x1 pixel at position 2/3 */
-		var data = pixel.data;
-		set(id, (data[0]==255)?'yes(pixel)':'no');
-	} catch (ex) {			
-		set(id, 'no*', ex.message); /* SOP violation? */
-	}
-};
+	args = Array();
+	args.push(img);
+	args.push(id);
+	img.onload = call(<?php echo $id . "_onload"?>, args);
 	<?php
 	$url="$PROTOCOL";
 	if ($to === "ED A") {
