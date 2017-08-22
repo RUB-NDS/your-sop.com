@@ -83,7 +83,7 @@ if (!isset($executions)) { die(); }
 				document.free = false;
 				/* The following line should be set according to the execution that is preferred via PHP */
 				<?php 
-				if ($_GET['exec'] === 'js') {
+				if (isset($_GET['exec']) && $_GET['exec'] === 'js') {
 					echo 'window.location = "javascript:" + code + document.callQueue[i][0].name + ".apply(null, document.callQueue[" + i + "][1]);";';
 					echo "\n";
 				} else {
