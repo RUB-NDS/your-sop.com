@@ -101,6 +101,7 @@ foreach($arrayTo as $to) {
 	$url .= "&func=$id";
 	?>wrapper.src="<?php echo $url; ?>";
 	document.getElementById("loadbar").appendChild(wrapper);
+	document.free = true;
 }
 <?php  array_push($executions["ed_css_ee_link"], $id);  
 	}

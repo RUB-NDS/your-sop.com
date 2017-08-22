@@ -111,6 +111,7 @@ foreach(array("HD A") as $from) {
 				}
 			?>ee.src='<?php echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
+			document.free = true;
 		}
 		<?php  array_push($executions["ed_html_ee_iframe"], $id); 
 		}
@@ -179,6 +180,7 @@ foreach(array("ED A", "ED B") as $from) {
 			$url .= "&func=$id";
 			echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
+			document.free = true;
 		}
 		<?php  array_push($executions["ed_html_ee_iframe"], $id); 
 		}

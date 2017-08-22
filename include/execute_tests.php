@@ -36,6 +36,7 @@ if (!isset($executions)) { die(); }
 			echo "\n        redoSpecialTests();\n";
 		}
 		echo "window.".$group." = function () {};\n";
+		echo "depleteQueue();\n";
 		echo "}\n";
 	}
 	?>
@@ -54,12 +55,17 @@ if (!isset($executions)) { die(); }
 	/* This solution only works for javascript so far. The protocol could be set with a PHP variable. */
 	/* Maybe modify existing code such that every test case sets free = true in its last line by default */
 	async function depleteQueue() { /* async: allows await to be used */
-		var finished = false;
+		if(!document.working || document.working == false) {
+			document.working = true;
+		}
+		else {
+			return 0;
+		}
 		var func;
 		if(!document.free) {
 			document.free = true;
 		}
-		while (!finished) {
+		while (document.callQueue.length > 0) {
 			func = document.callQueue.shift(); /* Pop the first element of the queue (FIFO) */
 			if (func) {
 				var code = func.toString(); /* get source code */
@@ -71,11 +77,9 @@ if (!isset($executions)) { die(); }
 				/* The following line should be set according to the execution that is preferred via PHP */
 				window.location = "javascript:" + code + func.name + "();"; /* todo: Modify source such that last line sets free = true */
 			}
-			else
-			{
-				finished = true;
-			}
+			
 		}
+		document.working = false;
 	}
 
 	<?php

@@ -44,7 +44,7 @@ foreach(array("HD A") as $from) {
 					case $idr:
 				?>var source = <?php echo $jsfunc ?>.toString();
 				if(source.indexOf("secret") > 0) {
-					set(id, 'partial', 'Function soure code of loaded scritp:\n' + source);
+					set(id, 'partial', 'Function source code of loaded script:\n' + source);
 				} else {
 					set(id, 'no', 'Could not find "secret":\n'+source);
 				}
@@ -52,7 +52,7 @@ foreach(array("HD A") as $from) {
 						break;
 					case $idw:
 				?>var oldSecret = <?php echo $jsfunc ?>();
-				<?php echo $jsfunc ?> = function() { return 1; }				
+				<?php echo $jsfunc ?> = function() { return 1; };				
 				var newSecret = <?php echo $jsfunc ?>();
 				if (oldSecret == 42 && newSecret == 1)  {
 					set(id, 'partial');
@@ -81,6 +81,7 @@ foreach(array("HD A") as $from) {
 			$url .= "&func=$id";
 			echo $url ?>';
 			document.body.appendChild(ee); /* load the content */
+			document.free = true;
 		}
 		<?php  array_push($executions["ed_js_ee_script"], $id); 
 		}
@@ -138,6 +139,7 @@ foreach(array("ED A", "ED B") as $from) {
 			$url .= "&func=$id";
 			echo $url ?>';
 			document.body.appendChild(ee); /* load the content */
+			document.free = true;
 		}
 		<?php  array_push($executions["ed_js_ee_script"], $id); 
 		}

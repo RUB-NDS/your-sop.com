@@ -61,6 +61,7 @@ function <?php echo $id; ?>(){
 		set(id,(img.width==111)?'partial':'no');
 	};
 	img.src='<?php echo $url; ?>img/png.php?func='+id;
+    document.free = true;
 } 
 <?php
 array_push($executions["ed_jpg_png_ee_img"], $id);

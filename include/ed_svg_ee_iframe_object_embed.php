@@ -82,6 +82,7 @@ foreach(array("HD A") as $from) {
 			};				
 			ee.<?php echo $src ?>='<?php echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
+			document.free = true;
 		}
 		<?php array_push($executions["ed_svg_ee_iframe_object_embed"], $id); 
 		}
@@ -106,6 +107,7 @@ foreach(array("HD A") as $from) {
 			$src = ($ee==="object")?"data":"src";	
 			echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
+			document.free = true;
 		}
 		<?php  array_push($executions["ed_svg_ee_iframe_object_embed"], $idx);  ?>
 		</script>
@@ -162,6 +164,7 @@ foreach(array("ED A", "ED B") as $from) {
 			$src = ($ee==="object")?"data":"src";
 			echo $src ?>='<?php echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
+			document.free = true;
 		}
 		<?php  array_push($executions["ed_svg_ee_iframe_object_embed"], $id);  
 		}
