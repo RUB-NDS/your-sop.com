@@ -53,7 +53,7 @@ foreach(array("ED A", "ED B") as $to) {
 					<script>	
 function <?php echo $id; ?>() {
 	var id = getFunctionName();
-	set(id, 'no*', 'img.onload not executed'); // fallback if img.onload is not executed
+	set(id, 'no*', 'img.onload not executed'); /* fallback if img.onload is not executed */
 	var img = document.createElement("img");
 	<?php
 	if($crossOrigin != $notSet) {
@@ -65,12 +65,12 @@ img.onload = function() {
 		var c = document.createElement("canvas");
 		c.width=img.width; c.height=img.width;
 		var ctx = c.getContext("2d");
-		ctx.drawImage(img, 0, 0); // Put img on canvas at pos 0x0
-		var pixel = ctx.getImageData(50,50,1,1); // Read color of 1x1 pixel at position 50/50
+		ctx.drawImage(img, 0, 0); /* Put img on canvas at pos 0x0 */
+		var pixel = ctx.getImageData(50,50,1,1); /* Read color of 1x1 pixel at position 50/50 */
 		var data = pixel.data;
 		set(id, (data[0]==255)?'yes(pixel)':'no');
 	} catch (ex) {			
-		set(id, 'no*', ex.message); // SOP violation?
+		set(id, 'no*', ex.message); /* SOP violation? */
 	}
 };
 	<?php
@@ -86,6 +86,7 @@ img.onload = function() {
 	$url .= "&credentials=$credentials";
 	$url .= "&func=$id";
 	echo "img.src='${url}';";
+	echo "document.free = true;";
 	?>
 		
 }
