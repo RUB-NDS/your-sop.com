@@ -1,7 +1,7 @@
 <?php
 include("../config.php");
-header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
-header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+header("Cache-Control: no-cache, must-revalidate"); /* HTTP/1.1 */
+header("Expires: -1"); /* Always invalid */
 
 include("../util/cors.php");
 header("Content-type: text/html");
@@ -23,7 +23,7 @@ function readVar($name, $allowedValues) {
 	if (!in_array($value, $allowedValues, true)) {
 		die();
 	}
-	//echo  "<p>".$value."</p>";
+	/*echo  "<p>".$value."</p>"; */
 	return $value;
 }
 
@@ -72,7 +72,7 @@ $operation = readVar("operation", array("read", "write", "execute"));
 	}
 	<?php
 	if (substr( $from, 0, 2 ) === "ED" && $operation == "write") {
-		// Case ED -> HD
+		/* Case ED -> HD */
 		
 	?>function <?php echo $id; ?>() {
 		var id = "<?php echo $id; ?>";
@@ -140,7 +140,7 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		}
 		<?php
 	} else if (substr( $from, 0, 2 ) === "HD" && $operation != "execute"){
-		// Case: HD -> ED
+		/* Case: HD -> ED */
 		?>function <?php echo $id; ?>() {
 		var id = "<?php echo $id; ?>";
 		set(id, 'no*', 'link.onload not executed');
@@ -156,9 +156,9 @@ $operation = readVar("operation", array("read", "write", "execute"));
 				case "read":
 			?>var styles = document.styleSheets[0];
 			if (styles.rules == undefined) {
-				var rule = styles.cssRules[0]; // E.g. Chrome
+				var rule = styles.cssRules[0]; /* E.g. Chrome */
 			} else {
-				var rule = styles.rules[0]; // E.g. FF
+				var rule = styles.rules[0]; /* E.g. FF */
 			}
 			var actual = rule.cssText;			
 			var expected = "h1 { color: red; }";
@@ -170,7 +170,7 @@ $operation = readVar("operation", array("read", "write", "execute"));
 			<?php
 				break;
 				case "write":
-			// This is not working in IE:
+			/* This is not working in IE: */
 			/*if (styles.rules == undefined) {
 				var rule = styles.cssRules[0]; // E.g. Chrome
 			} else {

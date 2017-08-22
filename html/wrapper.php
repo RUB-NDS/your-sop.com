@@ -1,7 +1,7 @@
 <?php
 include("../config.php");
-header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
-header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+header("Cache-Control: no-cache, must-revalidate"); /* HTTP/1.1 */
+header("Expires: -1"); /* Always invalid */
 
 include("../util/cors.php");
 header("Content-type: text/html");
@@ -58,7 +58,7 @@ $sandboxAttributes = [$notSet, $emptyValue, $sc, $so, $tn, "$sc $so", "$sc $tn",
 			$url .= "html/html_script.php?operation=write";
 			$url .= "&func=$id";
 			echo $url ?>';
-			document.body.appendChild(ee); // load the content
+			document.body.appendChild(ee); /* load the content */
 		}
 		<?php
 	if (!isset($_GET['newlocation'])) {

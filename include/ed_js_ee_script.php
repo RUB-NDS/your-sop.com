@@ -80,7 +80,7 @@ foreach(array("HD A") as $from) {
 			$url .= ".php?operation=$jsfunc";
 			$url .= "&func=$id";
 			echo $url ?>';
-			document.body.appendChild(ee); // load the content
+			document.body.appendChild(ee); /* load the content */
 		}
 		<?php  array_push($executions["ed_js_ee_script"], $id); 
 		}
@@ -137,7 +137,7 @@ foreach(array("ED A", "ED B") as $from) {
 			}
 			$url .= "&func=$id";
 			echo $url ?>';
-			document.body.appendChild(ee); // load the content
+			document.body.appendChild(ee); /* load the content */
 		}
 		<?php  array_push($executions["ed_js_ee_script"], $id); 
 		}

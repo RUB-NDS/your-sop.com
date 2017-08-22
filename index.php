@@ -19,7 +19,7 @@ $executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(),
 	}
 	function set(id,value,additionalInfo) {
 		if (id.match("[a-zA-Z_]+") != id) {
-			return; // little XSS protection
+			return; /* little XSS protection */
 		}
 		description = eval(id).toString();
 		if ( additionalInfo != undefined ) {
@@ -54,7 +54,7 @@ $executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(),
 		}
 	}
 	if (window.addEventListener) {
-		// For standards-compliant web browsers
+		/* For standards-compliant web browsers */
 		window.addEventListener("message", postMessageEvt, false);
 		/*window.addEventListener("hashchange", function() {
 			var id = location.hash.substr(1);
@@ -110,9 +110,9 @@ function generateReport() {
 			results[key] = {};
 			
 			results[key]["result"] = tests[i].textContent;
-			//results[key]["description"] = tests[i].title;
+			/*results[key]["description"] = tests[i].title; */
 		}
-		//document.write(JSON.stringify(results));
+		/*document.write(JSON.stringify(results)); */
 		var jsonReport = JSON.stringify(results);
 		var element = document.createElement('a');
 		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonReport));
@@ -145,7 +145,7 @@ This confirms the need for a formal specification.</p>
 	<?php 
 	include("include/ed_jpg_png_ee_img.php");
 	include("include/ed_jpg_png_ee_canvas.php"); 
-	// <h2>EE: &lt;picture&gt;</h2>
+	/* <h2>EE: &lt;picture&gt;</h2> */
 	?>
 	
 	<h1>ED: Scalable Vector Graphics (SVG)</h1>

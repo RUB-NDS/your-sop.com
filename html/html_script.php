@@ -1,7 +1,7 @@
 <?php
 include("../config.php");
-header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
-header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+header("Cache-Control: no-cache, must-revalidate"); /* HTTP/1.1 */
+header("Expires: -1"); /* Always invalid */
 
 include("../util/cors.php");
 header("Content-type: text/html");
@@ -12,12 +12,12 @@ if (!isset($_GET['operation'])) {
 	$operation = $_GET['operation'];
 }
 
-// because of the complexity of partial write, we need to add some delay
-// so that window.onhashchange in top can handle all hash changes
+/* because of the complexity of partial write, we need to add some delay */
+/* so that window.onhashchange in top can handle all hash changes */
 if ($operation == "write") {
-	//time_nanosleep(rand(1,2),rand(0,999999999));
+	/*time_nanosleep(rand(1,2),rand(0,999999999)); */
 	$counter = $_SESSION['write']++;
-	//time_nanosleep(0,150000000*$counter);
+	/*time_nanosleep(0,150000000*$counter); */
 }
 
 if (!isset($_GET['func'])) {
@@ -77,7 +77,7 @@ if (!isset($_GET['func'])) {
 			try {
 				<!-- window.parent.location = "<?php echo $URL_A."html/newlocation.php?func=".$func ?>"; -->
 				top.location = "<?php echo $MAIN_FILE."#partialwrite_".$func ?>";
-				// data.value = 'partial';
+				/* data.value = 'partial'; */
 				data.value = 'no';
 				data.additionalInfo = 'HTML-Script-Source:\n\n'+ html_script.toString() + '\n\nScript defined in HD:';
 			}

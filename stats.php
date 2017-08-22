@@ -76,7 +76,7 @@ $.getJSON( "json/windows-Chrome-48.0.2564.97.json", function ( data ) {
 			ourreccommendation_value = key;
 		}
 	}
-	if (sum == 10) { // All results contained
+	if (sum == 10) { /* All results contained */
 	  var testcase_browser = testcase+"recommended";
 	  document.getElementById(testcase_browser).textContent = ourreccommendation_value;  
 		
@@ -114,7 +114,7 @@ $.getJSON( "json/windows-Chrome-48.0.2564.97.json", function ( data ) {
 	
 	  content += "</td>";	  
 	  content += "<td id='" + testcase + "recommended' style='background-color: #EFEFEF'></td>";
-	  content += "<td id='" + testcase + "windowsGC48'>" + replaceterms(testcase, value.result) +  "</td>"; // print result from current function (Windows GC48)
+	  content += "<td id='" + testcase + "windowsGC48'>" + replaceterms(testcase, value.result) +  "</td>"; /* print result from current function (Windows GC48) */
 	  content += "<td id='" + testcase + "androidGC48'></td>";
 	  content += "<td id='" + testcase + "FF43'></td>";
 	  content += "<td id='" + testcase + "androidFF44'></td>";
@@ -196,7 +196,7 @@ $.getJSON( "json/ios-safari-9.json", function ( data ) {
 
 
 });
-// make the same results invisible for the user
+/* make the same results invisible for the user */
 function mark () {
   console.log("Making same entries invisible to the user.");
   var trRow;
@@ -233,7 +233,7 @@ function shownumbers(rows) {
  
  function removeNA() {
      var trSelection = document.querySelectorAll("tr");
-     // Check 4 Columns to be sure that the script counts right
+     /* Check 4 Columns to be sure that the script counts right */
      for (x = 5; x <9; x++) {
      console.log("Checking column "+x+" for not applicable (n.a.) cases");
      for (i = 0; i < document.querySelectorAll("tr").length; i++) {

@@ -21,7 +21,7 @@ $sc = "allow-scripts";
 $so = "allow-same-origin";
 $tn = "allow-top-navigation";
 $sandboxAttributes = array($notSet, $emptyValue, $sc, $so, $tn, "$sc $so", "$sc $tn", "$sc $so $tn");
-//$sandboxAttributes = [$notSet];
+/*$sandboxAttributes = [$notSet]; */
 
 foreach(array("HD A") as $from) {
 	foreach(array("ED A", "ED B") as $to) {
@@ -68,7 +68,7 @@ foreach(array("HD A") as $from) {
 						case $idr:?>
 							
 					var htmlSource = htmlDoc.documentElement.innerHTML;
-					// check if html contains "ED: HTML"
+					/* check if html contains "ED: HTML" */
 					set(id, (htmlSource.indexOf("ED: HTML") > 0)?'yes(DOM)':'no');
 							<?php
 							break;
@@ -76,7 +76,7 @@ foreach(array("HD A") as $from) {
 							
 					htmlDoc.body.innerHTML="new content";
 					var htmlSource = htmlDoc.documentElement.innerHTML;
-					// check if element could be removed
+					/* check if element could be removed */
 					set(id, (htmlSource.indexOf("new content") > 0)?'yes(DOM)':'no');
 							
 							<?php
@@ -85,7 +85,7 @@ foreach(array("HD A") as $from) {
 					?>
 					
 				} catch (ex) {			
-					set(id, 'no*', ex.message); // SOP violation?
+					set(id, 'no*', ex.message); /* SOP violation? */
 				}
 				<?php
 				}
@@ -110,7 +110,7 @@ foreach(array("HD A") as $from) {
 					echo "';";
 				}
 			?>ee.src='<?php echo $url ?>';
-			document.getElementById("loadbar").appendChild(ee); // load the content
+			document.getElementById("loadbar").appendChild(ee); /* load the content */
 		}
 		<?php  array_push($executions["ed_html_ee_iframe"], $id); 
 		}
@@ -178,7 +178,7 @@ foreach(array("ED A", "ED B") as $from) {
 			}
 			$url .= "&func=$id";
 			echo $url ?>';
-			document.getElementById("loadbar").appendChild(ee); // load the content
+			document.getElementById("loadbar").appendChild(ee); /* load the content */
 		}
 		<?php  array_push($executions["ed_html_ee_iframe"], $id); 
 		}

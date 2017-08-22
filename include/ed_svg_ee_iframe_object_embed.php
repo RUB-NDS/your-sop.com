@@ -46,7 +46,7 @@ foreach(array("HD A") as $from) {
 						case $idr:?>
 							
 					var firstChildName = svgDoc.documentElement.firstElementChild.nodeName;
-					// check if svg first child name is "rect"
+					/* check if svg first child name is "rect" */
 					set(id, (firstChildName==="rect")?'yes(DOM)':'no');
 							<?php
 							break;
@@ -55,7 +55,7 @@ foreach(array("HD A") as $from) {
 					var firstChild = svgDoc.documentElement.firstElementChild;
 					svgDoc.documentElement.removeChild(firstChild);
 					var firstChild = svgDoc.documentElement.firstElementChild;
-					// check if element could be removed
+					/* check if element could be removed */
 					set(id, (firstChild==null)?'yes(DOM)':'no');
 							
 							<?php
@@ -64,7 +64,7 @@ foreach(array("HD A") as $from) {
 					?>
 					
 				} catch (ex) {			
-					set(id, 'no*', ex.message); // SOP violation?
+					set(id, 'no*', ex.message); /* SOP violation? */
 				}
 				<?php
 				$url="$PROTOCOL";
@@ -81,7 +81,7 @@ foreach(array("HD A") as $from) {
 			
 			};				
 			ee.<?php echo $src ?>='<?php echo $url ?>';
-			document.getElementById("loadbar").appendChild(ee); // load the content
+			document.getElementById("loadbar").appendChild(ee); /* load the content */
 		}
 		<?php array_push($executions["ed_svg_ee_iframe_object_embed"], $id); 
 		}
@@ -101,11 +101,11 @@ foreach(array("HD A") as $from) {
 				$url .= $SERVER_B;
 			}
 			$url .= $PATH;
-			$url .= "img/svg_script.php"; // if executed, a postMessage will be sent
+			$url .= "img/svg_script.php"; /* if executed, a postMessage will be sent */
 			$url .= "?func=$idx";
 			$src = ($ee==="object")?"data":"src";	
 			echo $url ?>';
-			document.getElementById("loadbar").appendChild(ee); // load the content
+			document.getElementById("loadbar").appendChild(ee); /* load the content */
 		}
 		<?php  array_push($executions["ed_svg_ee_iframe_object_embed"], $idx);  ?>
 		</script>
@@ -161,7 +161,7 @@ foreach(array("ED A", "ED B") as $from) {
 			$url .= "&func=$id";
 			$src = ($ee==="object")?"data":"src";
 			echo $src ?>='<?php echo $url ?>';
-			document.getElementById("loadbar").appendChild(ee); // load the content
+			document.getElementById("loadbar").appendChild(ee); /* load the content */
 		}
 		<?php  array_push($executions["ed_svg_ee_iframe_object_embed"], $id);  
 		}
