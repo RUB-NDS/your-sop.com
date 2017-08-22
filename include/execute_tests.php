@@ -74,7 +74,7 @@ if (!isset($executions)) { die(); }
 		}
 		var i = 0;
 		while (i < document.callQueue.length) {
-			if (document.callQueue[i][0]) { /* function name */
+			if (document.callQueue[i]) { /* function name */
  				var code = document.callQueue[i][0].toString(); /* get source code */
 				while (document.free == false)
 				{
@@ -82,14 +82,22 @@ if (!isset($executions)) { die(); }
 				}
 				document.free = false;
 				/* The following line should be set according to the execution that is preferred via PHP */
-				window.location = "javascript:" + code + document.callQueue[i][0].name + ".apply(null, document.callQueue[" + i + "][1]);"; /* todo: Modify source such that last line sets free = true */
+				<?php 
+				if ($_GET['exec'] === 'js') {
+					echo 'window.location = "javascript:" + code + document.callQueue[i][0].name + ".apply(null, document.callQueue[" + i + "][1]);";';
+					echo "\n";
+				} else {
+					echo 'document.callQueue[i][0].apply(null, document.callQueue[i][1]);';
+					echo "\n";
+				}
+				?>
 				while (document.free == false) /* wait to clean the queue */
 				{
 					await sleep(10);
 				}
 				document.callQueue[i] = undefined; /* clean current queue entry. This still bloats a bit but seems to be the best solution so far */
-				i++;
 			}
+			i++;
 			
 		}
 		document.working = false;
