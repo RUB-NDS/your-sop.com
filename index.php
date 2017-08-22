@@ -14,10 +14,10 @@ $executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(),
 	</head>
 	<link rel="stylesheet" href="style.css">
 	<script>
-	/*if (top.location.href != '<?php echo $MAIN_FILE; ?>') {
+	if (top.location.href.split("?")[0] != '<?php echo $MAIN_FILE; ?>') {
 		top.location.href = '<?php echo $MAIN_FILE; ?>';
-	}*/
-	
+	}
+
 	function set(id,value,additionalInfo) {
 		if (id.match("[a-zA-Z_]+") != id) {
 			return; /* little XSS protection */
