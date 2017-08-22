@@ -57,6 +57,54 @@ $operation = readVar("operation", array("read", "write", "execute"));
 	<tr><td>ID:</td><td><?php echo $id ?></td></tr>
 	</table>
 	<script>
+
+
+	function sleep(timeout) {
+		return new Promise(resolve => setTimeout(resolve, timeout));
+	}
+
+	function call(func) {
+		if(!document.link) {
+			document.link = {};
+		}
+		if(!document.callQueue) {
+			document.callQueue = Array();
+		}
+		document.callQueue.push(func); /* do NOT push strings. Push the function ! */
+	}
+
+	/* This solution only works for javascript so far. The protocol could be set with a PHP variable. */
+	/* Maybe modify existing code such that every test case sets free = true in its last line by default */
+	async function depleteQueue() { /* async: allows await to be used */
+		if(!document.working || document.working == false) {
+			document.working = true;
+		}
+		else {
+			return 0;
+		}
+		var func;
+		if(!document.free) {
+			document.free = true;
+		}
+		while (document.callQueue.length > 0) {
+			func = document.callQueue.shift(); /* Pop the first element of the queue (FIFO) */
+			if (func) {
+				var code = func.toString(); /* get source code */
+				while (document.free == false)
+				{
+					await sleep(10);
+				}
+				document.free = false;
+				/* The following line should be set according to the execution that is preferred via PHP */
+				window.location = "javascript:" + code + func.name + "();"; /* todo: Modify source such that last line sets free = true */
+			}
+			
+		}
+		document.working = false;
+	}
+
+
+
 	function set(id, value, info) {
 		var data = {};
 		data.id = id;
@@ -122,9 +170,10 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		ee.rel="stylesheet";
 		ee.href='<?php echo $url; ?>';
 		document.head.appendChild(ee);
+		document.free = true;
 			
 	}
-	<?php echo "${id}();\n"; 		
+	<?php echo "call(${id});\n"; 		
 	} else if (substr( $from, 0, 2 ) === "ED" && $operation == "read") {
 		?>
 		var data = {};
@@ -210,11 +259,15 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		ee.rel="stylesheet";
 		ee.href='<?php echo $url; ?>';
 		document.head.appendChild(ee);
+		document.free = true;
 	}
-	<?php echo "${id}();\n"; 		
+	<?php echo "call(${id});\n"; 		
 		
 	}
 	?>	
+	</script>
+	<script>
+		depleteQueue();
 	</script>
 	</body>
 </html>
