@@ -89,7 +89,9 @@ foreach(array("HD A") as $from) {
 				if ($id == $idx) { $url .= "_script"; }
 				$url .=".php";
 				$url .= "?func=$id";
-			?>}
+				?>
+				document.free = true;
+			}
 
 		function <?php echo $id ?>() {
 			var id = getFunctionName();

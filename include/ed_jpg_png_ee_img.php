@@ -54,11 +54,19 @@ foreach(array(array("A", "$URL_A"), array("B", "$URL_B")) as $case){
 	$url  = $case[1];
 	$id = "test_HD_A_IMG_ED_".$name."_r";
 ?>
+function <?php echo $id . "_onload"; ?>(img, id) {
+    set(id, (img.width == 111) ? 'partial' : 'no');
+    document.free = true;
+}
+
 function <?php echo $id; ?>(){
 	var img = document.createElement('img');
 	var id = getFunctionName();
 	img.onload = function(){ 
-		set(id,(img.width==111)?'partial':'no');
+		var args = Array();
+        args.push(img);
+        args.push(id);
+        call(<?php echo $id . "_onload"; ?>, args);
 	};
 	img.src='<?php echo $url; ?>img/png.php?func='+id;
     document.free = true;

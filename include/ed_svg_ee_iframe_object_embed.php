@@ -33,14 +33,8 @@ foreach(array("HD A") as $from) {
 		<script><?php
 				foreach(array($idr, $idw) as $id) {
 				?>
-		function <?php echo $id ?>() {
-			var id = getFunctionName();
-			set(id, 'no*', '<?php echo $ee ?>.onload not executed)');
-			var ee = document.createElement("<?php echo $ee ?>");
-			ee.width=0;
-			ee.height=0;
-			ee.onload = function() {
-				try {
+		function <?php echo $id . "_onload";?>(ee, id) {
+			try {
 					var svgDoc = ee.getSVGDocument();<?php
 					switch($id) {
 						case $idr:?>
@@ -63,21 +57,35 @@ foreach(array("HD A") as $from) {
 					}
 					?>
 					
-				} catch (ex) {			
-					set(id, 'no*', ex.message); /* SOP violation? */
-				}
-				<?php
-				$url="$PROTOCOL";
-				if ($to === "ED A") {
-					$url .= $SERVER_A;
-				} else {
-					$url .= $SERVER_B;
-				}
-				$url .= $PATH;
-				$url .= "img/svg.php";
-				$url .= "?func=$id";
-				$src = ($ee==="object")?"data":"src";
-				?>
+			} catch (ex) {			
+				set(id, 'no*', ex.message); /* SOP violation? */
+			}
+			<?php
+			$url="$PROTOCOL";
+			if ($to === "ED A") {
+				$url .= $SERVER_A;
+			} else {
+				$url .= $SERVER_B;
+			}
+			$url .= $PATH;
+			$url .= "img/svg.php";
+			$url .= "?func=$id";
+			$src = ($ee==="object")?"data":"src";
+			?>
+			document.free = true;
+		}
+
+		function <?php echo $id ?>() {
+			var id = getFunctionName();
+			set(id, 'no*', '<?php echo $ee ?>.onload not executed)');
+			var ee = document.createElement("<?php echo $ee ?>");
+			ee.width=0;
+			ee.height=0;
+			ee.onload = function() {
+				var args = Array();
+				args.push(ee);
+				args.push(id);
+				call(<?php echo $id . "_onload";?>, args);
 			
 			};				
 			ee.<?php echo $src ?>='<?php echo $url ?>';

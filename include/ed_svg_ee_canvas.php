@@ -50,17 +50,8 @@ foreach(array("ED A", "ED B") as $to) {
 					$id = str_replace(array(" ", "-",")","("), "_", $id);
 					echo $id;
 					?>" style="cursor:help">no</td>
-					<script>	
-function <?php echo $id; ?>() {
-	var id = getFunctionName();
-	set(id, 'no*', 'img.onload not executed'); /* fallback if img.onload is not executed */
-	var img = document.createElement("img");
-	<?php
-	if($crossOrigin != $notSet) {
-		echo "img.crossOrigin = '".$crossOrigin."';\n";
-	}
-	?>
-img.onload = function() {
+					<script>
+function <?php echo $id . "_onload"; ?>(img, id) {
 	try {
 		var c = document.createElement("canvas");
 		c.width=img.width; c.height=img.width;
@@ -72,6 +63,23 @@ img.onload = function() {
 	} catch (ex) {			
 		set(id, 'no*', ex.message); /* SOP violation? */
 	}
+	document.free = true;
+}
+
+function <?php echo $id; ?>() {
+	var id = getFunctionName();
+	set(id, 'no*', 'img.onload not executed'); /* fallback if img.onload is not executed */
+	var img = document.createElement("img");
+	<?php
+	if($crossOrigin != $notSet) {
+		echo "img.crossOrigin = '".$crossOrigin."';\n";
+	}
+	?>
+img.onload = function() {
+	var args = Array();
+	args.push(img);
+	args.push(id);
+	call(<?php echo $id . "_onload"; ?>, args);
 };
 	<?php
 	$url="$PROTOCOL";

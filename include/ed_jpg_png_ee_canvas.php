@@ -49,7 +49,7 @@ foreach(array("ED A", "ED B") as $to) {
 					echo $id;
 					?>" style="cursor:help">no</td>
 					<script>
-function <?php echo $id . "_onload"?>(img, id) {
+function <?php echo $id . "_onload"; ?>(img, id) {
 	try {
 		var c = document.createElement("canvas");
 		c.width=img.width; c.height=img.height;
@@ -78,7 +78,7 @@ function <?php echo $id; ?>() {
 		args = Array();
 		args.push(img);
 		args.push(id);
-		call(<?php echo $id . "_onload"?>, args);
+		call(<?php echo $id . "_onload"; ?>, args);
 	};
 	<?php
 	$url="$PROTOCOL";

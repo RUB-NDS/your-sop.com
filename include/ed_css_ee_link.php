@@ -77,6 +77,9 @@ foreach($arrayTo as $to) {
 	var wrapper = document.createElement("iframe");
 	wrapper.width=0;
 	wrapper.height=0;
+	wrapper.onload = function() {
+		console.log("Loaded: " + <?php echo $id;?>.name);
+	};
 	<?php
 	$url="$PROTOCOL";
 	$url .= $SERVER_A;

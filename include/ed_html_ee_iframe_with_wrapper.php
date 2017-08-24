@@ -45,50 +45,57 @@ foreach(["HD A"] as $from) {
 		<script><?php
 				foreach( [$idr, $idw] as $id) {
 				?>
-		function <?php echo $id ?>() {
+		function <?php echo $id . "_onload"; ?>(ee, id) {
+			try {
+				var htmlDoc = ee.contentDocument;<?php
+				switch($id) {
+					case $idr:?>
+						
+				var htmlSource = htmlDoc.documentElement.innerHTML;
+				/* check if html contains "ED: HTML" */
+				set(id, (htmlSource.indexOf("ED: HTML") > 0)?'yes(DOM)':'no');
+						<?php
+						break;
+					case $idw;?>
+						
+				htmlDoc.body.innerHTML="new content";
+				var htmlSource = htmlDoc.documentElement.innerHTML;
+				/* check if element could be removed */
+				set(id, (htmlSource.indexOf("new content") > 0)?'yes(DOM)':'no');
+						
+						<?php
+						break;
+				}
+				?>
+				
+			} catch (ex) {			
+				set(id, 'no*', ex.message); /* SOP violation? */
+			}
+			<?php
+			$url="$PROTOCOL";
+			if ($to === "ED A") {
+				$url .= $SERVER_A;
+			} else {
+				$url .= $SERVER_B;
+			}
+			$url .= $PATH;
+			$url .= "html/html.php";
+			$url .= "?func=$id";
+			?>
+			document.free = true;
+		}
+
+		function <?php echo $id; ?>() {
 			var id = getFunctionName();
 			set(id, 'no*', '<?php echo $ee ?>.onload not executed)');
 			var ee = document.createElement("<?php echo $ee ?>");
 			ee.widht=0;
 			ee.height=0;
 			ee.onload = function() {
-				try {
-					var htmlDoc = ee.contentDocument;<?php
-					switch($id) {
-						case $idr:?>
-							
-					var htmlSource = htmlDoc.documentElement.innerHTML;
-					/* check if html contains "ED: HTML" */
-					set(id, (htmlSource.indexOf("ED: HTML") > 0)?'yes(DOM)':'no');
-							<?php
-							break;
-						case $idw;?>
-							
-					htmlDoc.body.innerHTML="new content";
-					var htmlSource = htmlDoc.documentElement.innerHTML;
-					/* check if element could be removed */
-					set(id, (htmlSource.indexOf("new content") > 0)?'yes(DOM)':'no');
-							
-							<?php
-							break;
-					}
-					?>
-					
-				} catch (ex) {			
-					set(id, 'no*', ex.message); /* SOP violation? */
-				}
-				<?php
-				$url="$PROTOCOL";
-				if ($to === "ED A") {
-					$url .= $SERVER_A;
-				} else {
-					$url .= $SERVER_B;
-				}
-				$url .= $PATH;
-				$url .= "html/html.php";
-				$url .= "?func=$id";
-				?>
-			
+				var args = Array();
+				args.push(ee);
+				args.push(id);
+				call(<?php echo $id . "_onload"; ?>, args);
 			};
 			<?php
 				if ($sandbox != $notSet) {
@@ -100,8 +107,9 @@ foreach(["HD A"] as $from) {
 				}
 			?>ee.src='<?php echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
+			document.free = true;
 		}
-		<?php echo $id."();\n"; 
+		<?php array_push($executions["ed_html_ee_iframe_with_wrapper"], $id); 
 		}
 		?>
 		
@@ -171,8 +179,9 @@ foreach(["ED A", "ED B"] as $from) {
 			$url .= "&func=$id";
 			echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
+			document.free = true;
 		}
-		<?php echo $id."();\n"; 
+		<?php array_push($executions["ed_html_ee_iframe_with_wrapper"], $id); 
 			}
 		$id = $idw;
 		?>function <?php echo $id ?>() {
@@ -188,9 +197,10 @@ foreach(["ED A", "ED B"] as $from) {
 			$url .= "&to=".urlencode($to);
 			$url .= "&sandbox=".urlencode($sandbox);			
 			echo $url ?>';
-			document.getElementById("loadbar").appendChild(ee); 
+			document.getElementById("loadbar").appendChild(ee);
+			document.free = true;
 		}
-		<?php echo $id ?>(); 
+		<?php array_push($executions["ed_html_ee_iframe_with_wrapper"], $id); ?> 
 		</script>
 		<?php
 		}

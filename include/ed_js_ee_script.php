@@ -34,35 +34,43 @@ foreach(array("HD A") as $from) {
 		foreach(array($idr, $idw, $idx) as $id) {
 			$jsfunc = "func".rand(100000,999999);
 				?>
+		function <?php echo $id . "_onload" ?>(ee, id) {
+			<?php
+			switch ($id) {
+				case $idr:
+			?>var source = <?php echo $jsfunc ?>.toString();
+			if(source.indexOf("secret") > 0) {
+				set(id, 'partial', 'Function source code of loaded script:\n' + source);
+			} else {
+				set(id, 'no', 'Could not find "secret":\n'+source);
+			}
+					<?php
+					break;
+				case $idw:
+			?>var oldSecret = <?php echo $jsfunc ?>();
+			<?php echo $jsfunc ?> = function() { return 1; };				
+			var newSecret = <?php echo $jsfunc ?>();
+			if (oldSecret == 42 && newSecret == 1)  {
+				set(id, 'partial');
+			}
+		    <?php
+					break;
+				case $idx:
+					break;
+			}			
+			?>document.body.removeChild(ee);
+			document.free = true;
+		};
+
 		function <?php echo $id ?>() {
 			var id = getFunctionName();
 			set(id, 'no');
 			var ee = document.createElement("<?php echo $ee ?>");
 			ee.onload = function() {
-				<?php
-				switch ($id) {
-					case $idr:
-				?>var source = <?php echo $jsfunc ?>.toString();
-				if(source.indexOf("secret") > 0) {
-					set(id, 'partial', 'Function source code of loaded script:\n' + source);
-				} else {
-					set(id, 'no', 'Could not find "secret":\n'+source);
-				}
-						<?php
-						break;
-					case $idw:
-				?>var oldSecret = <?php echo $jsfunc ?>();
-				<?php echo $jsfunc ?> = function() { return 1; };				
-				var newSecret = <?php echo $jsfunc ?>();
-				if (oldSecret == 42 && newSecret == 1)  {
-					set(id, 'partial');
-				}
-			    <?php
-						break;
-					case $idx:
-						break;
-				}			
-				?>document.body.removeChild(ee);
+				var args = Array();
+				args.push(ee);
+				args.push(id);
+				call(<?php echo $id . "_onload" ?>, args);
 			};						
 			ee.src='<?php 
 			$url="$PROTOCOL";
@@ -109,12 +117,19 @@ foreach(array("ED A", "ED B") as $from) {
 		<script><?php
 		foreach(array($idr, $idw) as $id) {
 				?>
+		function <?php echo $id . "_onload"; ?>(ee) {
+			document.body.removeChild(ee);
+			document.free = true;
+		} 
+
 		function <?php echo $id ?>() {
 			var id = getFunctionName();
 			set(id, 'no');
 			var ee = document.createElement("<?php echo $ee ?>");
 			ee.onload = function() {
-				document.body.removeChild(ee);
+				var args = Array();
+				args.push(ee);
+				call(<?php echo $id . "_onload"; ?>, args);
 			};						
 			ee.src='<?php 
 			$url="$PROTOCOL";

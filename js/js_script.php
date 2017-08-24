@@ -76,9 +76,10 @@ switch($operation) {
 		'additionalInfo': 'JS-Script-Source:\n\n' + js_script.toString() + '\n\nScript defined in HD:'
 	};
 	var message = JSON.stringify(data);
-	window.parent.postMessage(message, "<?php echo "$PROTOCOL$SERVER_A"; ?>")<?php
+	window.parent.postMessage(message, "<?php echo "$PROTOCOL$SERVER_A"; ?>");<?php
 		break;
 }?>
+document.free = true;
 	
 }
-js_script();
+call(js_script); /* modify to also allow different executions. */

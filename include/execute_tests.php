@@ -41,13 +41,6 @@ if (!isset($executions)) { die(); }
 	}
 	?>
 
-	function test(image) {
-		if(!document.imags) {
-			document.imags = Array();
-		}
-		document.imags.push(["foo", image]);
-	}
-	
 	function sleep(timeout) {
 		return new Promise(resolve => setTimeout(resolve, timeout));
 	}
@@ -91,6 +84,7 @@ if (!isset($executions)) { die(); }
 					echo "\n";
 				}
 				?>
+				console.log("Executed: " + document.callQueue[i][0].name);
 				while (document.free == false) /* wait to clean the queue */
 				{
 					await sleep(10);
