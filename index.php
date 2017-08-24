@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-include("config.php");
+include(__DIR__ . "/config.php");
 
 $_SESSION['write'] = 1;
 
@@ -144,36 +144,36 @@ This confirms the need for a formal specification.</p>
 	<hr>
 	<h1>ED: JPG and PNG</h1
 	<?php 
-	include("include/ed_jpg_png_ee_img.php");
-	include("include/ed_jpg_png_ee_canvas.php"); 
+	include(__DIR__ . "/include/ed_jpg_png_ee_img.php");
+	include(__DIR__ . "/include/ed_jpg_png_ee_canvas.php"); 
 	/* <h2>EE: &lt;picture&gt;</h2> */
 	?>
 	
 	<h1>ED: Scalable Vector Graphics (SVG)</h1>
 	<?php 
-	include("include/ed_svg_ee_canvas.php");
-	include("include/ed_svg_ee_iframe_object_embed.php"); 
+	include(__DIR__ . "/include/ed_svg_ee_canvas.php");
+	include(__DIR__ . "/include/ed_svg_ee_iframe_object_embed.php"); 
 	?>
 	
 	<h1>ED: JavaScript</h1>
 	<?php
-	include("include/ed_js_ee_script.php"); 
+	include(__DIR__ . "/include/ed_js_ee_script.php"); 
 	?>
 	
 	<h1>ED: Cascading Style Sheets (CSS)</h1>
 	<?php
-	include("include/ed_css_ee_link.php");
+	include(__DIR__ . "/include/ed_css_ee_link.php");
 	?>
 	
 	<h1>ED: HTML</h1>
 	<?php
-	include("include/ed_html_ee_iframe.php");
+	include(__DIR__ . "/include/ed_html_ee_iframe.php");
 	?>
 	
 	<p align="right"><a href="#title">Jump to the top</a></p>
 	
 	<?php
-	include("include/execute_tests.php");
+	include(__DIR__ . "/include/execute_tests.php");
 	?>
 	<div id="loadbar" style="display: block;"></div>
 	</body>
