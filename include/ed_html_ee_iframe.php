@@ -45,18 +45,7 @@ foreach(array("HD A") as $from) {
 		<script><?php
 				foreach(array($idr, $idw, $idx) as $id) {
 				?>
-		function <?php echo $id ?>() {
-			var id = getFunctionName();
-			set(id, 'no', '<?php 
-			if ($id == $idx) {
-				echo "Script execution blocked";
-			} else {
-				echo $ee . "onload not executed";
-			}?>');
-			var ee = document.createElement("<?php echo $ee ?>");
-			ee.width = 0;
-			ee.height =0;
-			ee.onload = function() {
+		function <?php echo $id . "_onload" ?>(ee, id) {
 				<?php
 				if ($id == $idx) {
 					?>document.getElementById("loadbar").removeChild(ee);<?php
@@ -100,7 +89,25 @@ foreach(array("HD A") as $from) {
 				if ($id == $idx) { $url .= "_script"; }
 				$url .=".php";
 				$url .= "?func=$id";
-			?>};
+			?>}
+
+		function <?php echo $id ?>() {
+			var id = getFunctionName();
+			set(id, 'no', '<?php 
+			if ($id == $idx) {
+				echo "Script execution blocked";
+			} else {
+				echo $ee . "onload not executed";
+			}?>');
+			var ee = document.createElement("<?php echo $ee ?>");
+			ee.width = 0;
+			ee.height =0;
+			ee.onload = function() {
+				var args = Array();
+				args.push(ee);
+				args.push(id);
+				call(<?php echo $id . "_onload" ?>, args);
+			}; 
 			<?php
 				if ($sandbox != $notSet) {
 			        echo "ee.sandbox='";
