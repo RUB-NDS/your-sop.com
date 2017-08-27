@@ -22,7 +22,6 @@ if (!isset($URL_A) || !isset($URL_B)) { die(); }
 		else {
 			return 0;
 		}
-		var func;
 		if(!document.free) {
 			document.free = true;
 		}
