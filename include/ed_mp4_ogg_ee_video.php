@@ -54,7 +54,7 @@ foreach(array(array("A", "$URL_A"), array("B", "$URL_B")) as $case){
 	$url  = $case[1];
 	$id = "test_HD_A_VIDEO_ED_".$name."_r";
 ?>
-function <?php echo $id . "_onload"; ?>(video, id) {
+function <?php echo $id . "_onloadeddata"; ?>(video, id) {
     set(id, (video.videoWidth == 320) ? 'partial' : 'no');
     document.getElementById("loadbar").removeChild(video);
     document.free = true;
@@ -67,7 +67,7 @@ function <?php echo $id; ?>(){
 		var args = Array();
         args.push(video);
         args.push(id);
-        call(<?php echo $id . "_onload"; ?>, args);
+        call(<?php echo $id . "_onloadeddata"; ?>, args);
 	};
 	var source = document.createElement('source');
 	source.src = '<?php echo $url; ?>video/mp4.php?func=' + id;

@@ -4,7 +4,7 @@ include(__DIR__ . "/config.php");
 
 $_SESSION['write'] = 1;
 
-$executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(), "ed_jpg_png_ee_canvas" => array(), "ed_jpg_png_ee_img" => array(), "ed_js_ee_script" => array(), "ed_svg_ee_canvas" => array(), "ed_svg_ee_iframe_object_embed" => array(), "ed_mp4_ogg_ee_video" => array());
+$executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(), "ed_jpg_png_ee_canvas" => array(), "ed_jpg_png_ee_img" => array(), "ed_js_ee_script" => array(), "ed_svg_ee_canvas" => array(), "ed_svg_ee_iframe_object_embed" => array(), "ed_mp4_ogg_ee_video" => array(), "ed_mp4_ogg_ee_canvas" => array());
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@ $executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(),
 	}
 
 	function set(id,value,additionalInfo) {
-		if (id.match("[a-zA-Z_]+") != id) {
+		if (id.match("[a-zA-Z_0-9]+") != id) {
 			return; /* little XSS protection */
 		}
 		description = eval(id).toString();
@@ -173,6 +173,7 @@ This confirms the need for a formal specification.</p>
 	<h1>ED: MP4 and OGG</h1>
 	<?php
 	include(__DIR__ . "/include/ed_mp4_ogg_ee_video.php");
+	include(__DIR__ . "/include/ed_mp4_ogg_ee_canvas.php");
 	?>
 	
 	<p align="right"><a href="#title">Jump to the top</a></p>
