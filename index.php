@@ -4,7 +4,7 @@ include(__DIR__ . "/config.php");
 
 $_SESSION['write'] = 1;
 
-$executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(), "ed_jpg_png_ee_canvas" => array(), "ed_jpg_png_ee_img" => array(), "ed_js_ee_script" => array(), "ed_svg_ee_canvas" => array(), "ed_svg_ee_iframe_object_embed" => array());
+$executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(), "ed_jpg_png_ee_canvas" => array(), "ed_jpg_png_ee_img" => array(), "ed_js_ee_script" => array(), "ed_svg_ee_canvas" => array(), "ed_svg_ee_iframe_object_embed" => array(), "ed_mp4_ogg_ee_video" => array());
 ?>
 <!DOCTYPE html>
 <html>
@@ -170,11 +170,17 @@ This confirms the need for a formal specification.</p>
 	include(__DIR__ . "/include/ed_html_ee_iframe.php");
 	?>
 	
+	<h1>ED: MP4 and OGG</h1>
+	<?php
+	include(__DIR__ . "/include/ed_mp4_ogg_ee_video.php");
+	?>
+	
 	<p align="right"><a href="#title">Jump to the top</a></p>
 	
 	<?php
 	include(__DIR__ . "/include/execute_tests.php");
 	?>
+
 	<div id="loadbar" style="display: block;"></div>
 	</body>
 </html>
