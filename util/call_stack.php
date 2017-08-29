@@ -13,8 +13,6 @@ if (!isset($URL_A) || !isset($URL_B)) { die(); }
 		document.callQueue.push([func, args]); 
 	}
 
-	/* This solution only works for javascript so far. The protocol could be set with a PHP variable. */
-	/* Maybe modify existing code such that every test case sets free = true in its last line by default */
 	async function depleteQueue() { /* async: allows await to be used */
 		if(!document.working || document.working == false) {
 			document.working = true;
@@ -34,7 +32,6 @@ if (!isset($URL_A) || !isset($URL_B)) { die(); }
 					await sleep(10);
 				}
 				document.free = false;
-				/* The following line should be set according to the execution that is preferred via PHP */
 				<?php 
 				if (isset($_GET['exec']) && $_GET['exec'] === 'js') {
 					echo 'window.location = "javascript:" + code + document.callQueue[i][0].name + ".apply(null, document.callQueue[" + i + "][1]);";';
@@ -44,15 +41,13 @@ if (!isset($URL_A) || !isset($URL_B)) { die(); }
 					echo "\n";
 				}
 				?>
-				console.log("Executed: " + document.callQueue[i][0].name);
 				while (document.free == false) /* wait to clean the queue */
 				{
 					await sleep(10);
 				}
 				document.callQueue[i] = undefined; /* clean current queue entry. This still bloats a bit but seems to be the best solution so far */
 			}
-			i++;
-			
+			i++;	
 		}
 		document.working = false;
 	}

@@ -57,7 +57,6 @@ function <?php echo $id . "_onload"; ?>(img, id) {
 		ctx.drawImage(img, 0, 0); /* Put img on canvas at pos 0x0 */
 		var pixel = ctx.getImageData(2,3,1,1); /* Read color of 1x1 pixel at position 2/3 */
 		var data = pixel.data;
-		console.log(img);
 		set(id, (data[0]==255)?'yes(pixel)':'no');
 	} catch (ex) {			
 		set(id, 'no*', ex.message); /* SOP violation? */
