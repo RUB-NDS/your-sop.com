@@ -87,6 +87,7 @@ foreach(array("HD A") as $from) {
 			}
 			$url .= ".php?operation=$jsfunc";
 			$url .= "&func=$id";
+			$url .= "&exec=".urlencode($_GET["exec"]);
 			echo $url ?>';
 			document.body.appendChild(ee); /* load the content */
 			document.free = true;

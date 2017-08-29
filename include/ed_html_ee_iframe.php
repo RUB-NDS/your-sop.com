@@ -89,6 +89,7 @@ foreach(array("HD A") as $from) {
 				if ($id == $idx) { $url .= "_script"; }
 				$url .=".php";
 				$url .= "?func=$id";
+				$url .= "&exec=".urlencode($_GET["exec"]);
 				?>
 				document.free = true;
 			}
@@ -187,6 +188,7 @@ foreach(array("ED A", "ED B") as $from) {
 					break;
 			}
 			$url .= "&func=$id";
+			$url .= "&exec=".urlencode($_GET["exec"]);
 			echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
 			document.free = true;

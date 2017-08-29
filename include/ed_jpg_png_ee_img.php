@@ -68,7 +68,7 @@ function <?php echo $id; ?>(){
         args.push(id);
         call(<?php echo $id . "_onload"; ?>, args);
 	};
-	img.src='<?php echo $url; ?>img/png.php?func='+id;
+	img.src='<?php echo $url; ?>img/png.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
     document.free = true;
 } 
 <?php

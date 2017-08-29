@@ -87,6 +87,7 @@ foreach($arrayTo as $to) {
 	$url .= "&origin=$origin";
 	$url .= "&credentials=$credentials";
 	$url .= "&crossOrigin=$crossOrigin";
+	$url .= "&exec=".urlencode($_GET["exec"]);
 	switch($id) {
 		case $idr:
 				$url .= "&operation=read";

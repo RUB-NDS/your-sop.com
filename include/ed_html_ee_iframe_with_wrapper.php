@@ -81,6 +81,7 @@ foreach(["HD A"] as $from) {
 			$url .= $PATH;
 			$url .= "html/html.php";
 			$url .= "?func=$id";
+			$url .= "&exec=".urlencode($_GET["exec"]);
 			?>
 			document.free = true;
 		}
@@ -177,6 +178,7 @@ foreach(["ED A", "ED B"] as $from) {
 					break;
 			}
 			$url .= "&func=$id";
+			$url .= "&exec=".urlencode($_GET["exec"]);
 			echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
 			document.free = true;
@@ -195,7 +197,8 @@ foreach(["ED A", "ED B"] as $from) {
 			$url .= "?from=".urlencode($from);
 			$url .= "&ee=".urlencode($ee);
 			$url .= "&to=".urlencode($to);
-			$url .= "&sandbox=".urlencode($sandbox);			
+			$url .= "&sandbox=".urlencode($sandbox);
+			$url .= "&exec=".urlencode($_GET["exec"]);			
 			echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee);
 			document.free = true;

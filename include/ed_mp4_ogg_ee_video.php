@@ -70,11 +70,11 @@ function <?php echo $id; ?>(){
         call(<?php echo $id . "_onloadeddata"; ?>, args);
 	};
 	var source = document.createElement('source');
-	source.src = '<?php echo $url; ?>video/mp4.php?func=' + id;
+	source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
 	source.type = 'video/mp4';
 	video.appendChild(source);
 	
-	source.src = '<?php echo $url; ?>video/ogg.php?func=' + id;
+	source.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
 	source.type = 'video/ogg';
 	video.appendChild(source);
 

@@ -91,6 +91,7 @@ function <?php echo $id; ?>() {
 	$url .= "?origin=$origin";
 	$url .= "&credentials=$credentials";
 	$url .= "&func=$id";
+	$url .= "&exec=".urlencode($_GET["exec"]);
 	echo "img.src='${url}';";
 	echo "document.free = true;";
 	?>

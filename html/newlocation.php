@@ -16,7 +16,13 @@ if (!isset($_GET['func'])) {
 	<head><title>ED: HTML</title></head>
 	<body>
 	<h1 id="h1">ED: HTML</h1>
-		<script>var data = {};
+		<script>
+
+		<?php 
+		include(__DIR__ . "/../util/call_stack.php");
+		?>
+
+		var data = {};
 		data.id = '<?php echo $func ?>';
 		data.value = 'partial (from wrapper)';
 		var message = JSON.stringify(data);

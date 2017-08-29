@@ -33,6 +33,11 @@ $sandboxAttributes = [$notSet, $emptyValue, $sc, $so, $tn, "$sc $so", "$sc $tn",
 	<body>
 	<h1 id="h1">ED: HTML Wrapper Page</h1>
 		<script>
+
+		<?php 
+		include(__DIR__ . "/../util/call_stack.php");
+		?>
+
 		function <?php echo $id ?>() {
 			var id = '<?php echo $id ?>';
 			var ee = document.createElement("<?php echo $ee ?>");

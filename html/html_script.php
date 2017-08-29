@@ -34,6 +34,10 @@ if (!isset($_GET['func'])) {
 	<body>
 	<h1 id="h1">ED: HTML with JavaScript</h1>
 	<script>
+	<?php 
+	include(__DIR__ . "/../util/call_stack.php");
+	?>
+	
 	function html_script() {<?php
 	switch($operation) {
 		case "read": ?>

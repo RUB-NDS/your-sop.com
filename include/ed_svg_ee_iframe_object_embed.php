@@ -70,6 +70,7 @@ foreach(array("HD A") as $from) {
 			$url .= $PATH;
 			$url .= "img/svg.php";
 			$url .= "?func=$id";
+			$url .= "&exec=".urlencode($_GET["exec"]);
 			$src = ($ee==="object")?"data":"src";
 			?>
 			document.free = true;
@@ -112,6 +113,7 @@ foreach(array("HD A") as $from) {
 			$url .= $PATH;
 			$url .= "img/svg_script.php"; /* if executed, a postMessage will be sent */
 			$url .= "?func=$idx";
+			$url .= "&exec=".urlencode($_GET["exec"]);
 			$src = ($ee==="object")?"data":"src";	
 			echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
@@ -169,6 +171,7 @@ foreach(array("ED A", "ED B") as $from) {
 					break;
 			}
 			$url .= "&func=$id";
+			$url .= "&exec=".urlencode($_GET["exec"]);
 			$src = ($ee==="object")?"data":"src";
 			echo $src ?>='<?php echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */
