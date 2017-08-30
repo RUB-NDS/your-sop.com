@@ -107,11 +107,12 @@ if (!isset($_GET['func'])) {
 		};
 		var message = JSON.stringify(data);
 		window.parent.postMessage(message, "<?php echo "$PROTOCOL$SERVER_A"; ?>")<?php
-			break;
+		break;
 	}?>
-		
+	document.free = true;	
 	}
-	html_script();
+	call(html_script);
+	depleteQueue();
 	</script>
 	</body>
 </html>

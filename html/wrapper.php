@@ -62,12 +62,14 @@ $sandboxAttributes = [$notSet, $emptyValue, $sc, $so, $tn, "$sc $so", "$sc $tn",
 			$url .= $PATH;
 			$url .= "html/html_script.php?operation=write";
 			$url .= "&func=$id";
+			$url .= "&exec=".urlencode($_GET["exec"]);
 			echo $url ?>';
 			document.body.appendChild(ee); /* load the content */
+			document.free = true;
 		}
 		<?php
 	if (!isset($_GET['newlocation'])) {
-	echo $id."();\n";
+	echo "call($id);\n";
 	}
 	else {
 	?>		
@@ -79,6 +81,7 @@ $sandboxAttributes = [$notSet, $emptyValue, $sc, $so, $tn, "$sc $so", "$sc $tn",
 	<?php
 	}
 	?>
+	depleteQueue();
 	</script>
 	</body>
 </html>
