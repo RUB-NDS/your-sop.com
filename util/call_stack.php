@@ -1,6 +1,8 @@
 <?php
 if (!isset($URL_A) || !isset($URL_B)) { die(); }
 ?>
+	
+//<![CDATA[
 
 	function sleep(timeout) {
 		return new Promise(resolve => setTimeout(resolve, timeout));
@@ -44,6 +46,7 @@ if (!isset($URL_A) || !isset($URL_B)) { die(); }
 				while (document.free == false) /* wait to clean the queue */
 				{
 					await sleep(10);
+					console.log("blocking: " + document.callQueue[i][0].name + " for: " + window.location);
 				}
 				document.callQueue[i] = undefined; /* clean current queue entry. This still bloats a bit but seems to be the best solution so far */
 			}
@@ -51,3 +54,5 @@ if (!isset($URL_A) || !isset($URL_B)) { die(); }
 		}
 		document.working = false;
 	}
+
+//]]>

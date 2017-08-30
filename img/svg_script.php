@@ -85,11 +85,12 @@ if (!isset($_GET['func'])) {
 			'additionalInfo': 'SVG-Script-Source:\n\n' + svg_script.toString() + '\n\nScript defined in HD:'
 		};
 		var message = JSON.stringify(data);
-		window.parent.postMessage(message, "<?php echo "$PROTOCOL$SERVER_A"; ?>")<?php
-			break;
+		window.parent.postMessage(message, "<?php echo "$PROTOCOL$SERVER_A"; ?>");<?php
+		break;
 	}?>
-		
+	document.free = true;
 	}
-	svg_script();
+	call(svg_script);
+	depleteQueue();
 	</script>
 </svg>

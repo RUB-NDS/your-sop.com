@@ -81,8 +81,8 @@ if (!isset($_GET['func'])) {
 			var data = {};
 			data.id = '<?php echo $func ?>';
 			try {
-				<!-- window.parent.location = "<?php echo $URL_A."html/newlocation.php?func=".$func ?>"; -->
-				top.location = "<?php echo $MAIN_FILE."#partialwrite_".$func ?>";
+				/* window.parent.location = "<?php echo $URL_A."html/newlocation.php?func=".$func ?>"; */
+				top.location = "<?php echo $MAIN_FILE. '?exec=' . urlencode($_GET['exec']) . '#partialwrite_'.$func ?>";
 				/* data.value = 'partial'; */
 				data.value = 'no';
 				data.additionalInfo = 'HTML-Script-Source:\n\n'+ html_script.toString() + '\n\nScript defined in HD:';
@@ -106,7 +106,7 @@ if (!isset($_GET['func'])) {
 			'additionalInfo': 'HTML-Script-Source:\n\n' + html_script.toString() + '\n\nScript defined in HD:'
 		};
 		var message = JSON.stringify(data);
-		window.parent.postMessage(message, "<?php echo "$PROTOCOL$SERVER_A"; ?>")<?php
+		window.parent.postMessage(message, "<?php echo "$PROTOCOL$SERVER_A"; ?>");<?php
 		break;
 	}?>
 	document.free = true;	

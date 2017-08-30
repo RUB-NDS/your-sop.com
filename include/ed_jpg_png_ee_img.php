@@ -67,6 +67,7 @@ function <?php echo $id; ?>(){
         args.push(img);
         args.push(id);
         call(<?php echo $id . "_onload"; ?>, args);
+        depleteQueue();
 	};
 	img.src='<?php echo $url; ?>img/png.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
     document.free = true;
