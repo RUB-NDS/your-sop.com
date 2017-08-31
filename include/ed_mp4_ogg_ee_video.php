@@ -54,7 +54,7 @@ foreach(array(array("A", "$URL_A"), array("B", "$URL_B")) as $case){
 	$url  = $case[1];
 	$id = "test_HD_A_VIDEO_ED_".$name."_r";
 ?>
-function <?php echo $id . "_onloadeddata"; ?>(video, id) {
+function <?php echo $id . "_onload"; ?>(video, id) {
     set(id, (video.videoWidth == 320) ? 'partial' : 'no');
     document.getElementById("loadbar").removeChild(video);
     document.free = true;
@@ -67,16 +67,17 @@ function <?php echo $id; ?>(){
 		var args = Array();
         args.push(video);
         args.push(id);
-        call(<?php echo $id . "_onloadeddata"; ?>, args);
+        call(<?php echo $id . "_onload"; ?>, args);
 	};
 	var source = document.createElement('source');
 	source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
 	source.type = 'video/mp4';
 	video.appendChild(source);
 	
-	source.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
-	source.type = 'video/ogg';
-	video.appendChild(source);
+    var source2 = document.createElement('source');
+    source2.src = 'http://b.com:81/Mario_Korth/code/track_testing/movie_ogg.php?origin=A&credentials=true';
+    source2.type = 'video/ogg';
+    video.appendChild(source2);
 
 	video.style.display = "none";
 

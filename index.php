@@ -4,7 +4,7 @@ include(__DIR__ . "/config.php");
 
 $_SESSION['write'] = 1;
 
-$executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(), "ed_jpg_png_ee_canvas" => array(), "ed_jpg_png_ee_img" => array(), "ed_js_ee_script" => array(), "ed_svg_ee_canvas" => array(), "ed_svg_ee_iframe_object_embed" => array(), "ed_mp4_ogg_ee_video" => array(), "ed_mp4_ogg_ee_canvas" => array());
+$executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(), "ed_jpg_png_ee_canvas" => array(), "ed_jpg_png_ee_img" => array(), "ed_js_ee_script" => array(), "ed_svg_ee_canvas" => array(), "ed_svg_ee_iframe_object_embed" => array(), "ed_mp4_ogg_ee_video" => array(), "ed_mp4_ogg_ee_canvas" => array(), "ed_webvtt_ee_track" => array());
 ?>
 <!DOCTYPE html>
 <html>
@@ -176,6 +176,11 @@ This confirms the need for a formal specification.</p>
 	include(__DIR__ . "/include/ed_mp4_ogg_ee_canvas.php");
 	?>
 	
+	<h1>ED: WebVTT</h1>
+	<?php
+	include(__DIR__ . "/include/ed_webvtt_ee_track.php");
+	?>
+
 	<p align="right"><a href="#title">Jump to the top</a></p>
 	
 	<?php

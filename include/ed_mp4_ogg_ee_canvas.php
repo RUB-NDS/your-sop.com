@@ -49,7 +49,7 @@ foreach(array("ED A", "ED B") as $to) {
 					echo $id;
 					?>" style="cursor:help">no</td>
 					<script>
-function <?php echo $id . "_onloadeddata"; ?>(video, id) {
+function <?php echo $id . "_onload"; ?>(video, id) {
 	try {
 		var c = document.createElement("canvas");
 		c.width=video.videoWidth; c.height=video.videoHeight;
@@ -79,7 +79,7 @@ function <?php echo $id; ?>() {
 		args = Array();
 		args.push(video);
 		args.push(id);
-		call(<?php echo $id . "_onloadeddata"; ?>, args);
+		call(<?php echo $id . "_onload"; ?>, args);
 	};
 	<?php
 	$url="$PROTOCOL";
@@ -100,9 +100,10 @@ function <?php echo $id; ?>() {
 	source.type = 'video/mp4';
 	video.appendChild(source);
 	
-	source.src = '<?php echo $url; ?>video/ogg.php<?php echo $param; ?>';
-	source.type = 'video/ogg';
-	video.appendChild(source);
+	var source2 = document.createElement('source');
+	source2.src = '<?php echo $url; ?>video/ogg.php<?php echo $param; ?>';
+	source2.type = 'video/ogg';
+	video.appendChild(source2);
 
 	video.style.display = "none";
 
