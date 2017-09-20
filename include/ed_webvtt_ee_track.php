@@ -108,17 +108,17 @@ foreach(array(array("A", "$URL_A")) as $case){
     $id = "test_HD_A_TRACK_ED_".$name."_w";
 ?>
 function <?php echo $id . "_onload"; ?>(video, id) {
-    var cue = new VTTCue(7, 10, "New Cue");
-    video.textTracks[0].addCue(cue);
-    var access;
-    var numCues = video.textTracks[0].cues.length;
-    if(video.textTracks[0].cues[numCues - 1] && video.textTracks[0].cues[numCues - 1].text == "New Cue") {
-        access = 'yes';
-    } else {
-        access = 'no';
+    var access = "no";
+    if(video.textTracks[0].cues[0]) {
+        video.textTracks[0].cues[0].text = "Overwritten text";
+        if(video.textTracks[0].cues[0].text === "Overwritten text") {
+            access = 'yes';
+        } else {
+            access = 'no';
+        }
     }
     set(id, access);
-    //document.getElementById("loadbar").removeChild(video);
+    document.getElementById("loadbar").removeChild(video);
     document.free = true;
 }
 

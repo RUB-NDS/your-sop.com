@@ -57,7 +57,6 @@ function <?php echo $id . "_onload"; ?>(video, id) {
 		ctx.drawImage(video, 0, 0); 
 		var pixel = ctx.getImageData(2,3,1,1);
 		var data = pixel.data;
-		console.log(id);
 		set(id, (data[0]==107)?'yes(pixel)':'no');
 	} catch (ex) {			
 		set(id, 'no*', ex.message); /* SOP violation? */
