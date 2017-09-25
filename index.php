@@ -101,8 +101,9 @@ function generateReport() {
 			key = key.replace("credentials_(not_set)", "Use-Credentials: (not set)");
 			key = key.replace("credentials__not_set_", "Use-Credentials: (not set)");			
 			key = key.replace("sandbox_allow_scripts_allow_same_origin_allow_top_navigation", "Sandbox attribute: allow-scripts allow-same-origin allow-top-navigation");
-			key = key.replace("sandbox_allow_scripts_allow_top_navigation", "Sandbox attribute: allow-top-navigation");
+			key = key.replace("sandbox_allow_scripts_allow_top_navigation", "Sandbox attribute: allow-scripts allow-top-navigation");
 			key = key.replace("sandbox_allow_scripts_allow_same_origin", "Sandbox attribute: allow-scripts allow-same-origin");
+			key = key.replace("sandbox_allow_same_origin_allow_top_navigation", "Sandbox attribute: allow-same-origin allow-top-navigation");
 			key = key.replace("sandbox_allow_top_navigation", "Sandbox attribute: allow-top-navigation");
 			key = key.replace("sandbox_allow_same_origin", "Sandbox attribute: allow-same-origin");		
 			key = key.replace("sandbox_allow_scripts", "Sandbox attribute: allow-scripts");	

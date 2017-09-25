@@ -20,7 +20,7 @@ $emptyValue = "(empty value)";
 $sc = "allow-scripts";
 $so = "allow-same-origin";
 $tn = "allow-top-navigation";
-$sandboxAttributes = array($notSet, $emptyValue, $sc, $so, $tn, "$sc $so", "$sc $tn", "$sc $so $tn");
+$sandboxAttributes = array($notSet, $emptyValue, $sc, $so, $tn, "$sc $so", "$sc $tn", "$so $tn", "$sc $so $tn");
 /*$sandboxAttributes = [$notSet]; */
 
 foreach(array("HD A") as $from) {

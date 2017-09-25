@@ -91,7 +91,7 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 		 	
 			
 		 array = array.concat(testcase.split('_'));
-		 
+
 	content = "<tr id='"+ testcase +"'><td class='centering'>";
 		if (array[1] == 'HD' && array[2] == 'A') { content += '<span style="text-decoration:overline">HD</span>'; } else if (array[1] == 'HD' && array[2] == 'B') { content += '<span style="text-decoration:underline">HD</span>'; } else if (array[1] == 'ED' && array[2] == 'A') { content += '<span style="text-decoration:overline">ED</span>'; } else if (array[1] == 'ED' && array[2] == 'B') { content += '<span style="text-decoration:underline">ED</span>'; } else { content += array[1] + array[2]; }
 	  content += "</td>";
