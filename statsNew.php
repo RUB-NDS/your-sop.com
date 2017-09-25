@@ -42,8 +42,16 @@
 	<th><i>Recommendation</i><p style="font-size: 70%;">(based on majority)</p></th>
 	<th>Linux<br>GC 61 Native</th>
 	<th>Linux<br>GC 61 JS</th>
+	<th>Windows<br>GC 61 Native</th>
+	<th>Windows<br>GC 61 JS</th>
 	<th>Linux<br>FF 55 Native</th>
 	<th>Linux<br>FF 55 JS</th>
+	<th>Windows<br>FF 55 Native</th>
+  	<th>Windows<br>FF 55 JS</th>
+  	<th>Windows<br>Opera 47 Native</th>
+  	<th>Windows<br>Opera 47 JS</th>
+  	<th>Windows<br>Brave 0.18.36 Native</th>
+  	<th>Windows<br>Brave 0.18.36 JS</th>
   </tr>
  </table>
   
@@ -117,8 +125,16 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 	  content += "<td id='" + testcase + "recommended' style='background-color: #EFEFEF'></td>";
 	  content += "<td id='" + testcase + "linuxGC61Native'>" + replaceterms(testcase, value.result) +  "</td>";
 	  content += "<td id='" + testcase + "linuxGC61JS'></td>";
+	  content += "<td id='" + testcase + "windowsGC61Native'></td>";
+	  content += "<td id='" + testcase + "windowsGC61JS'></td>";
 	  content += "<td id='" + testcase + "linuxFF55Native'></td>";
 	  content += "<td id='" + testcase + "linuxFF55JS'></td>";
+	  content += "<td id='" + testcase + "windowsFF55Native'></td>";
+	  content += "<td id='" + testcase + "windowsFF55JS'></td>";
+	  content += "<td id='" + testcase + "windowsOpera47Native'></td>";
+	  content += "<td id='" + testcase + "windowsOpera47JS'></td>";
+	  content += "<td id='" + testcase + "windowsBrave018Native'></td>";
+	  content += "<td id='" + testcase + "windowsBrave018JS'></td>";
 	  content += "</tr>";
 	  
 	  $('#tableSOP').append(content);
@@ -130,6 +146,20 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
   });
   });
+
+  $.getJSON( "jsonNew/windows-Chrome-61.0-native.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsGC61Native";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });  
+
+  $.getJSON( "jsonNew/windows-Chrome-61.0-js.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsGC61JS";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });  
 
   $.getJSON( "jsonNew/linux-Firefox-55.0-native.json", function ( data ) {
   $.each( data, function( testcase, value ) {
@@ -145,6 +175,48 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
   });
   });
 
+  $.getJSON( "jsonNew/windows-Firefox-55.0-native.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsFF55Native";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+  $.getJSON( "jsonNew/windows-Firefox-55.0-js.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsFF55JS";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+  $.getJSON( "jsonNew/windows-Opera-47.0-native.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsOpera47Native";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+  $.getJSON( "jsonNew/windows-Opera-47.0-js.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsOpera47JS";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+  $.getJSON( "jsonNew/windows-Brave-0.18.36-native.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsBrave018Native";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+  $.getJSON( "jsonNew/windows-Brave-0.18.36-js.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsBrave018JS";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
 });
 /* make the same results invisible for the user */
 function mark () {
@@ -155,13 +227,15 @@ function mark () {
     if ( 
     trRow.querySelectorAll("td")[6].textContent === trRow.querySelectorAll("td")[7].textContent && 
     trRow.querySelectorAll("td")[7].textContent === trRow.querySelectorAll("td")[8].textContent && 
-    trRow.querySelectorAll("td")[8].textContent === trRow.querySelectorAll("td")[9].textContent /*&& 
+    trRow.querySelectorAll("td")[8].textContent === trRow.querySelectorAll("td")[9].textContent && 
     trRow.querySelectorAll("td")[9].textContent === trRow.querySelectorAll("td")[10].textContent && 
     trRow.querySelectorAll("td")[10].textContent === trRow.querySelectorAll("td")[11].textContent && 
     trRow.querySelectorAll("td")[11].textContent === trRow.querySelectorAll("td")[12].textContent && 
     trRow.querySelectorAll("td")[12].textContent === trRow.querySelectorAll("td")[13].textContent && 
     trRow.querySelectorAll("td")[13].textContent === trRow.querySelectorAll("td")[14].textContent &&
-	trRow.querySelectorAll("td")[14].textContent === trRow.querySelectorAll("td")[15].textContent*/
+	trRow.querySelectorAll("td")[14].textContent === trRow.querySelectorAll("td")[15].textContent &&
+	trRow.querySelectorAll("td")[15].textContent === trRow.querySelectorAll("td")[16].textContent &&
+	trRow.querySelectorAll("td")[16].textContent === trRow.querySelectorAll("td")[17].textContent
 	) {
       trRow.setAttribute("class", "displaysettings");
     }

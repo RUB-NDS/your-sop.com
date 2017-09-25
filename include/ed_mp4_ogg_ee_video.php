@@ -56,7 +56,7 @@ foreach(array(array("A", "$URL_A"), array("B", "$URL_B")) as $case){
 ?>
 function <?php echo $id . "_onload"; ?>(video, id) {
     set(id, (video.videoWidth == 112) ? 'partial' : 'no');
-    document.getElementById("loadbar").removeChild(video);
+    
     document.free = true;
 }
 
