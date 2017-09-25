@@ -83,3 +83,4 @@ document.free = true;
 	
 }
 call(js_script); /* modify to also allow different executions. */
+depleteQueue();

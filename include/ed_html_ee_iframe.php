@@ -110,6 +110,7 @@ foreach(array("HD A") as $from) {
 				args.push(ee);
 				args.push(id);
 				call(<?php echo $id . "_onload" ?>, args);
+				depleteQueue();
 			}; 
 			<?php
 				if ($sandbox != $notSet) {

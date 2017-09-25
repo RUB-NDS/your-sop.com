@@ -80,6 +80,7 @@ img.onload = function() {
 	args.push(img);
 	args.push(id);
 	call(<?php echo $id . "_onload"; ?>, args);
+	depleteQueue();
 };
 	<?php
 	$url="$PROTOCOL";

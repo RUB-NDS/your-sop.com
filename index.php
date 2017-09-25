@@ -14,8 +14,8 @@ $executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(),
 	</head>
 	<link rel="stylesheet" href="style.css">
 	<script>
-	if (top.location.href.split("?")[0] != '<?php echo $MAIN_FILE; ?>') {
-		top.location.href = '<?php echo $MAIN_FILE; ?>';
+	if (!top.location.href.split("#")[0].startsWith('<?php echo $MAIN_FILE; ?>?exec=')) {
+		top.location.href = '<?php echo $MAIN_FILE; ?>?exec=native';
 	}
 
 	function set(id,value,additionalInfo) {
@@ -84,6 +84,7 @@ function generateReport() {
 			var key = tests[i].id;		
 			key = key.replace("CANVAS_with_png", "CANVAS with PNG");
 			key = key.replace("CANVAS_with_svg", "CANVAS with SVG");
+			key = key.replace("CANVAS_with_mp4ogg", "CANVAS with mp4ogg");
 			key = key.replace("cross_origin_anonymous", "Cross-origin: anonymous");
 			key = key.replace("cross_origin_(not_set)", "Cross-origin: (not set)");
 			key = key.replace("cross_origin__not_set_", "Cross-origin: (not set)");
@@ -125,20 +126,21 @@ function generateReport() {
 	};
 	</script>
 	<body>
-	<h1 id="title">Same-Origin Policy Testing Tool</h1>
+	<h1 id="title">Same-Origin Policy: Evaluation in Modern Browsers</h1>
 	<div>
-	<p>The Same-Origin Policy (SOP) controls the interaction between the host document (HD) and an embedded document (ED), and is the main line of defense against numerous kinds of web attacks. Thus, a clear understanding of this access control policy is of prime importance. Unfortunately, there is no formal specification of the Same-Origin Policy, in contrast to other important concepts like web origins (RFC 6454) or the Document Object Model (W3C DOM). In the literature, the SOP is mostly described in terms of boolean (allow/deny) decisions based on web origins (protocol, domain, port), but these descriptions are inconsistent.</p>
-	
-<p>We show that the access rights granted by the SOP depend on the embedding element (EE, e.g., &lt;iframe&gt;, &lt;script&gt;, and &lt;img&gt;). We describe the  SOP in terms of read, write, and execute rights as a role-based access control (RBAC) model, in which the role is defined by the EE.</p>
-
-<p>We systematically tested the SOP implementation of ten modern browsers with our test bed at www.your-sop.com and we implemented more than 500 different RBAC test cases. Our tests show that standard SOP cases with elements like &lt;img&gt; or &lt;link&gt; are correctly implemented, but in more than 23% of the executed tests – mostly in edge cases, for example, using &lt;canvas&gt; or CORS – we detected a different behavior. 
-This confirms the need for a formal specification.</p>
-
-<p><strong>SOP Tool:</strong> Based on your currently used browser, this tool automatically evaluates SOP restriction tables that are based on our formal RBAC model notation. Please click on the buttons to open or hide each table. You can hover on the r/w/x cells to see the used JavaScript code.</p>
+				<p>The term Same-Origin Policy (SOP) is used to denote a complex set of rules that govern the interaction of different Web Origins within a web application. A subset of these SOP rules controls the interaction between the host document and an embedded document, and this subset is the target of our research (SOP-DOM). In contrast to other important concepts like Web Origins (RFC 6454) or the Document Object Model (DOM), there is no formal specification of the SOP-DOM.</p>
+				<p>In an empirical study, we ran 544 different test cases on each of the 10 major web browsers. We show that in addition to Web Origins, access rights granted by SOP-DOM depend on at least three attributes; the type of the embedding element (EE), and sandbox, and CORS attributes. We also show that due to the lack of a formal specification, different browser behaviors could be detcted in about 23% of our test cases. The issues discovered in Internet Explorer and Edge are acknowledged by Microsoft (MSRC Case 32703). We discuss our findings it in terms of read, write, and execute rights in different access control models.
+<ul>
+<li><a href="https://www.usenix.org/conference/usenixsecurity17/technical-sessions/presentation/schwenk">USENIX Security ’17 description</a></li>
+<li><a href="https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-schwenk.pdf">Paper as a PDF file</a></li>
+<li><a href="https://www.usenix.org/biblio/export/bibtex/203852">BibTex</a></li>
+<li><a href="https://github.com/RUB-NDS/your-sop.com">GitHub</a></li>
+</ul></p>
 </div>
 	<hr>
 	<div style="display: flex">
-	  <span style="float: left;  width: 450px;"><button onclick="window.location='stats.php'">Other SOP's</button></span>
+	  <span style="float: left;  width: 450px;"><button onclick="window.location='stats.php'">Other SOP's</button><button onclick="window.location='statsNew.php'">New Other SOP's</button></span>
+	  <span><select style="height:100%" name="exec" onchange="top.location.href = '<?php echo $MAIN_FILE; ?>?exec=' + this.value"><option value="native">native</option><option <?php if (isset($_GET['exec']) && $_GET['exec'] === "js") { echo "selected"; }?> value="js">JavaScript</option></select></span>
 	  <span><button onclick="for (i = 0; i < document.querySelectorAll('table').length; i++) { document.querySelectorAll('table')[i].style.display='none'; }">Hide all</button> <button onclick="allTestGroups(); for (i = 0; i < document.querySelectorAll('table').length; i++) { document.querySelectorAll('table')[i].style.display='table'; }">Display all</button><!--<button onclick="generateReport()">Generate Report</button>--></span>
 	</div>
 	<hr>
@@ -182,7 +184,7 @@ This confirms the need for a formal specification.</p>
 	include(__DIR__ . "/include/ed_webvtt_ee_track.php");
 	?>
 
-	<p align="right"><a href="#title">Jump to the top</a></p>
+	<p align="right"><a href="https://www.hackmanit.de/impressum-en.html">Contact</a> | <a href="#title">Jump to the top</a></p>
 	
 	<?php
 	include(__DIR__ . "/include/execute_tests.php");

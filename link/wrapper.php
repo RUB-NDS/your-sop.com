@@ -153,7 +153,7 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		if (window.parent == window) {
 			document.getElementById("h1").textContent = data.value;
 		} else {
-			window.parent.postMessage(message, "http://a.com");
+			window.parent.postMessage(message);
 		}
 		<?php
 	} else if (substr( $from, 0, 2 ) === "HD" && $operation != "execute"){

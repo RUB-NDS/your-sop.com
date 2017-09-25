@@ -17,8 +17,8 @@ if (!isset($_GET['operation'])) {
 if ($operation == "write") {
 	/*time_nanosleep(rand(1,2),rand(0,999999999)); */
 	$counter = $_SESSION['write']++;
-	$ns = (1000000 * $counter) % 1000000000;
-	$sek = floor((1000000 * $counter) / 1000000000);
+	$ns = (2000000 * $counter) % 1000000000;
+	$sek = floor((2000000 * $counter) / 1000000000);
 	time_nanosleep($sek, $ns);
 }
 

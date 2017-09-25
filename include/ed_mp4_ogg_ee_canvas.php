@@ -57,7 +57,7 @@ function <?php echo $id . "_onload"; ?>(video, id) {
 		ctx.drawImage(video, 0, 0); 
 		var pixel = ctx.getImageData(2,3,1,1);
 		var data = pixel.data;
-		set(id, (data[0]==107)?'yes(pixel)':'no');
+		set(id, (data[0]==254)?'yes(pixel)':'no');
 	} catch (ex) {			
 		set(id, 'no*', ex.message); /* SOP violation? */
 	}
@@ -79,6 +79,7 @@ function <?php echo $id; ?>() {
 		args.push(video);
 		args.push(id);
 		call(<?php echo $id . "_onload"; ?>, args);
+		depleteQueue();
 	};
 	<?php
 	$url="$PROTOCOL";
