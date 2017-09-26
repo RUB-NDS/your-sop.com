@@ -4,7 +4,7 @@ if (!isset($URL_A) || !isset($URL_B)) { die(); }
 	
 //<![CDATA[
 
-	function sleep(timeout) { /* simple JavaScript sleep method, requires ECMAScript 6 */
+	function sleep(timeout) { /* simple JavaScript sleep method */
 		return new Promise(resolve => setTimeout(resolve, timeout));
 	}
 
