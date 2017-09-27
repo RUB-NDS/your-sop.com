@@ -52,6 +52,7 @@
   	<th>Windows<br>Opera 47 JS</th>
   	<th>Windows<br>Brave 0.18.36 Native</th>
   	<th>Windows<br>Brave 0.18.36 JS</th>
+  	<th>OSX<br>Safari 11.0 Native</th>
   </tr>
  </table>
   
@@ -123,18 +124,19 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 	
 	  content += "</td>";	  
 	  content += "<td id='" + testcase + "recommended' style='background-color: #EFEFEF'></td>";
-	  content += "<td id='" + testcase + "linuxGC61Native'>" + replaceterms(testcase, value.result) +  "</td>";
-	  content += "<td id='" + testcase + "linuxGC61JS'></td>";
-	  content += "<td id='" + testcase + "windowsGC61Native'></td>";
-	  content += "<td id='" + testcase + "windowsGC61JS'></td>";
-	  content += "<td id='" + testcase + "linuxFF55Native'></td>";
-	  content += "<td id='" + testcase + "linuxFF55JS'></td>";
-	  content += "<td id='" + testcase + "windowsFF55Native'></td>";
-	  content += "<td id='" + testcase + "windowsFF55JS'></td>";
-	  content += "<td id='" + testcase + "windowsOpera47Native'></td>";
-	  content += "<td id='" + testcase + "windowsOpera47JS'></td>";
-	  content += "<td id='" + testcase + "windowsBrave018Native'></td>";
-	  content += "<td id='" + testcase + "windowsBrave018JS'></td>";
+	  content += "<td title='linuxGC61Native' id='" + testcase + "linuxGC61Native'>" + replaceterms(testcase, value.result) +  "</td>";
+	  content += "<td title='linuxGC61JS' id='" + testcase + "linuxGC61JS'></td>";
+	  content += "<td title='windowsGC61Native' id='" + testcase + "windowsGC61Native'></td>";
+	  content += "<td title='windowsGC61JS' id='" + testcase + "windowsGC61JS'></td>";
+	  content += "<td title='linuxFF55Native' id='" + testcase + "linuxFF55Native'></td>";
+	  content += "<td title='linuxFF55JS' id='" + testcase + "linuxFF55JS'></td>";
+	  content += "<td title='windowsFF55Native' id='" + testcase + "windowsFF55Native'></td>";
+	  content += "<td title='windowsFF55JS' id='" + testcase + "windowsFF55JS'></td>";
+	  content += "<td title='windowsOpera47Native' id='" + testcase + "windowsOpera47Native'></td>";
+	  content += "<td title='windowsOpera47JS' id='" + testcase + "windowsOpera47JS'></td>";
+	  content += "<td title='windowsBrave018JS' id='" + testcase + "windowsBrave018Native'></td>";
+	  content += "<td title='windowsBrave018JS' id='" + testcase + "windowsBrave018JS'></td>";
+	  content += "<td title='osxSafari11Native' id='" + testcase + "osxSafari11Native'></td>";
 	  content += "</tr>";
 	  
 	  $('#tableSOP').append(content);
@@ -217,6 +219,13 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
   });
   });
 
+  $.getJSON( "jsonNew/osx-Safari-11.0-native.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"osxSafari11Native";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });  
+
 });
 /* make the same results invisible for the user */
 function mark () {
@@ -235,7 +244,9 @@ function mark () {
     trRow.querySelectorAll("td")[13].textContent === trRow.querySelectorAll("td")[14].textContent &&
 	trRow.querySelectorAll("td")[14].textContent === trRow.querySelectorAll("td")[15].textContent &&
 	trRow.querySelectorAll("td")[15].textContent === trRow.querySelectorAll("td")[16].textContent &&
-	trRow.querySelectorAll("td")[16].textContent === trRow.querySelectorAll("td")[17].textContent
+	trRow.querySelectorAll("td")[16].textContent === trRow.querySelectorAll("td")[17].textContent &&
+	trRow.querySelectorAll("td")[17].textContent === trRow.querySelectorAll("td")[18].textContent
+
 	) {
       trRow.setAttribute("class", "displaysettings");
     }
