@@ -54,9 +54,9 @@ foreach(array(array("A", "$URL_A"), array("B", "$URL_B")) as $case){
 	$url  = $case[1];
 	$id = "test_HD_A_TRACK_ED_".$name."_r";
 ?>
-function <?php echo $id . "_onload"; ?>(video, id) {
+function <?php echo $id . "_onload"; ?>(video, track, id) {
     var access;
-    if(video.textTracks[0].cues[0] && video.textTracks[0].cues[0].text == 'Teststring for WebVTT') {
+    if(track.track.cues[0] && track.track.cues[0].text == 'Teststring for WebVTT') {
         access = 'yes';
     } else {
         access = 'no';
@@ -69,69 +69,6 @@ function <?php echo $id . "_onload"; ?>(video, id) {
 function <?php echo $id; ?>(){
 	var video = document.createElement('video');
 	var id = getFunctionName();
-	video.onloadeddata = function(){ 
-		var args = Array();
-        args.push(video);
-        args.push(id);
-        call(<?php echo $id . "_onload"; ?>, args);
-        depleteQueue();
-	};
-	var source = document.createElement('source');
-	source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
-	source.type = 'video/mp4';
-	video.appendChild(source);
-	
-    var source2 = document.createElement('source');
-	source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
-	source2.type = 'video/ogg';
-	video.appendChild(source2);
-
-    var track = document.createElement('track');
-    track.src = '<?php echo $url; ?>track/webvtt.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
-    track.default = "true";
-    video.appendChild(track);
-
-	video.style.display = "none";
-
-	document.getElementById("loadbar").appendChild(video);
-    document.free = true;
-} 
-<?php
-array_push($executions["ed_webvtt_ee_track"], $id);
-}
-?>
-
-<?php
-foreach(array(array("A", "$URL_A")) as $case){
-    $name = $case[0];
-    $url  = $case[1];
-    $id = "test_HD_A_TRACK_ED_".$name."_w";
-?>
-function <?php echo $id . "_onload"; ?>(video, id) {
-    var access = "no";
-    if(video.textTracks[0].cues[0]) {
-        video.textTracks[0].cues[0].text = "Overwritten text";
-        if(video.textTracks[0].cues[0].text === "Overwritten text") {
-            access = 'yes';
-        } else {
-            access = 'no';
-        }
-    }
-    set(id, access);
-    document.getElementById("loadbar").removeChild(video);
-    document.free = true;
-}
-
-function <?php echo $id; ?>(){
-    var video = document.createElement('video');
-    var id = getFunctionName();
-    video.onloadeddata = function(){ 
-        var args = Array();
-        args.push(video);
-        args.push(id);
-        call(<?php echo $id . "_onload"; ?>, args);
-        depleteQueue();
-    };
     var source = document.createElement('source');
     source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
     source.type = 'video/mp4';
@@ -146,6 +83,72 @@ function <?php echo $id; ?>(){
     track.src = '<?php echo $url; ?>track/webvtt.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
     track.default = "true";
     video.appendChild(track);
+
+    video.style.display = "none";
+
+	video.onloadeddata = function(){ 
+		var args = Array();
+        args.push(video);
+        args.push(track);
+        args.push(id);
+        call(<?php echo $id . "_onload"; ?>, args);
+        depleteQueue();
+	};
+	document.getElementById("loadbar").appendChild(video);
+    document.free = true;
+} 
+<?php
+array_push($executions["ed_webvtt_ee_track"], $id);
+}
+?>
+
+<?php
+foreach(array(array("A", "$URL_A")) as $case){
+    $name = $case[0];
+    $url  = $case[1];
+    $id = "test_HD_A_TRACK_ED_".$name."_w";
+?>
+function <?php echo $id . "_onload"; ?>(video, track,  id) {
+    var access = "no";
+    if(track.track.cues[0]) {
+        track.track.cues[0].text = "Overwritten text";
+        if(track.track.cues[0].text === "Overwritten text") {
+            access = 'yes';
+        } else {
+            access = 'no';
+        }
+    }
+    set(id, access);
+    document.getElementById("loadbar").removeChild(video);
+    document.free = true;
+}
+
+function <?php echo $id; ?>(){
+    var video = document.createElement('video');
+    var id = getFunctionName();
+    var source = document.createElement('source');
+    source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    
+    var source2 = document.createElement('source');
+    source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
+    source2.type = 'video/ogg';
+    video.appendChild(source2);
+
+    var track = document.createElement('track');
+    track.src = '<?php echo $url; ?>track/webvtt.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
+    track.default = "true";
+    video.appendChild(track);
+
+    video.onloadeddata = function(){ 
+        var args = Array();
+        args.push(video);
+        args.push(track);
+        args.push(id);
+        call(<?php echo $id . "_onload"; ?>, args);
+        depleteQueue();
+    };
 
     video.style.display = "none";
 
