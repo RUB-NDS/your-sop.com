@@ -56,7 +56,6 @@ foreach(array(array("A", "$URL_A"), array("B", "$URL_B")) as $case){
 ?>
 function <?php echo $id . "_onload"; ?>(video, id) {
     set(id, (video.videoWidth == 112) ? 'partial' : 'no');
-    
     document.free = true;
 }
 
@@ -70,19 +69,20 @@ function <?php echo $id; ?>(){
         call(<?php echo $id . "_onload"; ?>, args);
         depleteQueue();
 	};
-	var source = document.createElement('source');
-	source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
-	source.type = 'video/mp4';
-	video.appendChild(source);
-	
     var source2 = document.createElement('source');
     source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
     source2.type = 'video/ogg';
     video.appendChild(source2);
 
+	var source = document.createElement('source');
+	source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
+	source.type = 'video/mp4';
+	video.appendChild(source);
+	
+    video.controls = "true";
 	video.style.display = "none";
 
-	document.getElementById("loadbar").appendChild(video);
+	document.getElementById("loadbar").appendChild(video);     
     document.free = true;
 } 
 <?php

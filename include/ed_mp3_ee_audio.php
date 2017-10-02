@@ -58,7 +58,7 @@ function <?php echo $id . "_onload"; ?>(audio, id) {
     audio.muted = true; /* don't do a sound */
     audio.play(); /* play and pause, makes duration more reliable */
     audio.pause();
-    if(audio.duration === 4.649716) {
+    if(audio.duration >= 4) {
         set(id, "partial");
     }
     

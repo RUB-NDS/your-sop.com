@@ -69,15 +69,16 @@ function <?php echo $id . "_onload"; ?>(video, track, id) {
 function <?php echo $id; ?>(){
 	var video = document.createElement('video');
 	var id = getFunctionName();
-    var source = document.createElement('source');
-    source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
-    source.type = 'video/mp4';
-    video.appendChild(source);
     
     var source2 = document.createElement('source');
     source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
     source2.type = 'video/ogg';
     video.appendChild(source2);
+    
+    var source = document.createElement('source');
+    source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
+    source.type = 'video/mp4';
+    video.appendChild(source);
 
     var track = document.createElement('track');
     track.src = '<?php echo $url; ?>track/webvtt.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
@@ -126,15 +127,16 @@ function <?php echo $id . "_onload"; ?>(video, track,  id) {
 function <?php echo $id; ?>(){
     var video = document.createElement('video');
     var id = getFunctionName();
-    var source = document.createElement('source');
-    source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
-    source.type = 'video/mp4';
-    video.appendChild(source);
     
     var source2 = document.createElement('source');
     source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
     source2.type = 'video/ogg';
     video.appendChild(source2);
+    
+    var source = document.createElement('source');
+    source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
+    source.type = 'video/mp4';
+    video.appendChild(source);
 
     var track = document.createElement('track');
     track.src = '<?php echo $url; ?>track/webvtt.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';

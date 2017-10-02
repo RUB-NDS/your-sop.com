@@ -46,13 +46,20 @@
 	<th>Windows<br>GC 61 JS</th>
 	<th>Linux<br>FF 55 Native</th>
 	<th>Linux<br>FF 55 JS</th>
+	<th>Linux<br>Chromium 61 Native</th>
+	<th>Linux<br>Chromium 61 JS</th>
 	<th>Windows<br>FF 55 Native</th>
   	<th>Windows<br>FF 55 JS</th>
   	<th>Windows<br>Opera 47 Native</th>
   	<th>Windows<br>Opera 47 JS</th>
   	<th>Windows<br>Brave 0.18.36 Native</th>
   	<th>Windows<br>Brave 0.18.36 JS</th>
+  	<th>Windows<br>Edge 40 Native</th>
+  	<th>Windows<br>Edge 40 JS</th>
+  	<th>Windows<br>Comodo Dragon 58 Native</th>
+  	<th>Windows<br>Comodo Dragon 58 JS</th>
   	<th>OSX<br>Safari 11.0 Native</th>
+  	<th>OSX<br>Safari 11.0 JS</th>
   </tr>
  </table>
   
@@ -130,13 +137,20 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 	  content += "<td title='windowsGC61JS' id='" + testcase + "windowsGC61JS'></td>";
 	  content += "<td title='linuxFF55Native' id='" + testcase + "linuxFF55Native'></td>";
 	  content += "<td title='linuxFF55JS' id='" + testcase + "linuxFF55JS'></td>";
+	  content += "<td title='linuxChromium61Native' id='" + testcase + "linuxChromium61Native'></td>";
+	  content += "<td title='linuxChromium61JS' id='" + testcase + "linuxChromium61JS'></td>";
 	  content += "<td title='windowsFF55Native' id='" + testcase + "windowsFF55Native'></td>";
 	  content += "<td title='windowsFF55JS' id='" + testcase + "windowsFF55JS'></td>";
 	  content += "<td title='windowsOpera47Native' id='" + testcase + "windowsOpera47Native'></td>";
 	  content += "<td title='windowsOpera47JS' id='" + testcase + "windowsOpera47JS'></td>";
 	  content += "<td title='windowsBrave018JS' id='" + testcase + "windowsBrave018Native'></td>";
 	  content += "<td title='windowsBrave018JS' id='" + testcase + "windowsBrave018JS'></td>";
+	  content += "<td title='windowsEdge40Native' id='" + testcase + "windowsEdge40Native'></td>";
+	  content += "<td title='windowsEdge40JS' id='" + testcase + "windowsEdge40JS'></td>";
+	  content += "<td title='windowsComodoDragon58Native' id='" + testcase + "windowsComodoDragon58Native'></td>";
+	  content += "<td title='windowsComodoDragon58JS' id='" + testcase + "windowsComodoDragon58JS'></td>";
 	  content += "<td title='osxSafari11Native' id='" + testcase + "osxSafari11Native'></td>";
+	  content += "<td title='osxSafari11JS' id='" + testcase + "osxSafari11JS'></td>";
 	  content += "</tr>";
 	  
 	  $('#tableSOP').append(content);
@@ -173,6 +187,20 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
   $.getJSON( "jsonNew/linux-Firefox-55.0-js.json", function ( data ) {
   $.each( data, function( testcase, value ) {
 		  var testcase_browser = testcase+"linuxFF55JS";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+  $.getJSON( "jsonNew/linux-Chromium-61-native.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"linuxChromium61Native";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+  $.getJSON( "jsonNew/linux-Chromium-61-js.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"linuxChromium61JS";
 		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
   });
   });
@@ -219,12 +247,48 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
   });
   });
 
+  $.getJSON( "jsonNew/windows-Edge-40-native.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsEdge40Native";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+  $.getJSON( "jsonNew/windows-Edge-40-js.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsEdge40JS";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+  $.getJSON( "jsonNew/windows-ComodoDragon-58-native.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsComodoDragon58Native";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+
+  $.getJSON( "jsonNew/windows-ComodoDragon-58-js.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"windowsComodoDragon58JS";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
   $.getJSON( "jsonNew/osx-Safari-11.0-native.json", function ( data ) {
   $.each( data, function( testcase, value ) {
 		  var testcase_browser = testcase+"osxSafari11Native";
 		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
   });
-  });  
+  });
+
+  $.getJSON( "jsonNew/osx-Safari-11.0-js.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"osxSafari11JS";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });    
 
 });
 /* make the same results invisible for the user */
@@ -245,12 +309,33 @@ function mark () {
 	trRow.querySelectorAll("td")[14].textContent === trRow.querySelectorAll("td")[15].textContent &&
 	trRow.querySelectorAll("td")[15].textContent === trRow.querySelectorAll("td")[16].textContent &&
 	trRow.querySelectorAll("td")[16].textContent === trRow.querySelectorAll("td")[17].textContent &&
-	trRow.querySelectorAll("td")[17].textContent === trRow.querySelectorAll("td")[18].textContent
+	trRow.querySelectorAll("td")[17].textContent === trRow.querySelectorAll("td")[18].textContent &&
+	trRow.querySelectorAll("td")[18].textContent === trRow.querySelectorAll("td")[19].textContent &&
+	trRow.querySelectorAll("td")[19].textContent === trRow.querySelectorAll("td")[20].textContent &&
+	trRow.querySelectorAll("td")[20].textContent === trRow.querySelectorAll("td")[21].textContent &&
+	trRow.querySelectorAll("td")[21].textContent === trRow.querySelectorAll("td")[22].textContent &&
+	trRow.querySelectorAll("td")[22].textContent === trRow.querySelectorAll("td")[23].textContent &&
+	trRow.querySelectorAll("td")[23].textContent === trRow.querySelectorAll("td")[24].textContent &&
+	trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent
 
 	) {
       trRow.setAttribute("class", "displaysettings");
     }
   }
+}
+
+function colorize() {
+	console.log("Colorizing with red (no) , green (yes) and blue (partial)");
+	var cells = document.querySelectorAll("td");
+	for(var i=1; i < document.querySelectorAll("td").length; ++i) {
+		if (cells[i].textContent.indexOf("yes") === 0) {
+			cells[i].style.backgroundColor = "green";
+		} else if(cells[i].textContent.indexOf("partial") === 0) {
+			cells[i].style.backgroundColor = "RoyalBlue";
+		} else if(cells[i].textContent.indexOf("no") === 0){
+			cells[i].style.backgroundColor = "OrangeRed";
+		}
+	}
 }
 
 function unmark () {

@@ -57,7 +57,7 @@ function <?php echo $id . "_onload"; ?>(video, id) {
 		ctx.drawImage(video, 0, 0); 
 		var pixel = ctx.getImageData(2,3,1,1);
 		var data = pixel.data;
-		set(id, (data[0]==253 || data[0] == 254)?'yes(pixel)':'no');
+		set(id, (data[0] == 253 || data[0] == 254 || data[0] == 255)?'yes(pixel)':'no'); /* different Browsers = different pixel values WTF */
 	} catch (ex) {			
 		set(id, 'no*', ex.message); /* SOP violation? */
 	}
@@ -95,16 +95,17 @@ function <?php echo $id; ?>() {
 	$param .= "&exec=".urlencode($_GET["exec"]);
 	?>
 
-	var source = document.createElement('source');
-	source.src = '<?php echo $url; ?>video/mp4.php<?php echo $param; ?>';
-	source.type = 'video/mp4';
-	video.appendChild(source);
-	
 	var source2 = document.createElement('source');
 	source2.src = '<?php echo $url; ?>video/ogg.php<?php echo $param; ?>';
 	source2.type = 'video/ogg';
 	video.appendChild(source2);
 
+	var source = document.createElement('source');
+	source.src = '<?php echo $url; ?>video/mp4.php<?php echo $param; ?>';
+	source.type = 'video/mp4';
+	video.appendChild(source);
+	
+    video.controls = "true";
 	video.style.display = "none";
 
 	document.getElementById("loadbar").appendChild(video);
