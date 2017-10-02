@@ -122,15 +122,15 @@ $.getJSON( "json/windows-Chrome-48.0.2564.97.json", function ( data ) {
 	  content += "</td>";	  
 	  content += "<td id='" + testcase + "recommended' style='background-color: #EFEFEF'></td>";
 	  content += "<td id='" + testcase + "windowsGC48'>" + replaceterms(testcase, value.result) +  "</td>"; /* print result from current function (Windows GC48) */
-	  content += "<td id='" + testcase + "androidGC48'></td>";
-	  content += "<td id='" + testcase + "FF43'></td>";
-	  content += "<td id='" + testcase + "androidFF44'></td>";
-	  content += "<td id='" + testcase + "IE11'></td>";
-	  content += "<td id='" + testcase + "Edge20'></td>";
-	  content += "<td id='" + testcase + "OSXSafari9'></td>";
-	  content += "<td id='" + testcase + "iosSafari9'></td>";
-	  content += "<td id='" + testcase + "Opera35'></td>";
-	  content += "<td id='" + testcase + "Chromodo45'></td>";
+	  content += "<td title='androidGC48' id='" + testcase + "androidGC48'></td>";
+	  content += "<td title='FF43' id='" + testcase + "FF43'></td>";
+	  content += "<td title='androidFF44' id='" + testcase + "androidFF44'></td>";
+	  content += "<td title='IE11' id='" + testcase + "IE11'></td>";
+	  content += "<td title='Edge20' id='" + testcase + "Edge20'></td>";
+	  content += "<td title='OSXSafari9' id='" + testcase + "OSXSafari9'></td>";
+	  content += "<td title='iosSafari9' id='" + testcase + "iosSafari9'></td>";
+	  content += "<td title='Opera35' id='" + testcase + "Opera35'></td>";
+	  content += "<td title='Chromodo45' id='" + testcase + "Chromodo45'></td>";
 	  content += "</tr>";
 	  
 	  $('#tableSOP').append(content);
