@@ -149,7 +149,7 @@ function generateReport() {
 	<div style="display: flex">
 	  <span style="float: left;  width: 450px;"><button onclick="window.location='stats.php'">Other SOP's</button><button onclick="window.location='statsNew.php'">New Other SOP's</button></span>
 	  <span><select style="height:100%" name="exec" onchange="top.location.href = '<?php echo $MAIN_FILE; ?>?exec=' + this.value"><option value="native">native</option><option <?php if (isset($_GET['exec']) && $_GET['exec'] === "js") { echo "selected"; }?> value="js">JavaScript</option></select></span>
-	  <span><button onclick="for (i = 0; i < document.querySelectorAll('table').length; i++) { document.querySelectorAll('table')[i].style.display='none'; }">Hide all</button> <!--<button onclick="allTestGroups(); for (i = 0; i < document.querySelectorAll('table').length; i++) { document.querySelectorAll('table')[i].style.display='table'; }">Display all</button><button onclick="generateReport()">Generate Report</button>--></span>
+	  <span><button onclick="for (i = 0; i < document.querySelectorAll('table').length; i++) { document.querySelectorAll('table')[i].style.display='none'; }">Hide all</button> <!--<button onclick="allTestGroups(); for (i = 0; i < document.querySelectorAll('table').length; i++) { document.querySelectorAll('table')[i].style.display='table'; }">Display all</button>--><button onclick="generateReport()">Generate Report</button></span>
 	</div>
 	<hr>
 	<h1>ED: JPG and PNG</h1

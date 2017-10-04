@@ -27,7 +27,7 @@
 </div>
 <hr>
 <div style="display: flex">
-	<span style="float: left;  width: 450px;"><button onclick="top.location='<?php echo $MAIN_FILE; ?>'" style="color:red">Your SOP</button></span> <span><button onclick="console.log('Calculating ...'); var rows = removeNA();mark();shownumbers(rows);console.log('... ready');">Only display differences</button> <button onclick="unmark()">Show all</button></span> 
+	<span style="float: left;  width: 450px;"><button onclick="top.location='<?php echo $MAIN_FILE; ?>'" style="color:red">Your SOP</button></span> <span><button onclick="console.log('Calculating ...'); var rows = removeNA();mark();shownumbers(rows);console.log('... ready');">Only display differences</button> <button onclick="unmark()">Show all</button><button onclick="alert('Colorizing with red (no), green (yes), blue (partial)');colorize()">Colorize</button></span> 
 </div>
 <div style="center" id="numbers">
 </div>
