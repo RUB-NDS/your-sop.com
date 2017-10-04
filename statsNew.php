@@ -60,6 +60,8 @@
   	<th>Windows<br>Comodo Dragon 58 JS</th>
   	<th>OSX<br>Safari 11.0 Native</th>
   	<th>OSX<br>Safari 11.0 JS</th>
+  	<th>iOS<br>Safari 11.0 Native</th>
+  	<th>iOS<br>Safari 11.0 JS</th>
   </tr>
  </table>
   
@@ -151,6 +153,8 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 	  content += "<td title='windowsComodoDragon58JS' id='" + testcase + "windowsComodoDragon58JS'></td>";
 	  content += "<td title='osxSafari11Native' id='" + testcase + "osxSafari11Native'></td>";
 	  content += "<td title='osxSafari11JS' id='" + testcase + "osxSafari11JS'></td>";
+	  content += "<td title='iosSafari11Native' id='" + testcase + "iosSafari11Native'></td>";
+	  content += "<td title='iosSafari11JS' id='" + testcase + "iosSafari11JS'></td>";
 	  content += "</tr>";
 	  
 	  $('#tableSOP').append(content);
@@ -290,6 +294,20 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
   });
   });    
 
+  $.getJSON( "jsonNew/ios-Safari-11.0-native.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"iosSafari11Native";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });
+
+  $.getJSON( "jsonNew/ios-Safari-11.0-js.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"iosSafari11JS";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });  
+
 });
 /* make the same results invisible for the user */
 function mark () {
@@ -316,7 +334,9 @@ function mark () {
 	trRow.querySelectorAll("td")[21].textContent === trRow.querySelectorAll("td")[22].textContent &&
 	trRow.querySelectorAll("td")[22].textContent === trRow.querySelectorAll("td")[23].textContent &&
 	trRow.querySelectorAll("td")[23].textContent === trRow.querySelectorAll("td")[24].textContent &&
-	trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent
+	trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent &&
+	trRow.querySelectorAll("td")[25].textContent === trRow.querySelectorAll("td")[26].textContent &&
+	trRow.querySelectorAll("td")[26].textContent === trRow.querySelectorAll("td")[27].textContent
 
 	) {
       trRow.setAttribute("class", "displaysettings");
