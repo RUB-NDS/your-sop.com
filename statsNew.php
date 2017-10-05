@@ -40,7 +40,7 @@
 	<th >DETAILS</th>
 	<th class="centering">RIGHT</th>
 	<th><i>Recommendation</i><p style="font-size: 70%;">(based on majority)</p></th>
-	<th>Linux<br>GC 61 Native</th>
+	<th><img src="pictures/linux.png" width="10px"><br>GC 61 Native</th>
 	<th>Linux<br>GC 61 JS</th>
 	<th>Windows<br>GC 61 Native</th>
 	<th>Windows<br>GC 61 JS</th>
