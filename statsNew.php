@@ -345,7 +345,9 @@ function mark () {
 	trRow.querySelectorAll("td")[21].textContent === trRow.querySelectorAll("td")[22].textContent &&
 	trRow.querySelectorAll("td")[22].textContent === trRow.querySelectorAll("td")[23].textContent &&
 	trRow.querySelectorAll("td")[23].textContent === trRow.querySelectorAll("td")[24].textContent &&
-	trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent
+	trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent &&
+	trRow.querySelectorAll("td")[25].textContent === trRow.querySelectorAll("td")[26].textContent &&
+	trRow.querySelectorAll("td")[26].textContent === trRow.querySelectorAll("td")[27].textContent
 
 	) {
       trRow.setAttribute("class", "displaysettings");
