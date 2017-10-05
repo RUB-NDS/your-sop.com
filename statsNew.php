@@ -2,9 +2,8 @@
 	include(__DIR__ . "/config.php");
 ?>
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<html><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Modeling the Same-Origin Policy for DOM Access with ABAC</title>
 		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 		<link rel="stylesheet" href="style.css">
@@ -18,16 +17,16 @@
 	<div>
 				<p>The term Same-Origin Policy (SOP) is used to denote a complex set of rules that govern the interaction of different Web Origins within a web application. A subset of these SOP rules controls the interaction between the host document and an embedded document, and this subset is the target of our research (SOP-DOM). In contrast to other important concepts like Web Origins (RFC 6454) or the Document Object Model (DOM), there is no formal specification of the SOP-DOM.</p>
 				<p>In an empirical study, we ran 544 different test cases on each of the 10 major web browsers. We show that in addition to Web Origins, access rights granted by SOP-DOM depend on at least three attributes; the type of the embedding element (EE), and sandbox, and CORS attributes. We also show that due to the lack of a formal specification, different browser behaviors could be detcted in about 23% of our test cases. The issues discovered in Internet Explorer and Edge are acknowledged by Microsoft (MSRC Case 32703). We discuss our findings it in terms of read, write, and execute rights in different access control models.
-<ul>
+</p><ul>
 <li><a href="https://www.usenix.org/conference/usenixsecurity17/technical-sessions/presentation/schwenk">USENIX Security ’17 description</a></li>
 <li><a href="https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-schwenk.pdf">Paper as a PDF file</a></li>
 <li><a href="https://www.usenix.org/biblio/export/bibtex/203852">BibTex</a></li>
 <li><a href="https://github.com/RUB-NDS/your-sop.com">GitHub</a></li>
-</ul></p>
+</ul><p></p>
 </div>
 <hr>
 <div style="display: flex">
-	<span style="float: left;  width: 450px;"><button onclick="window.location='<?php echo $MAIN_FILE; ?>'" style="color:red">Your SOP</button></span> <span><button onclick="console.log('Calculating ...'); var rows = removeNA();mark();shownumbers(rows);console.log('... ready');">Only display differences</button> <button onclick="unmark()">Show all</button><button onclick="alert('Colorizing with red (no), green (yes), blue (partial)');colorize()">Colorize</button></span> 
+	<span style="float: left;  width: 450px;"><button onclick="window.location='http://your-sop.com/index.php'" style="color:red">Your SOP</button></span> <span><button onclick="unmark()">Show all</button> <button onclick="console.log('Calculating ...'); var rows = removeNA();mark();shownumbers(rows);console.log('... ready');">Only display differences</button> <button onclick="colorize()" title="Colorizing with red (no) , green (yes) and blue (partial)">Colorize</button> <button onclick="filter()">Do not display  yes*</button></span> 
 </div>
 <div style="center" id="numbers">
 </div>
@@ -37,31 +36,31 @@
     <th class="centering">FROM</th>
 	<th>EE</th>
 	<th class="centering">TO</th>
-	<th >DETAILS</th>
+	<th>DETAILS</th>
 	<th class="centering">RIGHT</th>
-	<th><i>Recommendation</i><p style="font-size: 70%;">(based on majority)</p></th>
-	<th><img src="pictures/linux.png" width="10px"><br>GC 61 Native</th>
-	<th>Linux<br>GC 61 JS</th>
-	<th>Windows<br>GC 61 Native</th>
-	<th>Windows<br>GC 61 JS</th>
-	<th>Linux<br>FF 55 Native</th>
-	<th>Linux<br>FF 55 JS</th>
-	<th>Linux<br>Chromium 61 Native</th>
-	<th>Linux<br>Chromium 61 JS</th>
-	<th>Windows<br>FF 55 Native</th>
-  	<th>Windows<br>FF 55 JS</th>
-  	<th>Windows<br>Opera 47 Native</th>
-  	<th>Windows<br>Opera 47 JS</th>
-  	<th>Windows<br>Brave 0.18.36 Native</th>
-  	<th>Windows<br>Brave 0.18.36 JS</th>
-  	<th>Windows<br>Edge 40 Native</th>
-  	<th>Windows<br>Edge 40 JS</th>
-  	<th>Windows<br>Comodo Dragon 58 Native</th>
-  	<th>Windows<br>Comodo Dragon 58 JS</th>
-  	<th>OSX<br>Safari 11.0 Native</th>
-  	<th>OSX<br>Safari 11.0 JS</th>
-  	<th>iOS<br>Safari 11.0 Native</th>
-  	<th>iOS<br>Safari 11.0 JS</th>
+	<th><span title="Recommendation based on majority" style="border-bottom: 1px dotted black;">≥</span></th>
+	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> <span title="Google Chrome" style="border-bottom: 1px dotted black;">GC</span> 61 Native</th>
+	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> <span title="Google Chrome" style="border-bottom: 1px dotted black;">GC</span> 61 JS</th>
+	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> <span title="Google Chrome" style="border-bottom: 1px dotted black;">GC</span> 61 Native</th>
+	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> <span title="Google Chrome" style="border-bottom: 1px dotted black;">GC</span> 61 JS</th>
+	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> <span title="Firefox" style="border-bottom: 1px dotted black;">FF</span> 55 Native</th>
+	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> <span title="Firefox" style="border-bottom: 1px dotted black;">FF</span> 55 JS</th>
+	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> Chromium 61 Native</th>
+	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> Chromium 61 JS</th>
+	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> <span title="Firefox" style="border-bottom: 1px dotted black;">FF</span> 55 Native</th>
+  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> <span title="Firefox" style="border-bottom: 1px dotted black;">FF</span> 55 JS</th>
+  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Opera 47 Native</th>
+  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Opera 47 JS</th>
+  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Brave 0.18.36 Native</th>
+  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Brave 0.18.36 JS</th>
+  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Edge 40 Native</th>
+  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Edge 40 JS</th>
+  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Comodo Dragon 58 Native</th>
+  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Comodo Dragon 58 JS</th>
+  	<th><span title="macOS" style="border-bottom: 1px dotted black;">🍏</span> Safari 11.0 Native</th>
+  	<th><span title="macOS" style="border-bottom: 1px dotted black;">🍏</span> Safari 11.0 JS</th>
+  	<th><span title="macOS" style="border-bottom: 1px dotted black;">🍏</span> Safari 11.0 Native</th>
+  	<th><span title="macOS" style="border-bottom: 1px dotted black;">🍏</span> Safari 11.0 JS</th>
   </tr>
  </table>
   
@@ -102,11 +101,11 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 	} 
     return value;
   }
-  
+
   $.each( data, function( testcase, value ) {
 	     array  = [];
 		 
-		 	
+		 
 			
 		 array = array.concat(testcase.split('_'));
 
@@ -120,7 +119,19 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 	  "<td>";
 	  for (i=6; i<array.length; i++) { 
 	    if (array[i] != "w" && array[i] != "r" && array[i] != "x" && array[i] != "html" ) {
-		  content += array[i]+"<br>"; 
+	    
+	      var temp; temp=array[i];
+	      temp=temp.replace("Cross-origin: (not set)", "");
+	      temp=temp.replace("Access-Control-Allow-Origin: (not set)", "");
+	      temp=temp.replace("Use-Credentials: (not set)", "");
+	      temp=temp.replace("Cross-origin", "<span title='Cross-origin' style='border-bottom: 1px dotted black;'>CO</span>");
+	      temp=temp.replace("Access-Control-Allow-Origin", "<span title='Access-Control-Allow-Origin' style='border-bottom: 1px dotted black;'>ACAO</span>");
+	      temp=temp.replace("Use-Credentials", "<span title='Use-Credentials' style='border-bottom: 1px dotted black;'>UC</span>");
+	      
+	      if (temp != "") {
+		    content += temp+"<br>"; 
+		  }
+		
 		 }
 	  } 
 	  content += "</td><td class='centering'>";
@@ -334,9 +345,7 @@ function mark () {
 	trRow.querySelectorAll("td")[21].textContent === trRow.querySelectorAll("td")[22].textContent &&
 	trRow.querySelectorAll("td")[22].textContent === trRow.querySelectorAll("td")[23].textContent &&
 	trRow.querySelectorAll("td")[23].textContent === trRow.querySelectorAll("td")[24].textContent &&
-	trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent &&
-	trRow.querySelectorAll("td")[25].textContent === trRow.querySelectorAll("td")[26].textContent &&
-	trRow.querySelectorAll("td")[26].textContent === trRow.querySelectorAll("td")[27].textContent
+	trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent
 
 	) {
       trRow.setAttribute("class", "displaysettings");
@@ -345,7 +354,6 @@ function mark () {
 }
 
 function colorize() {
-	console.log("Colorizing with red (no) , green (yes) and blue (partial)");
 	var cells = document.querySelectorAll("td");
 	for(var i=1; i < document.querySelectorAll("td").length; ++i) {
 		if (cells[i].textContent.indexOf("yes") === 0) {
@@ -388,6 +396,21 @@ function shownumbers(rows) {
      return document.querySelectorAll('tr').length-1;
  }
   
+  function filter () {
+   console.log("Make yes* majorities invisible...");
+   
+   for(x=1; x< document.querySelectorAll("tr").length; x++) {
+     if (document.querySelectorAll("tr")[x].querySelectorAll("td")[5].textContent.indexOf("yes") === 0) {
+        document.querySelectorAll("tr")[x].setAttribute("class", "displaysettings");
+     }  
+   }
+   console.log("... ready");
+}
+
+function deleteRow(btn) {
+  var row = btn.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
 </script>
 	<p align="right"><a href="https://www.hackmanit.de/impressum-en.html">Contact</a> | <a href="#title">Jump to the top</a></p>
 </body>
