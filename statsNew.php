@@ -126,7 +126,7 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 	      temp=temp.replace("Use-Credentials: (not set)", "");
 	      temp=temp.replace("Cross-origin", "<span title='Cross-origin' style='border-bottom: 1px dotted black;'>CO</span>");
 	      temp=temp.replace("Access-Control-Allow-Origin", "<span title='Access-Control-Allow-Origin' style='border-bottom: 1px dotted black;'>ACAO</span>");
-	      temp=temp.replace("Use-Credentials", "<span title='Use-Credentials' style='border-bottom: 1px dotted black;'>UC</span>");
+	      temp=temp.replace("Use-Credentials", "<span title='Use-Credentials / Access-Control-Allow-Credentials' style='border-bottom: 1px dotted black;'>UC</span>");
 	      
 	      if (temp != "") {
 		    content += temp+"<br>"; 
