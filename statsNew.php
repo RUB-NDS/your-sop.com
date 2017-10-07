@@ -10,60 +10,68 @@
 		<style>
 		.displaysettings { display: none;}
 		.centering { margin: auto; }
+		.dots { border-bottom: 1px dotted black; }
+		.overline { text-decoration:overline; }
+		.underline { text-decoration:underline; }
 		</style>
 	</head>
 	<body>
-	<h1 id="title">Same-Origin Policy: Evaluation in Modern Browsers</h1>
-	<div>
-				<p>The term Same-Origin Policy (SOP) is used to denote a complex set of rules that govern the interaction of different Web Origins within a web application. A subset of these SOP rules controls the interaction between the host document and an embedded document, and this subset is the target of our research (SOP-DOM). In contrast to other important concepts like Web Origins (RFC 6454) or the Document Object Model (DOM), there is no formal specification of the SOP-DOM.</p>
-				<p>In an empirical study, we ran 544 different test cases on each of the 10 major web browsers. We show that in addition to Web Origins, access rights granted by SOP-DOM depend on at least three attributes; the type of the embedding element (EE), and sandbox, and CORS attributes. We also show that due to the lack of a formal specification, different browser behaviors could be detcted in about 23% of our test cases. The issues discovered in Internet Explorer and Edge are acknowledged by Microsoft (MSRC Case 32703). We discuss our findings it in terms of read, write, and execute rights in different access control models.
-</p><ul>
-<li><a href="https://www.usenix.org/conference/usenixsecurity17/technical-sessions/presentation/schwenk">USENIX Security ’17 description</a></li>
-<li><a href="https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-schwenk.pdf">Paper as a PDF file</a></li>
-<li><a href="https://www.usenix.org/biblio/export/bibtex/203852">BibTex</a></li>
-<li><a href="https://github.com/RUB-NDS/your-sop.com">GitHub</a></li>
-</ul><p></p>
-</div>
+<?php
+	include(__DIR__ . "/header.php");
+?>
 <hr>
 <div style="display: flex">
-	<span style="float: left;  width: 450px;"><button onclick="window.location='http://your-sop.com/index.php'" style="color:red">Your SOP</button></span> <span><button onclick="unmark()">Show all</button> <button onclick="console.log('Calculating ...'); var rows = removeNA();mark();shownumbers(rows);console.log('... ready');">Only display differences</button> <button onclick="colorize()" title="Colorizing with red (no) , green (yes) and blue (partial)">Colorize</button> <button onclick="filter()">Do not display  yes*</button></span> 
+	<span style="float: left;  width: 450px;"><button onclick="window.location='http://your-sop.com/index.php'" style="color:red">Your SOP</button></span> 
+	<span><button onclick="unmark()">Show all</button> <button onclick="console.log('Calculating ...'); var rows = removeNA();mark();shownumbers(rows);console.log('... ready');">Only display differences</button> <button onclick="colorize()" title="Colorizing with red (no) , green (yes) and blue (partial)">Colorize</button> <button onclick="filter()">Do not display  yes*</button></span> 
 </div>
 <div style="center" id="numbers">
 </div>
 <hr>
+<?php
+$right ='<span title="Right" class="dots">&#9998;</span>';
+$chromium = '<span title="Chromium" class="dots">CR</span>';
+$opera = '<span title="Opera" class="dots">OP</span>';
+$safari = '<span title="Safari" class="dots">SA</span>';
+$comodoDragon = '<span title="Comodo Dragon" class="dots">CD</span>';
+$msedge = '<span title="Microsoft Edge" class="dots">ME</span>';
+$brave = '<span title="Brave" class="dots">BR</span>';
+$yandex = '<span title="Yandex" class="dots">YD</span>';
+?>
 <table id="tableSOP" class="bordered">
   <tr>
     <th class="centering">FROM</th>
 	<th>EE</th>
 	<th class="centering">TO</th>
 	<th>DETAILS</th>
-	<th class="centering">RIGHT</th>
-	<th><span title="Recommendation based on majority" style="border-bottom: 1px dotted black;">≥</span></th>
-	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> <span title="Google Chrome" style="border-bottom: 1px dotted black;">GC</span> 61 Native</th>
-	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> <span title="Google Chrome" style="border-bottom: 1px dotted black;">GC</span> 61 JS</th>
-	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> <span title="Google Chrome" style="border-bottom: 1px dotted black;">GC</span> 61 Native</th>
-	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> <span title="Google Chrome" style="border-bottom: 1px dotted black;">GC</span> 61 JS</th>
-	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> <span title="Firefox" style="border-bottom: 1px dotted black;">FF</span> 55 Native</th>
-	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> <span title="Firefox" style="border-bottom: 1px dotted black;">FF</span> 55 JS</th>
-	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> Chromium 61 Native</th>
-	<th><span title="Linux" style="border-bottom: 1px dotted black;">🐧</span> Chromium 61 JS</th>
-	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> <span title="Firefox" style="border-bottom: 1px dotted black;">FF</span> 55 Native</th>
-  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> <span title="Firefox" style="border-bottom: 1px dotted black;">FF</span> 55 JS</th>
-  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Opera 47 Native</th>
-  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Opera 47 JS</th>
-  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Brave 0.18.36 Native</th>
-  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Brave 0.18.36 JS</th>
-  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Edge 40 Native</th>
-  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Edge 40 JS</th>
-  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Comodo Dragon 58 Native</th>
-  	<th><span title="Windows" style="border-bottom: 1px dotted black;"><i>⊞</i></span> Comodo Dragon 58 JS</th>
-  	<th><span title="macOS" style="border-bottom: 1px dotted black;">🍏</span> Safari 11.0 Native</th>
-  	<th><span title="macOS" style="border-bottom: 1px dotted black;">🍏</span> Safari 11.0 JS</th>
-  	<th><span title="macOS" style="border-bottom: 1px dotted black;">🍏</span> Safari 11.0 Native</th>
-  	<th><span title="macOS" style="border-bottom: 1px dotted black;">🍏</span> Safari 11.0 JS</th>
+	<th class="centering"><?=$right?></th>
+	<th><span title="Recommendation based on majority" class="dots">≥</span></th>
+	<th><span title="Linux" class="dots">🐧</span> <span title="Google Chrome" style="dots">GC</span> 61 Native</th>
+	<th><span title="Linux" class="dots">🐧</span> <span title="Google Chrome" class="dots">GC</span> 61 JS</th>
+	<th><span title="Windows" class="dots"><i>⊞</i></span> <span title="Google Chrome" class="dots">GC</span> 61 Native</th>
+	<th><span title="Windows" class="dots"><i>⊞</i></span> <span title="Google Chrome" class="dots">GC</span> 61 JS</th>
+	<th><span title="Linux" class="dots">🐧</span> <span title="Firefox" class="dots">FF</span> 55 Native</th>
+	<th><span title="Linux" class="dots">🐧</span> <span title="Firefox" class="dots">FF</span> 55 JS</th>
+	<th><span title="Linux" class="dots">🐧</span> <?=$chromium?> 61 Native</th>
+	<th><span title="Linux" class="dots">🐧</span> <?=$chromium?> 61 JS</th>
+	<th><span title="Windows" class="dots"><i>⊞</i></span> <span title="Firefox" class="dots">FF</span> 55 Native</th>
+  	<th><span title="Windows" class="dots"><i>⊞</i></span> <span title="Firefox" class="dots">FF</span> 55 JS</th>
+  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$opera?> 47 Native</th>
+  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$opera?> 47 JS</th>
+  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$brave?> 0.18.36 Native</th>
+  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$brave?> 0.18.36 JS</th>
+  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$msedge?> 40 Native</th>
+  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$msedge?> 40 JS</th>
+  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$comodoDragon?> 58 Native</th>
+  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$comodoDragon?> 58 JS</th>
+  	<th><span title="macOS" class="dots">🍏</span> <?=$safari?> 11.0 Native</th>
+  	<th><span title="macOS" class="dots">🍏</span> <?=$safari?> 11.0 JS</th>
+  	<th><span title="iOS" class="dots">iOS</span> <?=$safari?> 11.0 Native</th>
+  	<th><span title="iOS" class="dots">iOS</span> <?=$safari?> 11.0 JS</th>
+  	<th><span title="macOS" class="dots">🍏</span> <?=$yandex?> 17.9 Native</th>
+  	<th><span title="iOS" class="dots">🍏</span> <?=$yandex?> 17.9 JS</th>
   </tr>
  </table>
-  
+
 <script>
 window.recommended = {};
 $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
@@ -110,11 +118,11 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 		 array = array.concat(testcase.split('_'));
 
 	content = "<tr id='"+ testcase +"'><td class='centering'>";
-		if (array[1] == 'HD' && array[2] == 'A') { content += '<span style="text-decoration:overline">HD</span>'; } else if (array[1] == 'HD' && array[2] == 'B') { content += '<span style="text-decoration:underline">HD</span>'; } else if (array[1] == 'ED' && array[2] == 'A') { content += '<span style="text-decoration:overline">ED</span>'; } else if (array[1] == 'ED' && array[2] == 'B') { content += '<span style="text-decoration:underline">ED</span>'; } else { content += array[1] + array[2]; }
+		if (array[1] == 'HD' && array[2] == 'A') { content += '<span class="overline">HD</span>'; } else if (array[1] == 'HD' && array[2] == 'B') { content += '<span class="underline">HD</span>'; } else if (array[1] == 'ED' && array[2] == 'A') { content += '<span class="overline">ED</span>'; } else if (array[1] == 'ED' && array[2] == 'B') { content += '<span class="underline">ED</span>'; } else { content += array[1] + array[2]; }
 	  content += "</td>";
 	  content += "<td>" + array[3] + "</td>"+
 	  "<td class='centering'>";
-	  if (array[4] == 'HD' && array[5] == 'A') { content += '<span style="text-decoration:overline">HD</span>'; } else if (array[4] == 'HD' && array[5] == 'B') { content += '<span style="text-decoration:underline">HD</span>'; } else if (array[4] == 'ED' && array[5] == 'A') { content += '<span style="text-decoration:overline">ED</span>'; } else if (array[4] == 'ED' && array[5] == 'B') { content += '<span style="text-decoration:underline">ED</span>'; } else { content += array[4] + array[5]; }
+	  if (array[4] == 'HD' && array[5] == 'A') { content += '<span class="overline">HD</span>'; } else if (array[4] == 'HD' && array[5] == 'B') { content += '<span class="underline">HD</span>'; } else if (array[4] == 'ED' && array[5] == 'A') { content += '<span class="overline">ED</span>'; } else if (array[4] == 'ED' && array[5] == 'B') { content += '<span class="underline">ED</span>'; } else { content += array[4] + array[5]; }
 	  content += "</td>" + 
 	  "<td>";
 	  for (i=6; i<array.length; i++) { 
@@ -126,7 +134,7 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 	      temp=temp.replace("Use-Credentials: (not set)", "");
 	      temp=temp.replace("Cross-origin", "<span title='Cross-origin' style='border-bottom: 1px dotted black;'>CO</span>");
 	      temp=temp.replace("Access-Control-Allow-Origin", "<span title='Access-Control-Allow-Origin' style='border-bottom: 1px dotted black;'>ACAO</span>");
-	      temp=temp.replace("Use-Credentials", "<span title='Use-Credentials / Access-Control-Allow-Credentials' style='border-bottom: 1px dotted black;'>UC</span>");
+	      temp=temp.replace("Use-Credentials", "<span title='Use-Credentials / Access-Control-Allow-Credentials' class='dots'>UC</span>");
 	      
 	      if (temp != "") {
 		    content += temp+"<br>"; 
@@ -166,6 +174,8 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 	  content += "<td title='osxSafari11JS' id='" + testcase + "osxSafari11JS'></td>";
 	  content += "<td title='iosSafari11Native' id='" + testcase + "iosSafari11Native'></td>";
 	  content += "<td title='iosSafari11JS' id='" + testcase + "iosSafari11JS'></td>";
+	  content += "<td title='osxYandex17Native' id='" + testcase + "osxYandex17Native'></td>";
+	  content += "<td title='osxYandex17JS' id='" + testcase + "osxYandex17JS'></td>";
 	  content += "</tr>";
 	  
 	  $('#tableSOP').append(content);
@@ -318,6 +328,20 @@ $.getJSON( "jsonNew/linux-Chrome-61.0-native.json", function ( data ) {
 		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
   });
   });  
+  
+  $.getJSON( "jsonNew/osx-Yandex-17.9.1.888-native.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"osxYandex17Native";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });  
+  
+  $.getJSON( "jsonNew/osx-Yandex-17.9.1.888-js.json", function ( data ) {
+  $.each( data, function( testcase, value ) {
+		  var testcase_browser = testcase+"osxYandex17JS";
+		  document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result); 
+  });
+  });  
 
 });
 /* make the same results invisible for the user */
@@ -347,7 +371,9 @@ function mark () {
 	trRow.querySelectorAll("td")[23].textContent === trRow.querySelectorAll("td")[24].textContent &&
 	trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent &&
 	trRow.querySelectorAll("td")[25].textContent === trRow.querySelectorAll("td")[26].textContent &&
-	trRow.querySelectorAll("td")[26].textContent === trRow.querySelectorAll("td")[27].textContent
+	trRow.querySelectorAll("td")[26].textContent === trRow.querySelectorAll("td")[27].textContent &&
+	trRow.querySelectorAll("td")[27].textContent === trRow.querySelectorAll("td")[28].textContent &&
+	trRow.querySelectorAll("td")[28].textContent === trRow.querySelectorAll("td")[29].textContent
 
 	) {
       trRow.setAttribute("class", "displaysettings");
@@ -414,6 +440,6 @@ function deleteRow(btn) {
   row.parentNode.removeChild(row);
 }
 </script>
-	<p align="right"><a href="https://www.hackmanit.de/impressum-en.html">Contact</a> | <a href="#title">Jump to the top</a></p>
+	<p align="right"><a href="#" onclick='alert(document.querySelectorAll("td").length - (document.querySelectorAll("tr").length*6) - (document.querySelectorAll("th").length+6)+" tests with "+(document.querySelectorAll("th").length - 6)+" browsers and "+document.querySelectorAll("tr").length+" test cases.")'>Stats</a> | <a href="https://www.nds.rub.de/chair/contact/">Contact</a> | <a href="#title">Jump to the top</a></p>
 </body>
 </html>
