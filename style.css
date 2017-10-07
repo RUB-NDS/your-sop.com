@@ -157,3 +157,9 @@ table {
     -webkit-border-radius: 0 0 6px 6px
     border-radius: 0 0 6px 6px
 }
+
+		.displaysettings { display: none;}
+		.centering { margin: auto; }
+		.dots { border-bottom: 1px dotted black; }
+		.overline { text-decoration:overline; }
+		.underline { text-decoration:underline; }
