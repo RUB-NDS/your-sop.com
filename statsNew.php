@@ -29,6 +29,7 @@ $comodoDragon = '<span title="Comodo Dragon" class="dots">CD</span>';
 $msedge = '<span title="Microsoft Edge" class="dots">ME</span>';
 $brave = '<span title="Brave" class="dots">BR</span>';
 $yandex = '<span title="Yandex" class="dots">YD</span>';
+$vivaldi = '<span title="Vivaldi" class="dots">VV</span>';
 ?>
 <table id="tableSOP" class="bordered">
   <tr>
@@ -61,7 +62,9 @@ $yandex = '<span title="Yandex" class="dots">YD</span>';
   	<th><span title="iOS" class="dots">iOS</span> <?=$safari?> 11.0 Native</th>
   	<th><span title="iOS" class="dots">iOS</span> <?=$safari?> 11.0 JS</th>
   	<th><span title="macOS" class="dots">🍏</span> <?=$yandex?> 17.9 Native</th>
-  	<th><span title="iOS" class="dots">🍏</span> <?=$yandex?> 17.9 JS</th>
+  	<th><span title="macOS" class="dots">🍏</span> <?=$yandex?> 17.9 JS</th>
+  	<th><span title="macOS" class="dots">🍏</span> <?=$vivaldi?> 1.12 Native</th>
+  	<th><span title="macOS" class="dots">🍏</span> <?=$vivaldi?> 1.12 JS</th>
   </tr>
  </table>
 
@@ -188,6 +191,8 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
         content += "<td title='iosSafari11JS' id='" + testcase + "iosSafari11JS'></td>";
         content += "<td title='osxYandex17Native' id='" + testcase + "osxYandex17Native'></td>";
         content += "<td title='osxYandex17JS' id='" + testcase + "osxYandex17JS'></td>";
+        content += "<td title='osxVivaldi112Native' id='" + testcase + "osxVivaldi112Native'></td>";
+        content += "<td title='osxVivaldi112JS' id='" + testcase + "osxVivaldi112JS'></td>";
         content += "</tr>";
 
         $('#tableSOP').append(content);
@@ -355,6 +360,20 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
         });
     });
 
+    $.getJSON("jsonNew/osx-Vivaldi-1.12.955.38-Native.json", function(data) {
+        $.each(data, function(testcase, value) {
+            var testcase_browser = testcase + "osxVivaldi112Native";
+            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
+        });
+    });
+    
+    $.getJSON("jsonNew/osx-Vivaldi-1.12.955.38-JS.json", function(data) {
+        $.each(data, function(testcase, value) {
+            var testcase_browser = testcase + "osxVivaldi112JS";
+            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
+        });
+    });
+
 }); /* make the same results invisible for the user */
 
 function mark() {
@@ -363,7 +382,7 @@ function mark() {
     for (var i = 1; i < document.querySelectorAll("tr").length; ++i) {
         trRow = document.querySelectorAll("tr")[i];
         if (
-        trRow.querySelectorAll("td")[6].textContent === trRow.querySelectorAll("td")[7].textContent && trRow.querySelectorAll("td")[7].textContent === trRow.querySelectorAll("td")[8].textContent && trRow.querySelectorAll("td")[8].textContent === trRow.querySelectorAll("td")[9].textContent && trRow.querySelectorAll("td")[9].textContent === trRow.querySelectorAll("td")[10].textContent && trRow.querySelectorAll("td")[10].textContent === trRow.querySelectorAll("td")[11].textContent && trRow.querySelectorAll("td")[11].textContent === trRow.querySelectorAll("td")[12].textContent && trRow.querySelectorAll("td")[12].textContent === trRow.querySelectorAll("td")[13].textContent && trRow.querySelectorAll("td")[13].textContent === trRow.querySelectorAll("td")[14].textContent && trRow.querySelectorAll("td")[14].textContent === trRow.querySelectorAll("td")[15].textContent && trRow.querySelectorAll("td")[15].textContent === trRow.querySelectorAll("td")[16].textContent && trRow.querySelectorAll("td")[16].textContent === trRow.querySelectorAll("td")[17].textContent && trRow.querySelectorAll("td")[17].textContent === trRow.querySelectorAll("td")[18].textContent && trRow.querySelectorAll("td")[18].textContent === trRow.querySelectorAll("td")[19].textContent && trRow.querySelectorAll("td")[19].textContent === trRow.querySelectorAll("td")[20].textContent && trRow.querySelectorAll("td")[20].textContent === trRow.querySelectorAll("td")[21].textContent && trRow.querySelectorAll("td")[21].textContent === trRow.querySelectorAll("td")[22].textContent && trRow.querySelectorAll("td")[22].textContent === trRow.querySelectorAll("td")[23].textContent && trRow.querySelectorAll("td")[23].textContent === trRow.querySelectorAll("td")[24].textContent && trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent && trRow.querySelectorAll("td")[25].textContent === trRow.querySelectorAll("td")[26].textContent && trRow.querySelectorAll("td")[26].textContent === trRow.querySelectorAll("td")[27].textContent && trRow.querySelectorAll("td")[27].textContent === trRow.querySelectorAll("td")[28].textContent && trRow.querySelectorAll("td")[28].textContent === trRow.querySelectorAll("td")[29].textContent
+        trRow.querySelectorAll("td")[6].textContent === trRow.querySelectorAll("td")[7].textContent && trRow.querySelectorAll("td")[7].textContent === trRow.querySelectorAll("td")[8].textContent && trRow.querySelectorAll("td")[8].textContent === trRow.querySelectorAll("td")[9].textContent && trRow.querySelectorAll("td")[9].textContent === trRow.querySelectorAll("td")[10].textContent && trRow.querySelectorAll("td")[10].textContent === trRow.querySelectorAll("td")[11].textContent && trRow.querySelectorAll("td")[11].textContent === trRow.querySelectorAll("td")[12].textContent && trRow.querySelectorAll("td")[12].textContent === trRow.querySelectorAll("td")[13].textContent && trRow.querySelectorAll("td")[13].textContent === trRow.querySelectorAll("td")[14].textContent && trRow.querySelectorAll("td")[14].textContent === trRow.querySelectorAll("td")[15].textContent && trRow.querySelectorAll("td")[15].textContent === trRow.querySelectorAll("td")[16].textContent && trRow.querySelectorAll("td")[16].textContent === trRow.querySelectorAll("td")[17].textContent && trRow.querySelectorAll("td")[17].textContent === trRow.querySelectorAll("td")[18].textContent && trRow.querySelectorAll("td")[18].textContent === trRow.querySelectorAll("td")[19].textContent && trRow.querySelectorAll("td")[19].textContent === trRow.querySelectorAll("td")[20].textContent && trRow.querySelectorAll("td")[20].textContent === trRow.querySelectorAll("td")[21].textContent && trRow.querySelectorAll("td")[21].textContent === trRow.querySelectorAll("td")[22].textContent && trRow.querySelectorAll("td")[22].textContent === trRow.querySelectorAll("td")[23].textContent && trRow.querySelectorAll("td")[23].textContent === trRow.querySelectorAll("td")[24].textContent && trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent && trRow.querySelectorAll("td")[25].textContent === trRow.querySelectorAll("td")[26].textContent && trRow.querySelectorAll("td")[26].textContent === trRow.querySelectorAll("td")[27].textContent && trRow.querySelectorAll("td")[27].textContent === trRow.querySelectorAll("td")[28].textContent && trRow.querySelectorAll("td")[28].textContent === trRow.querySelectorAll("td")[29].textContent && trRow.querySelectorAll("td")[29].textContent === trRow.querySelectorAll("td")[30].textContent && trRow.querySelectorAll("td")[30].textContent === trRow.querySelectorAll("td")[31].textContent
 
         ) {
             trRow.setAttribute("class", "displaysettings");
@@ -410,15 +429,14 @@ function removeNA() {
     return document.querySelectorAll('tr').length - 1;
 }
 
+// reduce the number of testcases
 function filter() {
-    console.log("Make yes* majorities invisible...");
-
+    //Make yes* majorities invisible
     for (x = 1; x < document.querySelectorAll("tr").length; x++) {
         if (document.querySelectorAll("tr")[x].querySelectorAll("td")[5].textContent.indexOf("yes") === 0) {
             document.querySelectorAll("tr")[x].setAttribute("class", "displaysettings");
         }
     }
-    console.log("... ready");
 }
 
 
