@@ -24,6 +24,8 @@
 // general stuff
 $right ='<span title="Right" class="dots">&#9998;</span>';
 $greaterthan = '<span title="Recommendation based on majority" class="dots">≥</span>';
+$native = '<span title="Native" class="dots">NA</span>';
+$javascript = '<span title="JavaScript" class="dots">JS</span>';
 //browsers
 $chromium = '<span title="Chromium" class="dots">CR</span>';
 $opera = '<span title="Opera" class="dots">OP</span>';
@@ -49,32 +51,32 @@ $ios = '<span title="iOS" class="dots">iOS</span>';
 	<th>DETAILS</th>
 	<th class="centering"><?=$right?></th>
 	<th><?=$greaterthan?></th>
-	<th><?=$linux?> <?=$googlechrome?> 61 Native</th>
-	<th><?=$linux?> <?=$googlechrome?> 61 JS</th>
-	<th><?=$windows?> <?=$googlechrome?> 61 Native</th>
-	<th><?=$windows?> <?=$googlechrome?> 61 JS</th>
-	<th><?=$linux?> <?=$firefox?> 55 Native</th>
-	<th><?=$linux?> <?=$firefox?> 55 JS</th>
-	<th><?=$linux?> <?=$chromium?> 61 Native</th>
-	<th><?=$linux?> <?=$chromium?> 61 JS</th>
-	<th><?=$windows?> <?=$firefox?> 55 Native</th>
-  	<th><?=$windows?> <?=$firefox?> 55 JS</th>
-  	<th><?=$windows?> <?=$opera?> 47 Native</th>
-  	<th><?=$windows?> <?=$opera?> 47 JS</th>
-  	<th><?=$windows?> <?=$brave?> 0.18.36 Native</th>
-  	<th><?=$windows?> <?=$brave?> 0.18.36 JS</th>
-  	<th><?=$windows?> <?=$msedge?> 40 Native</th>
-  	<th><?=$windows?> <?=$msedge?> 40 JS</th>
-  	<th><?=$windows?> <?=$comodoDragon?> 58 Native</th>
-  	<th><?=$windows?> <?=$comodoDragon?> 58 JS</th>
-  	<th><?=$macos?> <?=$safari?> 11.0 Native</th>
-  	<th><?=$macos?> <?=$safari?> 11.0 JS</th>
-  	<th><?=$ios?> <?=$safari?> 11.0 Native</th>
-  	<th><?=$ios?> <?=$safari?> 11.0 JS</th>
-  	<th><?=$macos?> <?=$yandex?> 17.9 Native</th>
-  	<th><?=$macos?> <?=$yandex?> 17.9 JS</th>
-  	<th><?=$macos?> <?=$vivaldi?> 1.12 Native</th>
-  	<th><?=$macos?> <?=$vivaldi?> 1.12 JS</th>
+	<th><?=$linux?> <?=$googlechrome?> 61 <?=$native?></th>
+	<th><?=$linux?> <?=$googlechrome?> 61 <?=$javascript?></th>
+	<th><?=$windows?> <?=$googlechrome?> 61 <?=$native?></th>
+	<th><?=$windows?> <?=$googlechrome?> 61 <?=$javascript?></th>
+	<th><?=$linux?> <?=$firefox?> 55 <?=$native?></th>
+	<th><?=$linux?> <?=$firefox?> 55 <?=$javascript?></th>
+	<th><?=$linux?> <?=$chromium?> 61 <?=$native?></th>
+	<th><?=$linux?> <?=$chromium?> 61 <?=$javascript?></th>
+	<th><?=$windows?> <?=$firefox?> 55 <?=$native?></th>
+  	<th><?=$windows?> <?=$firefox?> 55 <?=$javascript?></th>
+  	<th><?=$windows?> <?=$opera?> 47 <?=$native?></th>
+  	<th><?=$windows?> <?=$opera?> 47 <?=$javascript?></th>
+  	<th><?=$windows?> <?=$brave?> 0.18.36 <?=$native?></th>
+  	<th><?=$windows?> <?=$brave?> 0.18.36 <?=$javascript?></th>
+  	<th><?=$windows?> <?=$msedge?> 40 <?=$native?></th>
+  	<th><?=$windows?> <?=$msedge?> 40 <?=$javascript?></th>
+  	<th><?=$windows?> <?=$comodoDragon?> 58 <?=$native?></th>
+  	<th><?=$windows?> <?=$comodoDragon?> 58 <?=$javascript?></th>
+  	<th><?=$macos?> <?=$safari?> 11.0 <?=$native?></th>
+  	<th><?=$macos?> <?=$safari?> 11.0 <?=$javascript?></th>
+  	<th><?=$ios?> <?=$safari?> 11.0 <?=$native?></th>
+  	<th><?=$ios?> <?=$safari?> 11.0 <?=$javascript?></th>
+  	<th><?=$macos?> <?=$yandex?> 17.9 <?=$native?></th>
+  	<th><?=$macos?> <?=$yandex?> 17.9 <?=$javascript?></th>
+  	<th><?=$macos?> <?=$vivaldi?> 1.12 <?=$native?></th>
+  	<th><?=$macos?> <?=$vivaldi?> 1.12 <?=$javascript?></th>
   </tr>
  </table>
 
@@ -87,6 +89,7 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
 
     function replaceterms(testcase, value) {
         value = value.replace("no*", "no");
+        value = value.replace("yes(pixel)", "yes(pix)");
         if (!(testcase in window.recommended)) {
             window.recommended[testcase] = {};
         }
