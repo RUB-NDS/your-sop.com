@@ -1,14 +1,13 @@
 body {
-    width: 1400px;
-    margin: 40px auto;
+    width: 100%;    
+    margin: 20px;
     font-family: 'trebuchet MS', 'Lucida sans', Arial;
-    font-size: 14px;
+    font-size: 13px;
     color: #444;
 }
 
 table {
     *border-collapse: collapse; /* IE7 and lower */
-    border-spacing: 0;
     width: 100%;    
 }
 

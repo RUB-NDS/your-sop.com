@@ -21,7 +21,10 @@
 </div>
 <hr>
 <?php
+// general stuff
 $right ='<span title="Right" class="dots">&#9998;</span>';
+$greaterthan = '<span title="Recommendation based on majority" class="dots">≥</span>';
+//browsers
 $chromium = '<span title="Chromium" class="dots">CR</span>';
 $opera = '<span title="Opera" class="dots">OP</span>';
 $safari = '<span title="Safari" class="dots">SA</span>';
@@ -30,6 +33,13 @@ $msedge = '<span title="Microsoft Edge" class="dots">ME</span>';
 $brave = '<span title="Brave" class="dots">BR</span>';
 $yandex = '<span title="Yandex" class="dots">YD</span>';
 $vivaldi = '<span title="Vivaldi" class="dots">VV</span>';
+$googlechrome = '<span title="Google Chrome" class="dots">GC</span>';
+$firefox = '<span title="Firefox" class="dots">FF</span>';
+// operating systems
+$windows = '<span title="Windows" class="dots"><i>⊞</i></span>';
+$macos = '<span title="macOS" class="dots">🍏</span>';
+$linux = '<span title="Linux" class="dots">🐧</span>';
+$ios = '<span title="iOS" class="dots">iOS</span>';
 ?>
 <table id="tableSOP" class="bordered">
   <tr>
@@ -38,33 +48,33 @@ $vivaldi = '<span title="Vivaldi" class="dots">VV</span>';
 	<th class="centering">TO</th>
 	<th>DETAILS</th>
 	<th class="centering"><?=$right?></th>
-	<th><span title="Recommendation based on majority" class="dots">≥</span></th>
-	<th><span title="Linux" class="dots">🐧</span> <span title="Google Chrome" style="dots">GC</span> 61 Native</th>
-	<th><span title="Linux" class="dots">🐧</span> <span title="Google Chrome" class="dots">GC</span> 61 JS</th>
-	<th><span title="Windows" class="dots"><i>⊞</i></span> <span title="Google Chrome" class="dots">GC</span> 61 Native</th>
-	<th><span title="Windows" class="dots"><i>⊞</i></span> <span title="Google Chrome" class="dots">GC</span> 61 JS</th>
-	<th><span title="Linux" class="dots">🐧</span> <span title="Firefox" class="dots">FF</span> 55 Native</th>
-	<th><span title="Linux" class="dots">🐧</span> <span title="Firefox" class="dots">FF</span> 55 JS</th>
-	<th><span title="Linux" class="dots">🐧</span> <?=$chromium?> 61 Native</th>
-	<th><span title="Linux" class="dots">🐧</span> <?=$chromium?> 61 JS</th>
-	<th><span title="Windows" class="dots"><i>⊞</i></span> <span title="Firefox" class="dots">FF</span> 55 Native</th>
-  	<th><span title="Windows" class="dots"><i>⊞</i></span> <span title="Firefox" class="dots">FF</span> 55 JS</th>
-  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$opera?> 47 Native</th>
-  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$opera?> 47 JS</th>
-  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$brave?> 0.18.36 Native</th>
-  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$brave?> 0.18.36 JS</th>
-  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$msedge?> 40 Native</th>
-  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$msedge?> 40 JS</th>
-  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$comodoDragon?> 58 Native</th>
-  	<th><span title="Windows" class="dots"><i>⊞</i></span> <?=$comodoDragon?> 58 JS</th>
-  	<th><span title="macOS" class="dots">🍏</span> <?=$safari?> 11.0 Native</th>
-  	<th><span title="macOS" class="dots">🍏</span> <?=$safari?> 11.0 JS</th>
-  	<th><span title="iOS" class="dots">iOS</span> <?=$safari?> 11.0 Native</th>
-  	<th><span title="iOS" class="dots">iOS</span> <?=$safari?> 11.0 JS</th>
-  	<th><span title="macOS" class="dots">🍏</span> <?=$yandex?> 17.9 Native</th>
-  	<th><span title="macOS" class="dots">🍏</span> <?=$yandex?> 17.9 JS</th>
-  	<th><span title="macOS" class="dots">🍏</span> <?=$vivaldi?> 1.12 Native</th>
-  	<th><span title="macOS" class="dots">🍏</span> <?=$vivaldi?> 1.12 JS</th>
+	<th><?=$greaterthan?></th>
+	<th><?=$linux?> <?=$googlechrome?> 61 Native</th>
+	<th><?=$linux?> <?=$googlechrome?> 61 JS</th>
+	<th><?=$windows?> <?=$googlechrome?> 61 Native</th>
+	<th><?=$windows?> <?=$googlechrome?> 61 JS</th>
+	<th><?=$linux?> <?=$firefox?> 55 Native</th>
+	<th><?=$linux?> <?=$firefox?> 55 JS</th>
+	<th><?=$linux?> <?=$chromium?> 61 Native</th>
+	<th><?=$linux?> <?=$chromium?> 61 JS</th>
+	<th><?=$windows?> <?=$firefox?> 55 Native</th>
+  	<th><?=$windows?> <?=$firefox?> 55 JS</th>
+  	<th><?=$windows?> <?=$opera?> 47 Native</th>
+  	<th><?=$windows?> <?=$opera?> 47 JS</th>
+  	<th><?=$windows?> <?=$brave?> 0.18.36 Native</th>
+  	<th><?=$windows?> <?=$brave?> 0.18.36 JS</th>
+  	<th><?=$windows?> <?=$msedge?> 40 Native</th>
+  	<th><?=$windows?> <?=$msedge?> 40 JS</th>
+  	<th><?=$windows?> <?=$comodoDragon?> 58 Native</th>
+  	<th><?=$windows?> <?=$comodoDragon?> 58 JS</th>
+  	<th><?=$macos?> <?=$safari?> 11.0 Native</th>
+  	<th><?=$macos?> <?=$safari?> 11.0 JS</th>
+  	<th><?=$ios?> <?=$safari?> 11.0 Native</th>
+  	<th><?=$ios?> <?=$safari?> 11.0 JS</th>
+  	<th><?=$macos?> <?=$yandex?> 17.9 Native</th>
+  	<th><?=$macos?> <?=$yandex?> 17.9 JS</th>
+  	<th><?=$macos?> <?=$vivaldi?> 1.12 Native</th>
+  	<th><?=$macos?> <?=$vivaldi?> 1.12 JS</th>
   </tr>
  </table>
 
@@ -198,182 +208,41 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
         $('#tableSOP').append(content);
     });
 
-    $.getJSON("jsonNew/linux-Chrome-61.0-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "linuxGC61JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
+    function addbrowserData (file, testcaseSuffix) {
+    	$.getJSON(file, function(data) {
+        	$.each(data, function(testcase, value) {
+            	var testcase_browser = testcase + testcaseSuffix;
+            	document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
+        	});
+    	});
+    }
 
-    $.getJSON("jsonNew/windows-Chrome-61.0-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsGC61Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/windows-Chrome-61.0-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsGC61JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/linux-Firefox-55.0-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "linuxFF55Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/linux-Firefox-55.0-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "linuxFF55JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/linux-Chromium-61-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "linuxChromium61Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/linux-Chromium-61-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "linuxChromium61JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/windows-Firefox-55.0-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsFF55Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/windows-Firefox-55.0-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsFF55JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/windows-Opera-47.0-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsOpera47Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/windows-Opera-47.0-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsOpera47JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/windows-Brave-0.18.36-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsBrave018Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/windows-Brave-0.18.36-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsBrave018JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/windows-Edge-40-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsEdge40Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/windows-Edge-40-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsEdge40JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/windows-ComodoDragon-58-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsComodoDragon58Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-
-    $.getJSON("jsonNew/windows-ComodoDragon-58-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "windowsComodoDragon58JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/osx-Safari-11.0-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "osxSafari11Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/osx-Safari-11.0-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "osxSafari11JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/ios-Safari-11.0-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "iosSafari11Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/ios-Safari-11.0-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "iosSafari11JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/osx-Yandex-17.9.1.888-native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "osxYandex17Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/osx-Yandex-17.9.1.888-js.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "osxYandex17JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
-    $.getJSON("jsonNew/osx-Vivaldi-1.12.955.38-Native.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "osxVivaldi112Native";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
+	addbrowserData ("jsonNew/linux-Chrome-61.0-js.json", "linuxGC61JS");
+	addbrowserData ("jsonNew/windows-Chrome-61.0-native.json", "windowsGC61Native");
+	addbrowserData ("jsonNew/windows-Chrome-61.0-js.json", "windowsGC61JS");
+	addbrowserData ("jsonNew/linux-Firefox-55.0-native.json", "linuxFF55Native");
+	addbrowserData ("jsonNew/linux-Firefox-55.0-js.json", "linuxFF55JS");
+	addbrowserData ("jsonNew/linux-Chromium-61-native.json", "linuxChromium61Native");
+	addbrowserData ("jsonNew/linux-Chromium-61-js.json", "linuxChromium61JS");
+	addbrowserData ("jsonNew/windows-Firefox-55.0-native.json", "windowsFF55Native");
+	addbrowserData ("jsonNew/windows-Firefox-55.0-js.json", "windowsFF55JS");
+	addbrowserData ("jsonNew/windows-Opera-47.0-native.json", "windowsOpera47Native");
+	addbrowserData ("jsonNew/windows-Opera-47.0-js.json", "windowsOpera47JS");
+	addbrowserData ("jsonNew/windows-Brave-0.18.36-native.json", "windowsBrave018Native");
+	addbrowserData ("jsonNew/windows-Brave-0.18.36-js.json", "windowsBrave018JS");
+	addbrowserData ("jsonNew/windows-Edge-40-native.json", "windowsEdge40Native");
+	addbrowserData ("jsonNew/windows-Edge-40-js.json", "windowsEdge40JS");
+	addbrowserData ("jsonNew/windows-ComodoDragon-58-native.json", "windowsComodoDragon58Native");
+	addbrowserData ("jsonNew/windows-ComodoDragon-58-js.json", "windowsComodoDragon58JS");
+	addbrowserData ("jsonNew/osx-Safari-11.0-native.json", "osxSafari11Native");
+	addbrowserData ("jsonNew/osx-Safari-11.0-js.json", "osxSafari11JS");
+	addbrowserData ("jsonNew/ios-Safari-11.0-native.json", "iosSafari11Native");
+	addbrowserData ("jsonNew/ios-Safari-11.0-js.json", "iosSafari11JS");
+	addbrowserData ("jsonNew/osx-Yandex-17.9.1.888-native.json", "osxYandex17Native");
+	addbrowserData ("jsonNew/osx-Yandex-17.9.1.888-js.json", "osxYandex17JS");
+	addbrowserData ("jsonNew/osx-Vivaldi-1.12.955.38-Native.json", "osxVivaldi112Native");
+	addbrowserData ("jsonNew/osx-Vivaldi-1.12.955.38-JS.json", "osxVivaldi112JS");
     
-    $.getJSON("jsonNew/osx-Vivaldi-1.12.955.38-JS.json", function(data) {
-        $.each(data, function(testcase, value) {
-            var testcase_browser = testcase + "osxVivaldi112JS";
-            document.getElementById(testcase_browser).textContent += replaceterms(testcase, value.result);
-        });
-    });
-
 }); /* make the same results invisible for the user */
 
 function mark() {
