@@ -15,7 +15,7 @@
 <hr>
 <div style="display: flex">
 	<span style="float: left;  width: 450px;"><button onclick="window.location='http://your-sop.com/index.php'" style="color:red">Your SOP</button></span> 
-	<span><button onclick="unmark()">Show all</button> <button onclick="console.log('Calculating ...'); var rows = removeNA();mark();shownumbers(rows);console.log('... ready');">Only display differences</button> <button onclick="colorize()" title="Colorizing with red (no) , green (yes) and blue (partial)">Colorize</button> <button onclick="filter()">Do not display  yes*</button></span> 
+	<span><button onclick="location.reload()">Show all</button> <button onclick="console.log('Calculating ...'); var rows = removeNA();mark();shownumbers(rows);console.log('... ready');">Only display differences</button> <button onclick="colorize()" title="Colorizing with red (no) , green (yes) and blue (partial)">Colorize</button> <button onclick="filter()">Do not display  yes*</button></span> 
 </div>
 <div style="center" id="numbers">
 </div>
@@ -177,7 +177,6 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
             content += array[6];
         }
 
-
         content += "</td>";
         content += "<td id='" + testcase + "recommended' style='background-color: #EFEFEF'></td>";
         content += "<td title='linuxGC61Native' id='" + testcase + "linuxGC61Native'>" + replaceterms(testcase, value.result) + "</td>";
@@ -253,11 +252,15 @@ function mark() {
     var trRow;
     for (var i = 1; i < document.querySelectorAll("tr").length; ++i) {
         trRow = document.querySelectorAll("tr")[i];
-        if (
-        trRow.querySelectorAll("td")[6].textContent === trRow.querySelectorAll("td")[7].textContent && trRow.querySelectorAll("td")[7].textContent === trRow.querySelectorAll("td")[8].textContent && trRow.querySelectorAll("td")[8].textContent === trRow.querySelectorAll("td")[9].textContent && trRow.querySelectorAll("td")[9].textContent === trRow.querySelectorAll("td")[10].textContent && trRow.querySelectorAll("td")[10].textContent === trRow.querySelectorAll("td")[11].textContent && trRow.querySelectorAll("td")[11].textContent === trRow.querySelectorAll("td")[12].textContent && trRow.querySelectorAll("td")[12].textContent === trRow.querySelectorAll("td")[13].textContent && trRow.querySelectorAll("td")[13].textContent === trRow.querySelectorAll("td")[14].textContent && trRow.querySelectorAll("td")[14].textContent === trRow.querySelectorAll("td")[15].textContent && trRow.querySelectorAll("td")[15].textContent === trRow.querySelectorAll("td")[16].textContent && trRow.querySelectorAll("td")[16].textContent === trRow.querySelectorAll("td")[17].textContent && trRow.querySelectorAll("td")[17].textContent === trRow.querySelectorAll("td")[18].textContent && trRow.querySelectorAll("td")[18].textContent === trRow.querySelectorAll("td")[19].textContent && trRow.querySelectorAll("td")[19].textContent === trRow.querySelectorAll("td")[20].textContent && trRow.querySelectorAll("td")[20].textContent === trRow.querySelectorAll("td")[21].textContent && trRow.querySelectorAll("td")[21].textContent === trRow.querySelectorAll("td")[22].textContent && trRow.querySelectorAll("td")[22].textContent === trRow.querySelectorAll("td")[23].textContent && trRow.querySelectorAll("td")[23].textContent === trRow.querySelectorAll("td")[24].textContent && trRow.querySelectorAll("td")[24].textContent === trRow.querySelectorAll("td")[25].textContent && trRow.querySelectorAll("td")[25].textContent === trRow.querySelectorAll("td")[26].textContent && trRow.querySelectorAll("td")[26].textContent === trRow.querySelectorAll("td")[27].textContent && trRow.querySelectorAll("td")[27].textContent === trRow.querySelectorAll("td")[28].textContent && trRow.querySelectorAll("td")[28].textContent === trRow.querySelectorAll("td")[29].textContent && trRow.querySelectorAll("td")[29].textContent === trRow.querySelectorAll("td")[30].textContent && trRow.querySelectorAll("td")[30].textContent === trRow.querySelectorAll("td")[31].textContent
-
-        ) {
-            trRow.setAttribute("class", "displaysettings");
+        for (var y = 7; y < trRow.querySelectorAll("td").length; y++) {
+    		// first entry is in column six; compare the current with the last column entry; do not make the row invisible when an entry has a different value compared to his last one
+        	if (trRow.querySelectorAll("td")[y].textContent != trRow.querySelectorAll("td")[y-1].textContent) {
+        		 break; // reaks the loop and continues executing the code after the loop
+        	}
+        	// make the row invisible when even the last to columns (browser test cases) have equal results
+        	if (y === (trRow.querySelectorAll("td").length-1)) {
+        		trRow.setAttribute("class", "displaysettings");
+        	}
         }
     }
 }
@@ -275,11 +278,6 @@ function colorize() {
     }
 }
 
-function unmark() {
-    location.reload();
-}
-
-
 function shownumbers(rows) {
     var selectorAllLength = document.querySelectorAll(".displaysettings").length;
     document.getElementById("numbers").innerHTML = "<center><h3>You have detected " + (rows - selectorAllLength) + " differences within " + rows + " applicable test cases (" + Math.round((rows - selectorAllLength) * 10000 / rows) / 100 + "%).</h3></center>";
@@ -290,10 +288,8 @@ function removeNA() {
     for (x = 5; x < 9; x++) {
         console.log("Checking column " + x + " for not applicable (n.a.) cases");
         for (i = 0; i < document.querySelectorAll("tr").length; i++) {
-            if (typeof trSelection[i].querySelectorAll("td")[x] !== 'undefined') {
-                if (document.querySelectorAll("tr")[i].querySelectorAll("td")[x].textContent === "n.a.") {
+            if (typeof trSelection[i].querySelectorAll("td")[x] !== 'undefined' && document.querySelectorAll("tr")[i].querySelectorAll("td")[x].textContent === "n.a.") {
                     document.querySelectorAll("tr")[i].remove();
-                }
             }
         }
     }
