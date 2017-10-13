@@ -26,6 +26,7 @@ $right ='<span title="Right" class="dots">&#9998;</span>';
 $greaterthan = '<span title="Recommendation based on majority" class="dots">≥</span>';
 $native = '<span title="Native" class="dots">NA</span>';
 $javascript = '<span title="JavaScript" class="dots">JS</span>';
+$nightly = '<span title="Nightly" class="dots">NL</span>';
 //browsers
 $chromium = '<span title="Chromium" class="dots">CR</span>';
 $opera = '<span title="Opera" class="dots">OP</span>';
@@ -69,6 +70,7 @@ $ios = '<span title="iOS" class="dots">iOS</span>';
   	<th><?=$windows?> <?=$msedge?> 40 <?=$javascript?></th>
   	<th><?=$windows?> <?=$comodoDragon?> 58 <?=$native?></th>
   	<th><?=$windows?> <?=$comodoDragon?> 58 <?=$javascript?></th>
+	<th><?=$macos?> <?=$firefox?> 58 <?=$nightly?> <?=$native?></th>
   	<th><?=$macos?> <?=$safari?> 11.0 <?=$native?></th>
   	<th><?=$macos?> <?=$safari?> 11.0 <?=$javascript?></th>
   	<th><?=$ios?> <?=$safari?> 11.0 <?=$native?></th>
@@ -197,6 +199,7 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
         content += "<td title='windowsEdge40JS' id='" + testcase + "windowsEdge40JS'></td>";
         content += "<td title='windowsComodoDragon58Native' id='" + testcase + "windowsComodoDragon58Native'></td>";
         content += "<td title='windowsComodoDragon58JS' id='" + testcase + "windowsComodoDragon58JS'></td>";
+        content += "<td title='macosFF58NightlyNative' id='" + testcase + "macosFF58NightlyNative'></td>";
         content += "<td title='osxSafari11Native' id='" + testcase + "osxSafari11Native'></td>";
         content += "<td title='osxSafari11JS' id='" + testcase + "osxSafari11JS'></td>";
         content += "<td title='iosSafari11Native' id='" + testcase + "iosSafari11Native'></td>";
@@ -236,6 +239,7 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
 	addbrowserData ("jsonNew/windows-Edge-40-js.json", "windowsEdge40JS");
 	addbrowserData ("jsonNew/windows-ComodoDragon-58-native.json", "windowsComodoDragon58Native");
 	addbrowserData ("jsonNew/windows-ComodoDragon-58-js.json", "windowsComodoDragon58JS");
+	addbrowserData ("jsonNew/macos-Firefox-Nightly-58.0-native.json", "macosFF58NightlyNative");
 	addbrowserData ("jsonNew/osx-Safari-11.0-native.json", "osxSafari11Native");
 	addbrowserData ("jsonNew/osx-Safari-11.0-js.json", "osxSafari11JS");
 	addbrowserData ("jsonNew/ios-Safari-11.0-native.json", "iosSafari11Native");
