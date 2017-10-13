@@ -189,7 +189,7 @@ function generateReport() {
 	include(__DIR__ . "/include/ed_mp3_ee_audio.php");
 	?>
 
-	<p align="right"><a href="https://www.hackmanit.de/impressum-en.html">Contact</a> | <a href="#title">Jump to the top</a></p>
+	<p align="right"><a href="https://www.nds.rub.de/chair/contact/">Contact</a> | <a href="#title">Jump to the top</a></p>
 	
 	<?php
 	include(__DIR__ . "/include/execute_tests.php");

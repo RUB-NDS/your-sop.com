@@ -262,6 +262,6 @@ function shownumbers(rows) {
  }
   
 </script>
-	<p align="right"><a href="https://www.hackmanit.de/impressum-en.html">Contact</a> | <a href="#title">Jump to the top</a></p>
+	<p align="right"><a href="https://www.nds.rub.de/chair/contact/">Contact</a> | <a href="#title">Jump to the top</a></p>
 </body>
 </html>
