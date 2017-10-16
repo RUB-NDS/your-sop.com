@@ -70,8 +70,7 @@ $ios = '<span title="iOS" class="dots">iOS</span>';
   	<th><?=$windows?> <?=$msedge?> 40 <?=$javascript?></th>
   	<th><?=$windows?> <?=$comodoDragon?> 58 <?=$native?></th>
   	<th><?=$windows?> <?=$comodoDragon?> 58 <?=$javascript?></th>
-	<th><?=$macos?> <?=$firefox?> 58.0a1-2017-10-12 <?=$nightly?> <?=$native?></th>
-	<th><?=$macos?> <?=$firefox?> 58.0a1-2017-10-15 <?=$nightly?> <?=$native?></th>
+	<th><?=$macos?> <?=$firefox?> 58.0a1 <?=$nightly?> <?=$native?></th>
   	<th><?=$macos?> <?=$safari?> 11.0 <?=$native?></th>
   	<th><?=$macos?> <?=$safari?> 11.0 <?=$javascript?></th>
   	<th><?=$ios?> <?=$safari?> 11.0 <?=$native?></th>
@@ -200,7 +199,6 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
         content += "<td title='windowsEdge40JS' id='" + testcase + "windowsEdge40JS'></td>";
         content += "<td title='windowsComodoDragon58Native' id='" + testcase + "windowsComodoDragon58Native'></td>";
         content += "<td title='windowsComodoDragon58JS' id='" + testcase + "windowsComodoDragon58JS'></td>";
-        content += "<td title='macos-Firefox-Nightly-58.0a1-2017-10-12-native' id='" + testcase + "macos-Firefox-Nightly-58.0a1-2017-10-12-native'></td>";
         content += "<td title='macos-Firefox-Nightly-58.0a1-2017-10-15-native' id='" + testcase + "macos-Firefox-Nightly-58.0a1-2017-10-15-native'></td>";
         content += "<td title='osxSafari11Native' id='" + testcase + "osxSafari11Native'></td>";
         content += "<td title='osxSafari11JS' id='" + testcase + "osxSafari11JS'></td>";
@@ -241,7 +239,6 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
 	addbrowserData ("jsonNew/windows-Edge-40-js.json", "windowsEdge40JS");
 	addbrowserData ("jsonNew/windows-ComodoDragon-58-native.json", "windowsComodoDragon58Native");
 	addbrowserData ("jsonNew/windows-ComodoDragon-58-js.json", "windowsComodoDragon58JS");
-	addbrowserData ("jsonNew/macos-Firefox-Nightly-58.0a1-2017-10-12-native.json", "macos-Firefox-Nightly-58.0a1-2017-10-12-native");
 	addbrowserData ("jsonNew/macos-Firefox-Nightly-58.0a1-2017-10-15-native.json", "macos-Firefox-Nightly-58.0a1-2017-10-15-native");
 	addbrowserData ("jsonNew/osx-Safari-11.0-native.json", "osxSafari11Native");
 	addbrowserData ("jsonNew/osx-Safari-11.0-js.json", "osxSafari11JS");
