@@ -273,11 +273,11 @@ function colorize() {
     var cells = document.querySelectorAll("td");
     for (var i = 1; i < document.querySelectorAll("td").length; ++i) {
         if (cells[i].textContent.indexOf("yes") === 0) {
-            cells[i].style.backgroundColor = "green";
+            cells[i].style.backgroundColor = "OrangeRed";
         } else if (cells[i].textContent.indexOf("partial") === 0) {
             cells[i].style.backgroundColor = "RoyalBlue";
         } else if (cells[i].textContent.indexOf("no") === 0) {
-            cells[i].style.backgroundColor = "OrangeRed";
+            cells[i].style.backgroundColor = "green";
         }
     }
 }
