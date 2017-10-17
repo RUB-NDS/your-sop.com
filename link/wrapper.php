@@ -123,7 +123,7 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		};
 		<?php
 		$url="$PROTOCOL";
-		if (substr( $to, 3, 1 ) === "A") {
+		if (substr( $to, 4, 1 ) === "A") {
 			$url .= $SERVER_A;
 		} else {
 			$url .= $SERVER_B;
