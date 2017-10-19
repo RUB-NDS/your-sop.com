@@ -4,6 +4,7 @@ header("Cache-Control: no-cache, must-revalidate"); /* HTTP/1.1 */
 header("Expires: -1"); /* Always invalid */
 
 include(__DIR__ . "/../util/cors.php");
+include(__DIR__ . "/../util/suborigin-from.php");
 header("Content-type: text/html");
 
 $ee = "LINK";
@@ -133,6 +134,7 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		$url .= "?origin=$origin";
 		$url .= "&credentials=$credentials";
 		$url .= "&func=$id";
+		$url .= "&to=".$to;
 		?>
 		ee.type="text/css";
 		ee.rel="stylesheet";
@@ -231,6 +233,7 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		$url .= "?origin=$origin";
 		$url .= "&credentials=$credentials";
 		$url .= "&func=$id";
+		$url .= "&to=".$to;
 		?>
 		ee.type="text/css";
 		ee.rel="stylesheet";
