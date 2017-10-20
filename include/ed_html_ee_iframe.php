@@ -90,6 +90,7 @@ foreach(array("HD A") as $from) {
 				$url .=".php";
 				$url .= "?func=$id";
 				$url .= "&exec=".urlencode($_GET["exec"]);
+				$url .= "&to=".urlencode($to);
 				?>
 				document.free = true;
 			}
@@ -189,6 +190,7 @@ foreach(array("ED A", "ED B") as $from) {
 					break;
 			}
 			$url .= "&func=$id";
+			$url .= "&to=".urlencode($from);
 			$url .= "&exec=".urlencode($_GET["exec"]);
 			echo $url ?>';
 			document.getElementById("loadbar").appendChild(ee); /* load the content */

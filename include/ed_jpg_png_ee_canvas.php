@@ -90,6 +90,7 @@ function <?php echo $id; ?>() {
 	$url .= $PATH;
 	$url .= "img/png.php";
 	$url .= "?origin=$origin";
+	$url .= "&to=".urlencode($to);
 	$url .= "&credentials=$credentials";
 	$url .= "&func=$id";
 	$url .= "&exec=".urlencode($_GET["exec"]);

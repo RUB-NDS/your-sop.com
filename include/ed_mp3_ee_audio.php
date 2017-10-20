@@ -76,7 +76,7 @@ function <?php echo $id; ?>(){
         depleteQueue();
 	};
 	var source = document.createElement('source');
-	source.src = '<?php echo $url; ?>audio/mp3.php?exec=<?php echo urlencode($_GET["exec"]);?>';
+	source.src = '<?php echo $url; ?>audio/mp3.php?exec=<?php echo urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
 	source.type = 'audio/mpeg';
 	audio.appendChild(source);
 	

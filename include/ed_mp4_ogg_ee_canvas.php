@@ -93,6 +93,7 @@ function <?php echo $id; ?>() {
 	$param .= "&credentials=$credentials";
 	$param .= "&func=$id";
 	$param .= "&exec=".urlencode($_GET["exec"]);
+	$param .= "&to=".urlencode($to);
 	?>
 
 	var source2 = document.createElement('source');

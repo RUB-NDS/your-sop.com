@@ -87,6 +87,7 @@ foreach(array("HD A") as $from) {
 				$url .= "_script";
 			}
 			$url .= ".php?operation=$jsfunc";
+			$url .= "&to=".urlencode($to);
 			$url .= "&func=$id";
 			$url .= "&exec=".urlencode($_GET["exec"]);
 			echo $url ?>';
@@ -155,6 +156,7 @@ foreach(array("ED A", "ED B") as $from) {
 					break;
 			}
 			$url .= "&func=$id";
+			$url .= "&to=".urlencode($from);
 			echo $url ?>';
 			document.body.appendChild(ee); /* load the content */
 			document.free = true;

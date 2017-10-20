@@ -92,6 +92,7 @@ img.onload = function() {
 	$url .= $PATH;
 	$url .= "img/svg.php";
 	$url .= "?origin=$origin";
+	$url .= "&to=".urlencode($to);
 	$url .= "&credentials=$credentials";
 	$url .= "&func=$id";
 	$url .= "&exec=".urlencode($_GET["exec"]);

@@ -70,6 +70,7 @@ foreach(array("HD A") as $from) {
 			$url .= $PATH;
 			$url .= "img/svg.php";
 			$url .= "?func=$id";
+			$url .= "&to=".urlencode($to);
 			$url .= "&exec=".urlencode($_GET["exec"]);
 			$src = ($ee==="object")?"data":"src";
 			?>
@@ -113,6 +114,7 @@ foreach(array("HD A") as $from) {
 			$url .= $PATH;
 			$url .= "img/svg_script.php"; /* if executed, a postMessage will be sent */
 			$url .= "?func=$idx";
+			$url .= "&to=".urlencode($to);
 			$url .= "&exec=".urlencode($_GET["exec"]);
 			$src = ($ee==="object")?"data":"src";	
 			echo $url ?>';
@@ -171,6 +173,7 @@ foreach(array("ED A", "ED B") as $from) {
 					break;
 			}
 			$url .= "&func=$id";
+			$url .= "&to=".urlencode($from);
 			$url .= "&exec=".urlencode($_GET["exec"]);
 			$src = ($ee==="object")?"data":"src";
 			echo $src ?>='<?php echo $url ?>';

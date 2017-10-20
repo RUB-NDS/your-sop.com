@@ -4,6 +4,7 @@ header("Cache-Control: no-cache, must-revalidate"); /* HTTP/1.1 */
 header("Expires: -1"); /* Always invalid */
 
 include(__DIR__ . "/../util/cors.php");
+include(__DIR__ . "/../util/suborigin-to.php");
 header("Content-type: image/svg+xml");
 ?>
 <svg xmlns="http://www.w3.org/2000/svg">

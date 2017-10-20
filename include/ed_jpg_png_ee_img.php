@@ -53,6 +53,7 @@ foreach(array(array("A", "$URL_A"), array("B", "$URL_B")) as $case){
 	$name = $case[0];
 	$url  = $case[1];
 	$id = "test_HD_A_IMG_ED_".$name."_r";
+
 ?>
 function <?php echo $id . "_onload"; ?>(img, id) {
     set(id, (img.width == 111) ? 'partial' : 'no');
@@ -69,7 +70,7 @@ function <?php echo $id; ?>(){
         call(<?php echo $id . "_onload"; ?>, args);
         depleteQueue();
 	};
-	img.src='<?php echo $url; ?>img/png.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
+	img.src='<?php echo $url; ?>img/png.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]) . "&to=ED " . urlencode($name);?>';
     document.free = true;
 } 
 <?php

@@ -7,7 +7,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>Modeling the Same-Origin Policy for DOM Access with ABAC</title>
 		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.php">
 		<style>
 		.displaysettings { display: none;}
 		.centering { margin: auto; }

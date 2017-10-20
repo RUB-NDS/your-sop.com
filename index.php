@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 include(__DIR__ . "/config.php");
-
+if ($_GET['exec'] === "suborigin") { header("Suborigin: your"); }
 $_SESSION['write'] = 1;
 
 $executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(), "ed_jpg_png_ee_canvas" => array(), "ed_jpg_png_ee_img" => array(), "ed_js_ee_script" => array(), "ed_svg_ee_canvas" => array(), "ed_svg_ee_iframe_object_embed" => array(), "ed_mp4_ogg_ee_video" => array(), "ed_mp4_ogg_ee_canvas" => array(), "ed_webvtt_ee_track" => array(), "ed_jpg_png_ee_picture" => array(), "ed_mp3_ee_audio" => array());
@@ -12,7 +12,7 @@ $executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(),
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>Formally defining the Same-Origin Policy for the HTML Context</title>
 	</head>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.php">
 	<script>
 	if (!top.location.href.split("#")[0].startsWith('<?php echo $MAIN_FILE; ?>?exec=')) {
 		top.location.href = '<?php echo $MAIN_FILE; ?>?exec=native';
@@ -140,7 +140,7 @@ function generateReport() {
 	<hr>
 	<div style="display: flex">
 	  <span style="float: left;  width: 450px;"><button onclick="window.location='stats.php'">Other SOP's</button><button onclick="window.location='statsNew.php'">New Other SOP's</button></span>
-	  <span><select style="height:100%" name="exec" onchange="top.location.href = '<?php echo $MAIN_FILE; ?>?exec=' + this.value"><option value="native">native</option><option <?php if (isset($_GET['exec']) && $_GET['exec'] === "js") { echo "selected"; }?> value="js">JavaScript</option></select></span>
+	  <span><select style="height:100%" name="exec" onchange="top.location.href = '<?php echo $MAIN_FILE; ?>?exec=' + this.value"><option value="native">Native</option><option <?php if (isset($_GET['exec']) && $_GET['exec'] === "js") { echo "selected"; }?> value="js">JavaScript</option><option <?php if (isset($_GET['exec']) && $_GET['exec'] === "suborigin") { echo "selected"; }?> value="suborigin">Suborigin</option></select></span>
 	  <span><button onclick="for (i = 0; i < document.querySelectorAll('table').length; i++) { document.querySelectorAll('table')[i].style.display='none'; }">Hide all</button> <!--<button onclick="allTestGroups(); for (i = 0; i < document.querySelectorAll('table').length; i++) { document.querySelectorAll('table')[i].style.display='table'; }">Display all</button>--><button onclick="generateReport()">Generate Report</button></span>
 	</div>
 	<hr>

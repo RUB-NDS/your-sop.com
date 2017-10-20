@@ -70,12 +70,12 @@ function <?php echo $id; ?>(){
         depleteQueue();
 	};
     var source2 = document.createElement('source');
-    source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
+    source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]) . "&to=ED " . urlencode($name);?>';
     source2.type = 'video/ogg';
     video.appendChild(source2);
 
 	var source = document.createElement('source');
-	source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]);?>';
+	source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]) . "&to=ED " . urlencode($name);?>';
 	source.type = 'video/mp4';
 	video.appendChild(source);
 	
