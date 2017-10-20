@@ -7,7 +7,7 @@ $SERVER_A="your-sop.com";
 
 // Suborigin test cases must have the same server B and different headers
 if ($_GET['exec'] === "suborigin") {
-	$SERVER_B=$SERVER_A;
+	$SERVER_B="your-sop.com";
 } else {
 	$SERVER_B="other-domain.org";
 }

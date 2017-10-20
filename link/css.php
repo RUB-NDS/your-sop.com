@@ -5,7 +5,7 @@ header("Expires: -1"); /* Always invalid */
 
 include("../util/cors.php");
 include(__DIR__ . "/../util/suborigin-to.php");
-header("Content-type: text/html");
+//header("Content-type: text/html");
 header('Content-Type: text/css');
 ?>
 h1 {

@@ -124,7 +124,7 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		};
 		<?php
 		$url="$PROTOCOL";
-		if (substr( $to, 4, 1 ) === "A") {
+		if (substr( $to, 3, 1 ) === "A") {
 			$url .= $SERVER_A;
 		} else {
 			$url .= $SERVER_B;
@@ -134,7 +134,9 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		$url .= "?origin=$origin";
 		$url .= "&credentials=$credentials";
 		$url .= "&func=$id";
-		$url .= "&to=".$to;
+		$url .= "&to=".urlencode($to);
+		$url .= "&from=".urlencode($from);
+		$url .= "&exec=".urlencode($_GET["exec"]);
 		?>
 		ee.type="text/css";
 		ee.rel="stylesheet";
@@ -222,10 +224,12 @@ $operation = readVar("operation", array("read", "write", "execute"));
 			depleteQueue();
 		};
 		<?php
-		$url="$PROTOCOL";
+		$url=$PROTOCOL;
 		if (substr( $to, 3, 1 ) === "A") {
 			$url .= $SERVER_A;
 		} else {
+			// I do not know why the hell $SERVER_B is set to 1 instead to the string, but it can be fixed with the following include
+			include(__DIR__ . "/../config.php");
 			$url .= $SERVER_B;
 		}
 		$url .= $PATH;
@@ -233,7 +237,9 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		$url .= "?origin=$origin";
 		$url .= "&credentials=$credentials";
 		$url .= "&func=$id";
-		$url .= "&to=".$to;
+		$url .= "&to=".urlencode($to);
+		$url .= "&from=".urlencode($from);
+		$url .= "&exec=".urlencode($_GET["exec"]);
 		?>
 		ee.type="text/css";
 		ee.rel="stylesheet";

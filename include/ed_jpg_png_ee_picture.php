@@ -71,7 +71,7 @@ function <?php echo $id; ?>(){
         call(<?php echo $id . "_onload"; ?>, args);
         depleteQueue();
 	};
-	source.srcset ='<?php echo $url; ?>img/png.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"])."&to=ED+". $name;?>';
+	source.srcset ='<?php echo $url; ?>img/png.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"])."&to=ED+". urlencode($name);?>';
     source.media = "(min-width: 1px)";
     picture.appendChild(source);
     picture.appendChild(img);
