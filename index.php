@@ -1,7 +1,9 @@
 <?php
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 include(__DIR__ . "/config.php");
-if ($_GET['exec'] === "suborigin") { header("Suborigin: your"); }
+if (isset($_GET['exec'])) {
+ if($_GET['exec'] === "suborigin") { header("Suborigin: your"); }
+}
 $_SESSION['write'] = 1;
 
 $executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(), "ed_jpg_png_ee_canvas" => array(), "ed_jpg_png_ee_img" => array(), "ed_js_ee_script" => array(), "ed_svg_ee_canvas" => array(), "ed_svg_ee_iframe_object_embed" => array(), "ed_mp4_ogg_ee_video" => array(), "ed_mp4_ogg_ee_canvas" => array(), "ed_webvtt_ee_track" => array(), "ed_jpg_png_ee_picture" => array(), "ed_mp3_ee_audio" => array());
