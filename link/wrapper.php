@@ -123,8 +123,9 @@ $operation = readVar("operation", array("read", "write", "execute"));
 			depleteQueue();
 		};
 		<?php
+		include(__DIR__ . "/../config.php");
 		$url="$PROTOCOL";
-		if (substr( $to, 3, 1 ) === "A") {
+		if (substr( $from, 3, 1 ) === "A") { /* this was to but when loading the stylesheet in this case we still have to use from*/
 			$url .= $SERVER_A;
 		} else {
 			$url .= $SERVER_B;
@@ -224,12 +225,12 @@ $operation = readVar("operation", array("read", "write", "execute"));
 			depleteQueue();
 		};
 		<?php
+		include(__DIR__ . "/../config.php");
 		$url=$PROTOCOL;
 		if (substr( $to, 3, 1 ) === "A") {
 			$url .= $SERVER_A;
 		} else {
 			// I do not know why the hell $SERVER_B is set to 1 instead to the string, but it can be fixed with the following include
-			include(__DIR__ . "/../config.php");
 			$url .= $SERVER_B;
 		}
 		$url .= $PATH;
