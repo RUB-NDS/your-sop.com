@@ -1,7 +1,7 @@
 <?php
 if (!isset($SERVER_B) && !isset($SERVER_A)) { die(); }
 
-if (isset($_GET['from']) && $SERVER_B=$SERVER_A) {
+if (isset($_GET['from']) && $SERVER_B=$SERVER_A && isset($_GET['exec']) && $_GET['exec'] === "suborigin") {
 	$fromOrigin = substr($_GET['from'],3,1);
 	switch ($fromOrigin) {
 		case "A":
