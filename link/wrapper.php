@@ -230,7 +230,6 @@ $operation = readVar("operation", array("read", "write", "execute"));
 		if (substr( $to, 3, 1 ) === "A") {
 			$url .= $SERVER_A;
 		} else {
-			// I do not know why the hell $SERVER_B is set to 1 instead to the string, but it can be fixed with the following include
 			$url .= $SERVER_B;
 		}
 		$url .= $PATH;

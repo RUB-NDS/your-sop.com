@@ -6,7 +6,7 @@ if (isset($_GET['origin'])) {
 	switch ($case) {
 		case "A":
 			if($_GET['exec'] === "suborigin") { 
-				// https://w3c.github.io/webappsec-suborigins/#cors-ac
+				/* https://w3c.github.io/webappsec-suborigins/#cors-ac */
 				header("Access-Control-Allow-Suborigin: your");
 				header("Access-Control-Allow-Origin: http-so://your.your-sop.com");
 			} else {
