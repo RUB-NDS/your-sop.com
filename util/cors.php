@@ -5,13 +5,27 @@ if (isset($_GET['origin'])) {
 	$case = $_GET['origin'];
 	switch ($case) {
 		case "A":
-			header("Access-Control-Allow-Origin: $PROTOCOL$SERVER_A");
+			if($_GET['exec'] === "suborigin") { 
+				// https://w3c.github.io/webappsec-suborigins/#cors-ac
+				header("Access-Control-Allow-Suborigin: your");
+				header("Access-Control-Allow-Origin: http-so://your.your-sop.com");
+			} else {
+				header("Access-Control-Allow-Origin: $PROTOCOL$SERVER_A");
+			}	
 			break;
 		case "B":
-			header("Access-Control-Allow-Origin: $PROTOCOL$SERVER_B");		
+			if($_GET['exec'] === "suborigin") { 
+				header("Access-Control-Allow-Suborigin: other");
+				header("Access-Control-Allow-Origin: http-so://other.your-sop.com");
+			} else {
+				header("Access-Control-Allow-Origin: $PROTOCOL$SERVER_B");		
+			}
 			break;
 		case "wildcard":
 			header("Access-Control-Allow-Origin: *");
+			if($_GET['exec'] === "suborigin") { 
+				header("Access-Control-Allow-Suborigin: *");
+			}
 			break;
 	}
 }

@@ -2,7 +2,7 @@
 //error_reporting(E_ALL);
 include(__DIR__ . "/config.php");
 if (isset($_GET['exec'])) {
- if($_GET['exec'] === "suborigin") { header("Suborigin: your"); }
+ if($_GET['exec'] === "suborigin") { header("Suborigin: your 'unsafe-postmessage-send' 'unsafe-postmessage-receive' 'unsafe-credentials'"); }
 }
 $_SESSION['write'] = 1;
 
