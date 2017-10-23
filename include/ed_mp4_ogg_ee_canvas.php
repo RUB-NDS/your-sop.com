@@ -70,9 +70,8 @@ function <?php echo $id; ?>() {
 	set(id, 'no*', "video.onloadeddata not executed"); /* fallback if img.onload is not executed */
 	var video = document.createElement("video");
 	<?php
-	if($crossOrigin != $notSet) {
-		echo "video.crossOrigin = '".$crossOrigin."';\n";
-	}
+	if($crossOrigin != $notSet) { 
+		echo "video.crossOrigin = '".$crossOrigin."';\n";	} 
 	?>
 	video.onloadeddata = function() {
 		args = Array();
