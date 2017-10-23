@@ -68,20 +68,21 @@ function <?php echo $id . "_onload"; ?>(video, track, id) {
 
 function <?php echo $id; ?>(){
 	var video = document.createElement('video');
+	<?php if($_GET['exec'] === "suborigin") { echo "video.crossOrigin='anonymous';"; } ?>
 	var id = getFunctionName();
     
     var source2 = document.createElement('source');
-    source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
+    source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&origin=" . urlencode($name). "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
     source2.type = 'video/ogg';
     video.appendChild(source2);
     
     var source = document.createElement('source');
-    source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
+    source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id ."&origin=" . urlencode($name). "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
     source.type = 'video/mp4';
     video.appendChild(source);
 
     var track = document.createElement('track');
-    track.src = '<?php echo $url; ?>track/webvtt.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
+    track.src = '<?php echo $url; ?>track/webvtt.php?func=<?php echo $id . "&origin=" . urlencode($name). "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
     track.default = "true";
     video.appendChild(track);
 
@@ -126,20 +127,21 @@ function <?php echo $id . "_onload"; ?>(video, track,  id) {
 
 function <?php echo $id; ?>(){
     var video = document.createElement('video');
-    var id = getFunctionName();
+	<?php if($_GET['exec'] === "suborigin") { echo "video.crossOrigin='anonymous';"; } ?>
+	var id = getFunctionName();
     
     var source2 = document.createElement('source');
-    source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
+    source2.src = '<?php echo $url; ?>video/ogg.php?func=<?php echo $id ."&origin=" . urlencode($name). "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
     source2.type = 'video/ogg';
     video.appendChild(source2);
     
     var source = document.createElement('source');
-    source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
+    source.src = '<?php echo $url; ?>video/mp4.php?func=<?php echo $id ."&origin=" . urlencode($name). "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
     source.type = 'video/mp4';
     video.appendChild(source);
 
     var track = document.createElement('track');
-    track.src = '<?php echo $url; ?>track/webvtt.php?func=<?php echo $id . "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
+    track.src = '<?php echo $url; ?>track/webvtt.php?func=<?php echo $id ."&origin=" . urlencode($name). "&exec=" . urlencode($_GET["exec"]). "&to=ED " . urlencode($name);?>';
     track.default = "true";
     video.appendChild(track);
 

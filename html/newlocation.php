@@ -20,7 +20,7 @@ if (!isset($_GET['func'])) {
 		<script>
 
 		<?php 
-		//include(__DIR__ . "/../util/call_stack.php");
+		/* include(__DIR__ . "/../util/call_stack.php"); */
 		?>
 
 		var data = {};
