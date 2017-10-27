@@ -27,9 +27,9 @@ foreach(array("HD A") as $from) {
 		<td><?php if ($from == 'HD A') { echo '<span style="text-decoration:overline">HD</span>'; } elseif ($from == 'ED A') { echo '<span style="text-decoration:overline">ED</span>'; } elseif ($from == 'HD B') { echo '<span style="text-decoration:underline">HD</span>'; } elseif ($from == 'ED B') { echo '<span style="text-decoration:underline">ED</span>'; } ?></td>
 		<td>&lt;<?php echo $ee ?>&gt;</td>
 		<td><?php if ($to == 'HD A') { echo '<span style="text-decoration:overline">HD</span>'; } elseif ($to == 'ED A') { echo '<span style="text-decoration:overline">ED</span>'; } elseif ($to == 'HD B') { echo '<span style="text-decoration:underline">HD</span>'; } elseif ($to == 'ED B') { echo '<span style="text-decoration:underline">ED</span>'; } else { echo '?'; } ?></td>
-		<td id="<?php echo $idr ?>" style="cursor:help">no</td>
-		<td id="<?php echo $idw ?>" style="cursor:help">no</td>
-		<td id="<?php echo $idx ?>" style="cursor:help">no</td>
+		<td id="<?php echo $idr ?>" onclick="manualExecution(<?php echo $idr; ?>)" style="cursor:help">no</td>
+		<td id="<?php echo $idw ?>" onclick="manualExecution(<?php echo $idw; ?>)" style="cursor:help">no</td>
+		<td id="<?php echo $idx ?>" onclick="manualExecution(<?php echo $idx; ?>)" style="cursor:help">no</td>
 		<script><?php
 				foreach(array($idr, $idw) as $id) {
 				?>
@@ -140,9 +140,9 @@ foreach(array("ED A", "ED B") as $from) {
 		<td><?php if ($from == 'HD A') { echo '<span style="text-decoration:overline">HD</span>'; } elseif ($from == 'ED A') { echo '<span style="text-decoration:overline">ED</span>'; } elseif ($from == 'HD B') { echo '<span style="text-decoration:underline">HD</span>'; } elseif ($from == 'ED B') { echo '<span style="text-decoration:underline">ED</span>'; } else { echo '?'; } ?></td>
 		<td>&lt;<?php echo $ee ?>&gt;</td>
 		<td><?php if ($to == 'HD A') { echo '<span style="text-decoration:overline">HD</span>'; } elseif ($to == 'ED A') { echo '<span style="text-decoration:overline">ED</span>'; } elseif ($to == 'HD B') { echo '<span style="text-decoration:underline">HD</span>'; } elseif ($to == 'ED B') { echo '<span style="text-decoration:underline">ED</span>'; } else { echo '?'; } ?></td>
-		<td id="<?php echo $idr ?>" style="cursor:help">no</td>
-		<td id="<?php echo $idw ?>" style="cursor:help">no</td>
-		<td id="<?php echo $idx ?>" style="cursor:help" title="Not applicable">n.a.</td>
+		<td id="<?php echo $idr ?>" onclick="manualExecution(<?php echo $idr; ?>)" style="cursor:help">no</td>
+		<td id="<?php echo $idw ?>" onclick="manualExecution(<?php echo $idw; ?>)" style="cursor:help">no</td>
+		<td id="<?php echo $idx ?>" onclick="manualExecution(<?php echo $idx; ?>)" style="cursor:help" title="Not applicable">n.a.</td>
 		<script><?php
 				foreach(array($idr, $idw) as $id) {
 				?>

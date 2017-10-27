@@ -39,9 +39,9 @@ foreach(array("HD A") as $from) {
 		<td>&lt;<?php echo $ee ?>&gt;</td>
 		<td><?php if ($to == 'HD A') { echo '<span style="text-decoration:overline">HD</span>'; } elseif ($to == 'ED A') { echo '<span style="text-decoration:overline">ED</span>'; } elseif ($to == 'HD B') { echo '<span style="text-decoration:underline">HD</span>'; } elseif ($to == 'ED B') { echo '<span style="text-decoration:underline">ED</span>'; } else { echo '?'; } ?></td>
 		<td><?php echo $sandbox ?></td>
-		<td id="<?php echo $idr ?>" style="cursor:help">no</td>
-		<td id="<?php echo $idw ?>" style="cursor:help">no</td>
-		<td id="<?php echo $idx ?>" style="cursor:help">no</td>
+		<td id="<?php echo $idr ?>" onclick="manualExecution(<?php echo $idr; ?>)" style="cursor:help">no</td>
+		<td id="<?php echo $idw ?>" onclick="manualExecution(<?php echo $idw; ?>)" style="cursor:help">no</td>
+		<td id="<?php echo $idx ?>" onclick="manualExecution(<?php echo $idx; ?>)" style="cursor:help">no</td>
 		<script><?php
 				foreach(array($idr, $idw, $idx) as $id) {
 				?>
@@ -149,9 +149,9 @@ foreach(array("ED A", "ED B") as $from) {
 		<td>&lt;<?php echo $ee ?>&gt;</td>
 		<td><?php if ($to == 'HD A') { echo '<span style="text-decoration:overline">HD</span>'; } elseif ($to == 'ED A') { echo '<span style="text-decoration:overline">ED</span>'; } elseif ($to == 'HD B') { echo '<span style="text-decoration:underline">HD</span>'; } elseif ($to == 'ED B') { echo '<span style="text-decoration:underline">ED</span>'; } else { echo '?'; } ?></td>
 		<td><?php echo $sandbox ?></td>
-		<td id="<?php echo $idr ?>" style="cursor:help">no</td>
-		<td id="<?php echo $idw ?>" style="cursor:help">no</td>
-		<td id="<?php echo $idx ?>" style="cursor:help" title="Not applicable">n.a.</td>
+		<td id="<?php echo $idr ?>" onclick="manualExecution(<?php echo $idr; ?>)" style="cursor:help">no</td>
+		<td id="<?php echo $idw ?>" onclick="manualExecution(<?php echo $idw; ?>)" style="cursor:help">no</td>
+		<td id="<?php echo $idx ?>" onclick="manualExecution(<?php echo $idx; ?>)" style="cursor:help" title="Not applicable">n.a.</td>
 		<script><?php
 				foreach(array($idr, $idw) as $id) {
 				?>

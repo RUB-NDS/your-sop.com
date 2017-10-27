@@ -17,7 +17,7 @@ if (!isset($URL_A) || !isset($URL_B)) { die(); }
     <td style="text-decoration:overline">HD</td>
     <td>&lt;audio&gt;</td>
     <td style="text-decoration:overline">ED</td>
-    <td id="test_HD_A_AUDIO_ED_A_r" style="cursor:help">no</td>
+    <td id="test_HD_A_AUDIO_ED_A_r" onclick="manualExecution(test_HD_A_AUDIO_ED_A_r)" style="cursor:help">no</td>
     <td id="test_HD_A_AUDIO_ED_A_w" style="cursor:help" title="Not applicable">n.a.</td>
     <td id="test_HD_A_AUDIO_ED_A_x" style="cursor:help" title="Not applicable">n.a.</td>
 </tr>
@@ -25,7 +25,7 @@ if (!isset($URL_A) || !isset($URL_B)) { die(); }
     <td style="text-decoration:overline">HD</td>
     <td>&lt;audio&gt;</td>
     <td style="text-decoration:underline">ED</td>
-    <td id="test_HD_A_AUDIO_ED_B_r" style="cursor:help">no</td>
+    <td id="test_HD_A_AUDIO_ED_B_r" onclick="manualExecution(test_HD_A_AUDIO_ED_B_r)" style="cursor:help">no</td>
     <td id="test_HD_A_AUDIO_ED_B_w" style="cursor:help" title="Not applicable">n.a.</td>
     <td id="test_HD_A_AUDIO_ED_B_x" style="cursor:help" title="Not applicable">n.a.</td>
 </tr>

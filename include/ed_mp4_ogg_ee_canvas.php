@@ -47,7 +47,7 @@ foreach(array("ED A", "ED B") as $to) {
 					$id = "test_${from}_${ee}_with_mp4ogg_${to}_r_cross_origin_${crossOrigin}_origin_${origin}_credentials_${credentials}";
 					$id = str_replace(array(" ", "-","(",")"), "_", $id);
 					echo $id;
-					?>" style="cursor:help">no</td>
+					?>" onclick="manualExecution(<?php echo $id; ?>)" style="cursor:help">no</td>
 					<script>
 function <?php echo $id . "_onload"; ?>(video, id) {
 	try {

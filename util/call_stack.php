@@ -4,6 +4,17 @@ if (!isset($URL_A) || !isset($URL_B)) { die(); }
 	
 //<![CDATA[
 
+	function manualExecution(func) {
+		if(typeof func === 'function') {
+			console.log('Manually executing: ' + func.name);
+			call(func);
+			depleteQueue();
+		}
+		else {
+			console.log('Function: ' + func.id + ' is not defnied.'); /* if a function is not defined a table cell is returned. Therefore, id. */
+		}
+	}
+	
 	function sleep(timeout) { /* simple JavaScript sleep method */
 		return new Promise(resolve => setTimeout(resolve, timeout));
 	}

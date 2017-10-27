@@ -17,7 +17,7 @@
     <td style="text-decoration:overline">HD</td>
     <td>&lt;picture&gt;</td>
     <td style="text-decoration:overline">ED</td>
-    <td id="test_HD_A_PICTURE_ED_A_r" style="cursor:help">no</td>
+    <td id="test_HD_A_PICTURE_ED_A_r" onclick="manualExecution(test_HD_A_PICTURE_ED_A_r)" style="cursor:help">no</td>
     <td id="test_HD_A_PICTURE_ED_A_w" style="cursor:help" title="Not applicable">n.a.</td>
     <td id="test_HD_A_PICTURE_ED_A_x" style="cursor:help" title="Not applicable">n.a.</td>
 </tr>
@@ -25,7 +25,7 @@
     <td style="text-decoration:overline">HD</td>
     <td>&lt;picture&gt;</td>
     <td style="text-decoration:underline">ED</td>
-    <td id="test_HD_A_PICTURE_ED_B_r" style="cursor:help">no</td>
+    <td id="test_HD_A_PICTURE_ED_B_r" onclick="manualExecution(test_HD_A_PICTURE_ED_B_r)" style="cursor:help">no</td>
     <td id="test_HD_A_PICTURE_ED_B_w" style="cursor:help" title="Not applicable">n.a.</td>
     <td id="test_HD_A_PICTURE_ED_B_x" style="cursor:help" title="Not applicable">n.a.</td>
 </tr>

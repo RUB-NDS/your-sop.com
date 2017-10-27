@@ -62,8 +62,8 @@ foreach($arrayTo as $to) {
 					} 
 					?></td>
 					<td><?php /*if($credentials == 'true') { echo "&#10003;"; } elseif ($credentials == 'false') { echo "X"; } else { echo $credentials; } */  echo $credentials; ?></td>
-					<td id="<?php echo $idr; ?>" style="cursor:help" title="No usefull testcase">no</td>
-					<td id="<?php echo $idw; ?>" style="cursor:help" title="No usefull testcase">no</td>
+					<td id="<?php echo $idr; ?>" style="cursor:help" onclick="manualExecution(<?php echo $idr; ?>)" title="No usefull testcase">no</td>
+					<td id="<?php echo $idw; ?>" style="cursor:help" onclick="manualExecution(<?php echo $idw; ?>)" title="No usefull testcase">no</td>
 					<td id="<?php echo $idx; ?>" style="cursor:help" title="Not applicable">n.a.</td>
 					<script>
 					<?php
