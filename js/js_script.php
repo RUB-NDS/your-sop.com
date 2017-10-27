@@ -34,7 +34,7 @@ switch($operation) {
 			data.value = 'partial';
 		}
 		if (document.documentElement.innerHTML.length > 0) {
-			data.value = 'yes(DOM)';
+			data.value = 'yes';
 		}
 		
 	}
@@ -53,7 +53,7 @@ switch($operation) {
 		description += js_script.toString();
 		var text = document.createElement("acronym");
 		text.setAttribute("title", description);
-		text.appendChild(document.createTextNode('yes(DOM)'));
+		text.appendChild(document.createTextNode('yes'));
 		var target = document.getElementById('<?php echo $func ?>');
 		target.innerHTML='';
 		target.appendChild(text);

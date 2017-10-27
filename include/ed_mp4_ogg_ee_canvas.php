@@ -57,7 +57,7 @@ function <?php echo $id . "_onload"; ?>(video, id) {
 		ctx.drawImage(video, 0, 0); 
 		var pixel = ctx.getImageData(2,3,1,1);
 		var data = pixel.data;
-		set(id, (data[0] == 253 || data[0] == 254 || data[0] == 255)?'yes(pixel)':'no'); /* different Browsers = different pixel values WTF */
+		set(id, (data[0] == 253 || data[0] == 254 || data[0] == 255)?'yes':'no'); /* different Browsers = different pixel values WTF */
 	} catch (ex) {			
 		set(id, 'no*', ex.message); /* SOP violation? */
 	}

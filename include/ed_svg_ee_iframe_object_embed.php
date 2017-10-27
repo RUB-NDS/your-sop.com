@@ -41,7 +41,7 @@ foreach(array("HD A") as $from) {
 							
 					var firstChildName = svgDoc.documentElement.firstElementChild.nodeName;
 					/* check if svg first child name is "rect" */
-					set(id, (firstChildName==="rect")?'yes(DOM)':'no');
+					set(id, (firstChildName==="rect")?'yes':'no');
 							<?php
 							break;
 						case $idw;?>
@@ -50,7 +50,7 @@ foreach(array("HD A") as $from) {
 					svgDoc.documentElement.removeChild(firstChild);
 					var firstChild = svgDoc.documentElement.firstElementChild;
 					/* check if element could be removed */
-					set(id, (firstChild==null)?'yes(DOM)':'no');
+					set(id, (firstChild==null)?'yes':'no');
 							
 							<?php
 							break;

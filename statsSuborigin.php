@@ -67,7 +67,7 @@ $.getJSON("json/suborigin/macos-Chrome-61.0-experimental-native.json", function(
 
     function replaceterms(testcase, value) {
         value = value.replace("no*", "no");
-        value = value.replace("yes(pixel)", "yes(pix)");
+        value = value.replace("yes", "yes(pix)");
         if (!(testcase in window.recommended)) {
             window.recommended[testcase] = {};
         }

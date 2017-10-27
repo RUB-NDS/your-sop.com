@@ -91,7 +91,7 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
 
     function replaceterms(testcase, value) {
         value = value.replace("no*", "no");
-        value = value.replace("yes(pixel)", "yes(pix)");
+        value = value.replace("yes", "yes(pix)");
         if (!(testcase in window.recommended)) {
             window.recommended[testcase] = {};
         }

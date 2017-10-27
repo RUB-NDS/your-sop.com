@@ -41,7 +41,7 @@ if (!isset($_GET['func'])) {
 			if (p.frames.length > 0) {
 				data.value = 'partial';
 				if (p.document.documentElement.innerHTML.length > 0) {
-					data.value = 'yes(DOM)';
+					data.value = 'yes';
 				}
 			}
 			
@@ -62,7 +62,7 @@ if (!isset($_GET['func'])) {
 			description += svg_script.toString();
 			var text = pDoc.createElement("acronym");
 			text.setAttribute("title", description);
-			text.appendChild(pDoc.createTextNode('yes(DOM)'));
+			text.appendChild(pDoc.createTextNode('yes'));
 			var target = pDoc.getElementById('<?php echo $func ?>');
 			target.innerHTML='';
 			target.appendChild(text);

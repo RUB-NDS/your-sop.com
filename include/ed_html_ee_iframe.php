@@ -58,7 +58,7 @@ foreach(array("HD A") as $from) {
 							
 					var htmlSource = htmlDoc.documentElement.innerHTML;
 					/* check if html contains "ED: HTML" */
-					set(id, (htmlSource.indexOf("ED: HTML") > 0)?'yes(DOM)':'no');
+					set(id, (htmlSource.indexOf("ED: HTML") > 0)?'yes':'no');
 							<?php
 							break;
 						case $idw;?>
@@ -66,7 +66,7 @@ foreach(array("HD A") as $from) {
 					htmlDoc.body.innerHTML="new content";
 					var htmlSource = htmlDoc.documentElement.innerHTML;
 					/* check if element could be removed */
-					set(id, (htmlSource.indexOf("new content") > 0)?'yes(DOM)':'no');
+					set(id, (htmlSource.indexOf("new content") > 0)?'yes':'no');
 							
 							<?php
 							break;
