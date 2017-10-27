@@ -8,7 +8,7 @@ if (isset($_GET['origin'])) {
 			if($_GET['exec'] === "suborigin") { 
 				/* https://w3c.github.io/webappsec-suborigins/#cors-ac */
 				header("Access-Control-Allow-Suborigin: your");
-				header("Access-Control-Allow-Origin: http-so://your.your-sop.com");
+				header("Access-Control-Allow-Origin: http-so://your.$SERVER_A");
 			} else {
 				header("Access-Control-Allow-Origin: $PROTOCOL$SERVER_A");
 			}	
@@ -16,7 +16,7 @@ if (isset($_GET['origin'])) {
 		case "B":
 			if($_GET['exec'] === "suborigin") { 
 				header("Access-Control-Allow-Suborigin: other");
-				header("Access-Control-Allow-Origin: http-so://other.your-sop.com");
+				header("Access-Control-Allow-Origin: http-so://other.$SERVER_A");
 			} else {
 				header("Access-Control-Allow-Origin: $PROTOCOL$SERVER_B");		
 			}
