@@ -3,7 +3,7 @@ header("Content-type: text/css");
 if ($_GET['exec'] === "suborigin") { header("suborigin: your"); }
 ?>
 body {
-    width: 100%;    
+    width: 97%;    
     margin: 20px;
     font-family: 'trebuchet MS', 'Lucida sans', Arial;
     font-size: 13px;
