@@ -11,7 +11,7 @@ $executions = array("ed_css_ee_link" => array(), "ed_html_ee_iframe" => array(),
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>Formally defining the Same-Origin Policy for the HTML Context</title>
+		<title>Same-Origin Policy: Evaluation in Modern Browsers</title>
 	</head>
 	<link rel="stylesheet" href="style.php">
 	<script>
@@ -140,7 +140,7 @@ function generateReport() {
 ?>
 	<hr>
 	<div style="display: flex">
-	  <span style="float: left;  width: 450px;"><button onclick="window.location='stats.php'">Other SOP's</button><button onclick="window.location='statsNew.php'">New Other SOP's</button></span>
+	  <span style="float: left;  width: 450px;"><select style="height:100%" name="exec" onchange="top.location.href = 'http://your-sop.com/stats-' + this.value + '.php'"><option>Statistics</option><option value="usenix">Usenix Security 2017</option><option value="general">Updated Stats</option><option  value="suborigin">Suborigin</option></select></span>
 	  <span><select style="height:100%" name="exec" onchange="top.location.href = '<?php echo $MAIN_FILE; ?>?exec=' + this.value"><option value="native">Native</option><option <?php if (isset($_GET['exec']) && $_GET['exec'] === "js") { echo "selected"; }?> value="js">JavaScript</option><option <?php if (isset($_GET['exec']) && $_GET['exec'] === "suborigin") { echo "selected"; }?> value="suborigin">Suborigin</option></select></span>
 	  <span><button onclick="for (i = 0; i < document.querySelectorAll('table').length; i++) { document.querySelectorAll('table')[i].style.display='none'; }">Hide all</button> <!--<button onclick="allTestGroups(); for (i = 0; i < document.querySelectorAll('table').length; i++) { document.querySelectorAll('table')[i].style.display='table'; }">Display all</button>--><button onclick="generateReport()">Generate Report</button></span>
 	</div>

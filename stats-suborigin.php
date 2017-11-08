@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html><head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Modeling the Same-Origin Policy for DOM Access with ABAC</title>
+		<title>Same-Origin Policy: Evaluation in Modern Browsers</title>
 		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 		<link rel="stylesheet" href="style.php">
 	</head>
@@ -14,7 +14,7 @@
 ?>
 <hr>
 <div style="display: flex">
-	<span style="float: left;  width: 450px;"><button onclick="window.location='http://your-sop.com/index.php'" style="color:red">Your SOP</button></span> 
+	<span style="float: left;  width: 450px;"><button onclick="window.location='http://your-sop.com/index.php'" style="color:red">Your SOP</button> <select style="height:100%" name="exec" onchange="top.location.href = 'http://your-sop.com/stats-' + this.value + '.php'"><option>Statistics</option><option value="usenix">Usenix Security 2017</option><option value="general">Updated Stats</option><option  value="suborigin">Suborigin</option></select></span> 
 	<span><button onclick="location.reload()">Show all</button> <button onclick="console.log('Calculating ...'); var rows = removeNA();mark();shownumbers(rows);console.log('... ready');">Only display differences</button> <button onclick="colorize()" title="Colorizing with red (no) , green (yes) and blue (partial)">Colorize</button> <button onclick="filter()">Do not display  yes*</button></span> 
 </div>
 <div style="center" id="numbers">
