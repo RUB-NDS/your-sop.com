@@ -79,6 +79,7 @@ $ios = '<span title="iOS" class="dots">iOS</span>';
   	<th><?=$macos?> <?=$yandex?> 17.9 <?=$javascript?></th>
   	<th><?=$macos?> <?=$vivaldi?> 1.12 <?=$native?></th>
   	<th><?=$macos?> <?=$vivaldi?> 1.12 <?=$javascript?></th>
+    <th><?=$windows?> <?=$firefox?> 57.0 <?=$native?></th>
   </tr>
  </table>
 
@@ -208,6 +209,7 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
         content += "<td title='osxYandex17JS' id='" + testcase + "osxYandex17JS'></td>";
         content += "<td title='osxVivaldi112Native' id='" + testcase + "osxVivaldi112Native'></td>";
         content += "<td title='osxVivaldi112JS' id='" + testcase + "osxVivaldi112JS'></td>";
+        content += "<td title='windowsFF57Native' id='" + testcase + "windowsFF57Native'></td>";
         content += "</tr>";
 
         $('#tableSOP').append(content);
@@ -248,6 +250,7 @@ $.getJSON("jsonNew/linux-Chrome-61.0-native.json", function(data) {
 	addbrowserData ("jsonNew/osx-Yandex-17.9.1.888-js.json", "osxYandex17JS");
 	addbrowserData ("jsonNew/osx-Vivaldi-1.12.955.38-Native.json", "osxVivaldi112Native");
 	addbrowserData ("jsonNew/osx-Vivaldi-1.12.955.38-JS.json", "osxVivaldi112JS");
+    addbrowserData ("jsonNew/windows-Firefox-Quantum-57.0-native.json", "windowsFF57Native");
     
 }); /* make the same results invisible for the user */
 
