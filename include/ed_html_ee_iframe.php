@@ -56,6 +56,7 @@ foreach(array("HD A") as $from) {
 					switch($id) {
 						case $idr:?>
 							
+					set(id, (ee.contentWindow.frames.length == 0)?'partial':'no');
 					var htmlSource = htmlDoc.documentElement.innerHTML;
 					/* check if html contains "ED: HTML" */
 					set(id, (htmlSource.indexOf("ED: HTML") > 0)?'yes':'no');
